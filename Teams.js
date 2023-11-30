@@ -1,4 +1,13 @@
-showLoading();
+showLoading();{
+    var pg = getUrlParameter('page');
+    console.log(pg);
+    if (pg == undefined)
+        self.activate(1);
+    else {
+        self.activate(pg);
+    }
+    console.log("VM initialized!");
+};
 
 $(document).ready(function () {
     console.log("ready!");
@@ -6,14 +15,17 @@ $(document).ready(function () {
 });
 
 $(document).ajaxComplete(function (event, xhr, options) {
-    hideLoading(); // Call hideLoading when the Ajax request is complete
-});
+    $("#myModal").modal('hide');
+})
 
-var pg = getUrlParameter('page');
-console.log(pg);
-if (pg == undefined)
-    self.activate(1);
-else {
-    self.activate(pg);
+function showLoading() {
+    $("#myModal").modal('show', {
+        backdrop: 'static',
+        keyboard: false
+    });
 }
-console.log("VM initialized!");
+function hideLoading() {
+    $('#myModal').on('shown.bs.modal', function (e) {
+        $("#myModal").modal('hide');
+    })
+}
