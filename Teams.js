@@ -1,4 +1,4 @@
-showLoading();{
+showLoading();
     var pg = getUrlParameter('page');
     console.log(pg);
     if (pg == undefined)
@@ -7,7 +7,7 @@ showLoading();{
         self.activate(pg);
     }
     console.log("VM initialized!");
-};
+;
 
 $(document).ready(function () {
     console.log("ready!");
