@@ -1,8 +1,9 @@
+// ViewModel KnockOut
 var vm = function () {
     console.log('ViewModel initiated...');
     //---Variáveis locais
     var self = this;
-    self.baseUri = ko.observable('http://192.168.160.58/NBA/API/Players');
+    self.baseUri = ko.observable('http://192.168.160.58/NBA/API/States');
     self.displayName = 'NBA Arenas List';
     self.error = ko.observable('');
     self.passingMessage = ko.observable('');
@@ -65,27 +66,18 @@ fetch(apiUrl)
     // Assuming data is an array of arena objects
     data.forEach(player => {
       // Create HTML elements and populate them with data
-      const arenaElement = document.createElement('div');
+      const playerElement = document.createElement('div');
       playerElement.innerHTML = `
-        <h2>${player.Name}</h2>
-        <p>Birthdate: ${player.Birthdate}</p>
-        <p>CountryId: ${player.CountryId}</p>
-        <p>CountryName: ${player.CountryName}</p>
-        <p>DraftYear: ${player.DraftYear}</p>
-        <p>PositionId: ${player.PositionId}</p>
-        <p>PositionName: ${player.PositionName}</p>
-        <p>Height: ${player.Height}</p>
-        <p>Weight: ${player.Weight}</p>
-        <p>School: ${player.School}</p>
-        <p>Photo: ${player.Photo}</p>
-        <p>Biography: ${player.Biography}</p>
-        <p>Seasons: ${player.Seasons}</p>
+        <p>Id: ${player.Id}</p>
+        <p>Season: ${player.Season}</p>
         <p>Teams: ${player.Teams}</p>
+        <p>Players: ${player.Players}</p>
+        
         <!-- Add more elements as needed -->
       `;
 
       // Append the arena element to the HTML body or a specific container
-      document.body.appendChild(arenaElement);
+      document.body.appendChild(playerElement);
     });
   })
   .catch(error => console.error('Error fetching data:', error));
@@ -93,7 +85,7 @@ fetch(apiUrl)
 
     //--- Page Events
     self.activate = function (id) {
-        console.log('CALL: getArenas...');
+        console.log('CALL: getPlayers...');
         var composedUri = self.baseUri() + "?page=" + id + "&pageSize=" + self.pagesize();
         ajaxHelper(composedUri, 'GET').done(function (data) {
             console.log(data);
