@@ -9,7 +9,7 @@ var vm = function () {
     self.passingMessage = ko.observable('');
     self.records = ko.observableArray([]);
     self.currentPage = ko.observable(1);
-    self.pagesize = ko.observable(21);
+    self.pagesize = ko.observable(20);
     self.totalRecords = ko.observable(50);
     self.hasPrevious = ko.observable(false);
     self.hasNext = ko.observable(false);
@@ -44,22 +44,8 @@ var vm = function () {
 
 
     // Assuming your API endpoint is 'https://example.com/arenas'
-const apiUrl = 'https://example.com/seasons';
+const apiUrl = 'http://192.168.160.58/NBA/API/Seasons';
 
-fetch(apiUrl)
-  .then(response => {
-    if (!response.ok) {
-      throw new Error(`Network response was not ok: ${response.status}`);
-    }
-    return response.json();
-  })
-  .then(data => {
-    // Process the data
-    console.log(data);
-  })
-  .catch(error => {
-    console.error('Error fetching data:', error.message);
-  });
 
 fetch(apiUrl)
   .then(response => response.json())
@@ -77,29 +63,29 @@ fetch(apiUrl)
 fetch(apiUrl)
   .then(response => response.json())
   .then(data => {
-    // Assuming data is an array of arena objects
-    data.forEach(player => {
+    // Assuming data is an array of season objects
+    data.forEach(season => {
       // Create HTML elements and populate them with data
-      const playerElement = document.createElement('div');
-      playerElement.innerHTML = `
-        <h2>${player.Name}</h2>
-        <p>Season: ${player.Season}</p>
-        <p>Teams: ${player.Teams}</p>
-        <p>Players: ${player.Players}</p>
+      const seasonElement = document.createElement('div');
+      seasonElement.innerHTML = `
+        <p>Id: ${season.Id}</p>
+        <p>Season: ${season.Season}</p>
+        <p>Teams: ${season.Id}</p>
+        <p>Players: ${season.Players}</p>
 
         <!-- Add more elements as needed -->
       `;
 
-      // Append the arena element to the HTML body or a specific container
-      document.body.appendChild(playerElement);
+      // Append the season element to the HTML body or a specific container
+      document.body.appendChild(seasonElement);
     });
   })
   .catch(error => console.error('Error fetching data:', error));
 
 
-    //--- Page Events
+    //--- Page Eventss
     self.activate = function (id) {
-        console.log('CALL: getTeams...');
+        console.log('CALL: getSeasons...');
         var composedUri = self.baseUri() + "?page=" + id + "&pageSize=" + self.pagesize();
         ajaxHelper(composedUri, 'GET').done(function (data) {
             console.log(data);

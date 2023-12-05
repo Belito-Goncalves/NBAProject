@@ -44,7 +44,7 @@ var vm = function () {
 
 
     // Assuming your API endpoint is 'https://example.com/arenas'
-const apiUrl = 'https://example.com/arenas';
+const apiUrl = 'http://192.168.160.58/NBA/API/Teams';
 
 
 fetch(apiUrl)

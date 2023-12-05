@@ -68,22 +68,35 @@
             <div class="container">
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" data-bind="foreach: records">
                     <div class="col mb-4"> <!-- Add mb-4 class for bottom margin -->
-                        <div class="card shadow-sm" style="width: 300px; height: 400px;"> <!-- Set width and height to make it square -->
-                            <svg role="img" aria-label="Placeholder:" preserveAspectRatio="xMidYMid slice" focusable="false" style="margin-bottom: 10px;">
-                                <title>Placeholder</title>
-                                <img class="mx-auto" width="290" height="290" data-bind="attr:{src: Photo}" style="object-fit: cover;" /> <!-- Set object-fit to cover for maintaining aspect ratio -->
-                            </svg>
-                            <div class="card-body row">
-                                <p class="card-text mx-auto" data-bind="text:Name"></p>
-                                <div class="d-flex justify-content-between align-items-center" style="margin-bottom: 10px;">
-                                    <div class="btn-group mx-auto">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">
-                                            <a class="btn btn-default btn-light btn-xs" data-bind="attr: { href: './PLayerDetails.html?id=' + Id }">Detalhes</a>
-                                        </button>                                        
-                                    </div>
-                                </div>
+                        <div class = "card">
+                            <img class="mx-auto" width="290" height="290" data-bind="attr:{src: Photo}" style="object-fit: cover;" /> 
+                            <div class="card-content" data-bind="text:Name">
+                                <h2 id="dynamicHeading"></h2>
+                              <p>
+                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nesciunt exercitationem iste, voluptatum, quia explicabo laboriosam rem adipisci voluptates cumque, veritatis atque nostrum corrupti ipsa asperiores harum? Dicta odio aut hic.
+                              </p>
+                              <a href="#" class="button">
+                                Find out more 
+                                <span class="material-symbols-outlined">
+                                  arrow_right_alt
+                                </span>
+                              </a>
                             </div>
-                        </div>
+                          </div>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
                     </div>
                 </div>
             </div>

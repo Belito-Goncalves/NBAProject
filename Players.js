@@ -4,12 +4,12 @@ var vm = function () {
     //---Variáveis locais
     var self = this;
     self.baseUri = ko.observable('http://192.168.160.58/NBA/API/Players');
-    self.displayName = 'NBA Arenas List';
+    self.displayName = 'NBA Players List';
     self.error = ko.observable('');
     self.passingMessage = ko.observable('');
     self.records = ko.observableArray([]);
     self.currentPage = ko.observable(1);
-    self.pagesize = ko.observable(21);
+    self.pagesize = ko.observable(15);
     self.totalRecords = ko.observable(50);
     self.hasPrevious = ko.observable(false);
     self.hasNext = ko.observable(false);
@@ -44,7 +44,7 @@ var vm = function () {
 
 
     // Assuming your API endpoint is 'https://example.com/arenas'
-const apiUrl = 'https://example.com/arenas';
+const apiUrl = 'http://192.168.160.58/NBA/API/Players';
 
 
 fetch(apiUrl)
@@ -179,3 +179,15 @@ $(document).ready(function () {
 $(document).ajaxComplete(function (event, xhr, options) {
     $("#myModal").modal('hide');
 })
+
+
+
+var yourDataObject = {
+    Name: "Your dynamic content here"
+};
+
+// Get the value from the data-bind attribute
+var dynamicContent = $(".card-content").data("bind");
+
+// Set the content of the h2 element
+$("#dynamicHeading").text(yourDataObject[dynamicContent]);

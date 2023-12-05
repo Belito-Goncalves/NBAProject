@@ -11,6 +11,7 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="myCSS.css" />
+    <link rel="stylesheet" href="louco.css" />
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
@@ -69,15 +70,21 @@
             <div class="container">
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" data-bind="foreach: records">
                     <div class="col mb-4"> <!-- Add mb-4 class for bottom margin -->
-                        <div class="card shadow-sm" style="width: 300px; height: 400px;"> <!-- Set width and height to make it square -->
-                            <svg role="img" aria-label="Placeholder:" preserveAspectRatio="xMidYMid slice" focusable="false" style="margin-bottom: 10px;">
-                                <title>Placeholder</title>
-                                <img class="mx-auto" width="290" height="290" data-bind="attr:{src: Logo}" style="object-fit: cover;" /> <!-- Set object-fit to cover for maintaining aspect ratio -->
-                            </svg>
-                            <div class="card-body row">
-                                <p class="card-text mx-auto" data-bind="text: Acronym"></p>
+                        <body>
+                            <div class = container>
+                              <div class = card>
+                                <div class = image>
+                                    <img class="mx-auto" width="290" height="290" data-bind="attr:{src: Logo}" style="object-fit: cover;" />
+                                </div>
+                                <div class = content>
+                                  <br>
+                                  <div data-bind="text: Acronym"></div>
+                                  <h3>This is content</h3>
+                                  <p>DIn publishing and graphic design,           Lorem ipsum is a placeholder text               commonly used to demonstrate the visual         form of a document or a typeface without         relying on meaningful content.</p>
+                                </div>
+                              </div>    
                             </div>
-                        </div>
+                          </body>
                     </div>
                 </div>
             </div>
