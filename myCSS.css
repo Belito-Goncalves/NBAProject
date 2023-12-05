@@ -39,15 +39,10 @@ li.page-item a {
 
 li.page-item {
     background-color: #f9f9f9;
-      padding: 15px;
       border-radius: 8px;
       display: flex;
-      flex-direction: column;
       align-items: center;
       text-align: center;
-      width: 400px
-      height: 400px
-        
   }
 
   .album{
@@ -69,15 +64,14 @@ li.page-item {
     background-size: cover;
   }
 
-  .card{
+  .card {
     border-radius: 10px;
     overflow: hidden;
     cursor: pointer;
     position: relative;
-    color: $color-primary-white;
     box-shadow: 0 10px 30px 5px rgba(0, 0, 0, 0.2);
    
-    $color-primary-white: rgb(240, 240, 240);
+  }
 
 .main {
   display: flex;
@@ -89,14 +83,12 @@ li.page-item {
 }
 
 .card {
-  width: 24rem;
-  height: 36rem;
   border-radius: 10px;
   overflow: hidden;
   cursor: pointer;
   position: relative;
-  color: $color-primary-white;
-  box-shadow: 0 10px 30px 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 30px 5px rgba(0, 0, 0, 0.2); 
+      }
  
   .img {
     position: absolute;
@@ -151,13 +143,7 @@ li.page-item {
     opacity: 1;
   }
 
-}
 
 .material-symbols-outlined {
   vertical-align: middle;
 }
-
-
-
-
-  }
