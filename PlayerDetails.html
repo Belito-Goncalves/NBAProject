@@ -44,22 +44,44 @@
             <div class="col-2">Name</div><div class="col-10" data-bind="text: Name"></div>
         </div>
         <div class="row border-bottom g-2">
+            <div class="col-2">Birthdate</div><div class="col-10" data-bind="text: Birthdate"></div>
+        </div>
+        <div class="row border-bottom g-2">
             <div class="col-2">State</div><div class="col-10"><a class="nav-link" data-bind="text: CountryId"></a></div>
         </div>
         <div class="row border-bottom g-2">
-            <div class="col-2">Team</div>
-            <div class="col-10"><a class="nav-link"  title="Show Team Details"></a></div>
+            <div class="col-2">CountryName</div><div class="col-10"><a class="nav-link" data-bind="text: CountryName"></a></div>
+        </div>
+        <div class="row border-bottom g-2">
+            <div class="col-2">Teams</div><div class="col-10" data-bind="displayListValues:Teams"></div>
         </div>
         <div class="row border-bottom g-2">
             <div class="col-2">DraftYear</div><div class="col-10" data-bind="text: DraftYear"></div>
         </div>
         <div class="row border-bottom g-2">
+            <div class="col-2">PositionId</div><div class="col-10" data-bind="text: PositionId"></div>
+        </div>
+        <div class="row border-bottom g-2">
+            <div class="col-2">PositionName</div><div class="col-10" data-bind="text: PositionName"></div>
+        </div>
+        <div class="row border-bottom g-2">
             <div class="col-2">Height</div><div class="col-10" data-bind="text: Height"></div>
         </div>
-        <!-- ko if:Opened().length > 0 -->
         <div class="row border-bottom g-2">
             <div class="col-2">Weight</div><div class="col-10" data-bind="text: Weight"></div>
         </div>
+        <div class="row border-bottom g-2">
+            <div class="col-2">School</div><div class="col-10" data-bind="text: School"></div>
+        </div>
+        <div class="row border-bottom g-2">
+            <div class="col-2">Biography</div><div class="col-10" data-bind="text: Biography"></div>
+        </div>
+        <div class="row border-bottom g-2">
+            <div class="col-2">Seasons</div><div class="col-10" data-bind="text: Seasons"></div>
+        </div>
+        
+        <!-- ko if:Opened().length > 0 -->
+        
         <!-- /ko -->
         <div class="row border-bottom g-2" data-bind="visible: Photo() != '' && Photo() != null">
             <div class="col-2">Photo</div><div class="small col-10">
