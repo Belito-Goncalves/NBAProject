@@ -1,0 +1,25 @@
+.card-block {
+    background-color: rgb(170, 233, 233);
+    width: 15em;
+    height: 15em;
+}
+
+.card-block:hover {
+    box-shadow: -1px 10px 100px -12px rgba(0, 0, 0, 0.75);
+    transform: scale(1.2);
+    transform: rotate(-7deg);
+    background-color: rgb(129, 129, 129);
+    color: rgb(0, 0, 0);
+}
+
+a {
+    text-decoration: none;
+    color: #111;
+}
+
+.main1 {
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
