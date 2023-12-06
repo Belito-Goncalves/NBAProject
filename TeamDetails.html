@@ -44,43 +44,22 @@
             <div class="col-2">Name</div><div class="col-10" data-bind="text: Name"></div>
         </div>
         <div class="row border-bottom g-2">
-            <div class="col-2">Birthdate</div><div class="col-10" data-bind="text: Birthdate"></div>
+            <div class="col-2">State</div><div class="col-10"><a class="nav-link" data-bind="text:StateName, attr: { href:'./stateDetails.html?id=' + StateId }" title="Show State Details"></a></div>
         </div>
         <div class="row border-bottom g-2">
-            <div class="col-2">State</div><div class="col-10"><a class="nav-link" data-bind="text: CountryId"></a></div>
+            <div class="col-2">Team</div>
+            <div class="col-10"><a class="nav-link" data-bind="text:'[' + TeamAcronym() + '] ' + TeamName(), attr: { href:'./teamDetails.html?id=' + TeamId }" title="Show Team Details"></a></div>
         </div>
         <div class="row border-bottom g-2">
-            <div class="col-2">CountryName</div><div class="col-10"><a class="nav-link" data-bind="text: CountryName"></a></div>
+            <div class="col-2">Location</div><div class="col-10" data-bind="text: Location"></div>
         </div>
         <div class="row border-bottom g-2">
-            <div class="col-2">Teams</div><div class="col-10" data-bind="displayListValues:Teams"></div>
+            <div class="col-2">Capacity</div><div class="col-10" data-bind="text: Capacity"></div>
         </div>
-        <div class="row border-bottom g-2">
-            <div class="col-2">DraftYear</div><div class="col-10" data-bind="text: DraftYear"></div>
-        </div>
-        <div class="row border-bottom g-2">
-            <div class="col-2">PositionId</div><div class="col-10" data-bind="text: PositionId"></div>
-        </div>
-        <div class="row border-bottom g-2">
-            <div class="col-2">PositionName</div><div class="col-10" data-bind="text: PositionName"></div>
-        </div>
-        <div class="row border-bottom g-2">
-            <div class="col-2">Height</div><div class="col-10" data-bind="text: Height"></div>
-        </div>
-        <div class="row border-bottom g-2">
-            <div class="col-2">Weight</div><div class="col-10" data-bind="text: Weight"></div>
-        </div>
-        <div class="row border-bottom g-2">
-            <div class="col-2">School</div><div class="col-10" data-bind="text: School"></div>
-        </div>
-        <div class="row border-bottom g-2">
-            <div class="col-2">Biography</div><div class="col-10" data-bind="text: Biography"></div>
-        </div>
-        <!-- /ko -->
-        
-        
         <!-- ko if:Opened().length > 0 -->
-        
+        <div class="row border-bottom g-2">
+            <div class="col-2">Opened</div><div class="col-10" data-bind="text: Opened"></div>
+        </div>
         <!-- /ko -->
         <div class="row border-bottom g-2" data-bind="visible: Photo() != '' && Photo() != null">
             <div class="col-2">Photo</div><div class="small col-10">
@@ -89,7 +68,19 @@
             </div>
         </div>
         <!-- /ko -->
-        <a href="./Players.html" class="btn btn-default btn-sm small"><i class="fa fa-list"></i> Back to List</a>
+        
+        
+        <!-- ko if:Opened().length > 0 -->
+        
+        <!-- /ko -->
+        <div class="row border-bottom g-2" data-bind="visible: Logo() != '' && Logo() != null">
+            <div class="col-2">Logo</div><div class="small col-10">
+                <img class="img-thumbnail" data-bind="attr:{src: Logo}"><br />
+                <i class="fa fa-link"></i> [<a class="link-dark text-decoration-none" data-bind="attr: { href: Photo }, text: Photo" target="_blank"></a>]
+            </div>
+        </div>
+        <!-- /ko -->
+        <a href="./Teams.html" class="btn btn-default btn-sm small"><i class="fa fa-list"></i> Back to List</a>
     </div>
     <!-- Modal -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -119,6 +110,6 @@
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.1/knockout-latest.min.js"></script>
-    <script src="PlayerDetails.js"></script>
+    <script src="TeamDetails.js"></script>
 </body>
 </html>

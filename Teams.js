@@ -68,12 +68,12 @@ fetch(apiUrl)
       // Create HTML elements and populate them with data
       const playerElement = document.createElement('div');
       playerElement.innerHTML = `
-        <h2>${player.Name}</h2>
-        <p>Acronym: ${player.Acronym}</p>
+        <h1>${player.Name}</h1>
+        <h2>Acronym: ${player.Acronym}</h2>
         <p>Logo: ${player.Logo}</p>
         <!-- Add more elements as needed -->
       `;
-
+      console.log("Acronym:", player.Acronym);
       // Append the arena element to the HTML body or a specific container
       document.body.appendChild(playerElement);
     });
@@ -168,3 +168,4 @@ $(document).ready(function () {
 $(document).ajaxComplete(function (event, xhr, options) {
     $("#myModal").modal('hide');
 })
+

@@ -32,7 +32,7 @@
         </div>
     </nav>
     <div class="container">
-        <div class="border-bottom py-2 mb-2">
+        <div class="border-bottom py-2 mb-2 centro">
             <h2 data-bind="text:displayName"></h2>
         </div>
         <!-- ko if:records().length > 0 -->
@@ -42,7 +42,7 @@
                 <span data-bind="html: 'Games: '+ fromRecord() + '-' + toRecord() + ' of ' + totalRecords()"></span>
             </p>
             <div class="col-8 my-0 pt-3">
-                <ul class="pagination float-end">
+                <ul class="pagination direita">
                     <!-- ko if: currentPage() > 5 && totalPages() > 10 -->
                     <li class="page-item float-end"><a class="page-link" title="First Page" data-bind="attr: { href: './Players.html?page=' + '1',  rel:'prev'}">⇤</a></li>
                     <li class="page-item float-end"><a class="page-link" title="Previous Page" data-bind="attr: { href: './PLayers.html?page=' + previousPage(),  rel:'prev'}">←</a></li>
@@ -68,8 +68,10 @@
             <div class="container">
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" data-bind="foreach: records">
                     <div class="col mb-4"> <!-- Add mb-4 class for bottom margin -->
-                        <div class = "card">
+                        <div class = "card" >
+                            <a data-bind="attr: { href: './PlayerDetails.html?id=' + Id }">
                             <img class="mx-auto" width="290" height="290" data-bind="attr:{src: Photo}" style="object-fit: cover;" /> 
+                            </a>
                             <div class="card-content" data-bind="text:Name">
                                 <h2 id="dynamicHeading"></h2>
                               <p>

@@ -5,16 +5,16 @@
     font-family : "Poppins", sans-serif;
   }
   
-  .container {
+  .vinte {
     position : relative;
     display : flex;
     align-items : center;
     justify-content : center;
   }
   
-  .container .card {
+  .vinte .card {
     position: relative;
-    max-width : 300px;
+    max-width : 400px;
     height : 215px;  
     background-color : #fff;
     margin : 30px 10px;
@@ -26,30 +26,30 @@
     transition : 0.3s ease-in-out;
     border-radius : 15px;
   }
-  .container .card:hover {
+  .vinte .card:hover {
     height : 320px;    
   }
   
   
-  .container .card .image {
+  .vinte .card .image {
     position : relative;
     width : 260px;
     height : 260px;
     
-    top : -40%;
-    left: 8px;
+    top : 0%;
+    left: 2px;
     box-shadow : 0 5px 20px rgba(0,0,0,0.2);
     z-index : 1;
   }
   
-  .container .card .image img {
+  .vinte .card .image img {
     max-width : 100%;
     border-radius : 15px;
   }
   
-  .container .card .content {
+  .vinte .card .content {
     position : relative;
-    top : -140px;
+    top : -50px;
     padding : 10px 15px;
     color : #111;
     text-align : center;
@@ -60,10 +60,13 @@
       
   }
   
-  .container .card:hover .content {
+  .vinte .card:hover .content {
      margin-top : 30px;
      visibility : visible;
      opacity : 1;
      transition-delay: 0.2s;
+     font-family: 'Open Sans', sans-serif;
     
   }
+
+  
