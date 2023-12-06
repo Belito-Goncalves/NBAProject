@@ -1,13 +1,11 @@
 .card-block {
-    background-color: rgb(170, 233, 233);
+    background-color: rgb(199, 207, 207);
     width: 15em;
     height: 15em;
 }
 
 .card-block:hover {
     box-shadow: -1px 10px 100px -12px rgba(0, 0, 0, 0.75);
-    transform: scale(1.2);
-    transform: rotate(-7deg);
     background-color: rgb(129, 129, 129);
     color: rgb(0, 0, 0);
 }
