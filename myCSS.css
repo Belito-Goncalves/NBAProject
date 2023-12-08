@@ -147,3 +147,16 @@ li.page-item {
 .material-symbols-outlined {
   vertical-align: middle;
 }
+
+.centro{
+  text-align: center;
+
+}
+
+.direita{
+  float: right;
+}
+
+.font{
+  font-family: 'Open Sans', sans-serif;
+}
