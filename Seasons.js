@@ -1,4 +1,3 @@
-// ViewModel KnockOut
 var vm = function () {
     console.log('ViewModel initiated...');
     //---Variáveis locais
@@ -42,48 +41,7 @@ var vm = function () {
         return list;
     };
 
-
-    // Assuming your API endpoint is 'https://example.com/arenas'
-const apiUrl = 'http://192.168.160.58/NBA/API/Seasons';
-
-
-fetch(apiUrl)
-  .then(response => response.json())
-  .then(data => {
-    console.log(data); // Log the data to see its structure
-
-    // Assuming data is an array of arena objects
-    data.forEach(player => {
-      // Create HTML elements and populate them with data
-      const playerElement = document.createElement('div');
-      // ... rest of the code
-    });
-  })
-// Fetch data from the API
-fetch(apiUrl)
-  .then(response => response.json())
-  .then(data => {
-    // Assuming data is an array of season objects
-    data.forEach(season => {
-      // Create HTML elements and populate them with data
-      const seasonElement = document.createElement('div');
-      seasonElement.innerHTML = `
-        <p>Id: ${season.Id}</p>
-        <p>Season: ${season.Season}</p>
-        <p>Teams: ${season.Id}</p>
-        <p>Players: ${season.Players}</p>
-
-        <!-- Add more elements as needed -->
-      `;
-
-      // Append the season element to the HTML body or a specific container
-      document.body.appendChild(seasonElement);
-    });
-  })
-  .catch(error => console.error('Error fetching data:', error));
-
-
-    //--- Page Eventss
+    //--- Page Events
     self.activate = function (id) {
         console.log('CALL: getSeasons...');
         var composedUri = self.baseUri() + "?page=" + id + "&pageSize=" + self.pagesize();

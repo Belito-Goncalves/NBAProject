@@ -15,24 +15,41 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="index.html" tabindex="NBA"><img src="https://th.bing.com/th/id/OIP.nTQBASzYJk40EW4yph3BbQHaHa?w=512&h=512&rs=1&pid=ImgDetMain" height="24" /></a>
+            <a class="navbar-brand" href="index.html" tabindex="NBA">
+                <img src="https://th.bing.com/th/id/OIP.nTQBASzYJk40EW4yph3BbQHaHa?w=512&h=512&rs=1&pid=ImgDetMain" height="24" />
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item"><a class="nav-link" aria-current="page" href="arenas.html"><i class="fa fa-soccer-ball-o text-warning"></i> Arenas</a></li>
-                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="Players.html"><i class="fa fa-user-o text-primary"></i> Players</a></li>
+                    <li class="nav-item dropdown"><a class="nav-link active" aria-current="page" href="Players.html"><i class="fa fa-user-o text-primary"></i> Players</a>
+                            <div class="dropdown-menu" aria-labelledby="playersDropdown">
+                                <a class="dropdown-item" href="">Top Scorers</a>
+                                <a class="dropdown-item" href="#mvp">MVPs</a>
+                                <a class="dropdown-item" href="#rookies">Rookies</a>
+                            </div>
+                        </li>
+                    
+                    </li>
                     <li class="nav-item"><a class="nav-link" aria-current="page" href="Teams.html"><i class="fa fa-flag-o text-danger"></i> Teams</a></li>
                     <li class="nav-item"><a class="nav-link" aria-current="page" href="States.html"><i class="fa fa-map-marker text-success"></i> States</a></li>
                     <li class="nav-item"><a class="nav-link" aria-current="page" href="Seasons.html"><i class="fa fa-bookmark-o text-info "></i> Seasons</a></li>
                     <li class="nav-item"><a class="nav-link" aria-current="page" href="xxx.html"><i class="fa fa-magic" title="The party continues..."></i> &middot;&middot;&middot;</a></li>
                 </ul>
+                
+                <!-- Subnavigation for Players -->
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a class="nav-link" href="Numplayers.html">Top Scorers</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Players.html#mvp">MVPs</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Players.html#rookies">Rookies</a></li>
+                </ul>
             </div>
         </div>
     </nav>
     <div class="container">
-        <div class="border-bottom py-2 mb-2">
+        <div class="border-bottom py-2 mb-2 centro">
             <h2 data-bind="text:displayName"></h2>
         </div>
         <!-- ko if:records().length > 0 -->
@@ -42,7 +59,7 @@
                 <span data-bind="html: 'Games: '+ fromRecord() + '-' + toRecord() + ' of ' + totalRecords()"></span>
             </p>
             <div class="col-8 my-0 pt-3">
-                <ul class="pagination float-end">
+                <ul class="pagination direita">
                     <!-- ko if: currentPage() > 5 && totalPages() > 10 -->
                     <li class="page-item float-end"><a class="page-link" title="First Page" data-bind="attr: { href: './Players.html?page=' + '1',  rel:'prev'}">⇤</a></li>
                     <li class="page-item float-end"><a class="page-link" title="Previous Page" data-bind="attr: { href: './PLayers.html?page=' + previousPage(),  rel:'prev'}">←</a></li>
@@ -68,8 +85,10 @@
             <div class="container">
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" data-bind="foreach: records">
                     <div class="col mb-4"> <!-- Add mb-4 class for bottom margin -->
-                        <div class = "card">
+                        <div class = "card" >
+                            <a data-bind="attr: { href: './PlayerDetails.html?id=' + Id }">
                             <img class="mx-auto" width="290" height="290" data-bind="attr:{src: Photo}" style="object-fit: cover;" /> 
+                            </a>
                             <div class="card-content" data-bind="text:Name">
                                 <h2 id="dynamicHeading"></h2>
                               <p>

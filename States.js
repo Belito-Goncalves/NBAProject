@@ -1,4 +1,3 @@
-// ViewModel KnockOut
 var vm = function () {
     console.log('ViewModel initiated...');
     //---Variáveis locais
@@ -9,7 +8,7 @@ var vm = function () {
     self.passingMessage = ko.observable('');
     self.records = ko.observableArray([]);
     self.currentPage = ko.observable(1);
-    self.pagesize = ko.observable(21);
+    self.pagesize = ko.observable(20);
     self.totalRecords = ko.observable(50);
     self.hasPrevious = ko.observable(false);
     self.hasNext = ko.observable(false);
@@ -42,50 +41,9 @@ var vm = function () {
         return list;
     };
 
-
-    // Assuming your API endpoint is 'https://example.com/arenas'
-const apiUrl = 'http://192.168.160.58/NBA/API/States';
-
-
-fetch(apiUrl)
-  .then(response => response.json())
-  .then(data => {
-    console.log(data); // Log the data to see its structure
-
-    // Assuming data is an array of arena objects
-    data.forEach(player => {
-      // Create HTML elements and populate them with data
-      const playerElement = document.createElement('div');
-      // ... rest of the code
-    });
-  })
-// Fetch data from the API
-fetch(apiUrl)
-  .then(response => response.json())
-  .then(data => {
-    // Assuming data is an array of arena objects
-    data.forEach(player => {
-      // Create HTML elements and populate them with data
-      const playerElement = document.createElement('div');
-      playerElement.innerHTML = `
-        <p>Id: ${player.Id}</p>
-        <p>Season: ${player.Season}</p>
-        <p>Teams: ${player.Teams}</p>
-        <p>Players: ${player.Players}</p>
-        
-        <!-- Add more elements as needed -->
-      `;
-
-      // Append the arena element to the HTML body or a specific container
-      document.body.appendChild(playerElement);
-    });
-  })
-  .catch(error => console.error('Error fetching data:', error));
-
-
     //--- Page Events
     self.activate = function (id) {
-        console.log('CALL: getPlayers...');
+        console.log('CALL: getStates...');
         var composedUri = self.baseUri() + "?page=" + id + "&pageSize=" + self.pagesize();
         ajaxHelper(composedUri, 'GET').done(function (data) {
             console.log(data);
