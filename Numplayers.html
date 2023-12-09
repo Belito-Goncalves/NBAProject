@@ -31,7 +31,36 @@
             </div>
         </div>
     </nav>
-    
+    <!-- Work Area-->
+    <div class="container">
+        <div class="py-2 border-bottom mb-3">
+            <h2 data-bind="text:Name() +' [' + Id() + ']'"></h2>
+        </div>
+        <!-- ko if:Name().length > 0 -->
+        <div class="row border-bottom g-2">
+            <div class="col-2">Game Id</div><div class="col-10" data-bind="text: Season"></div>
+        </div>
+        <div class="row border-bottom g-2">
+            <div class="col-2">Name</div><div class="col-10" data-bind="text: SeasonType"></div>
+        </div>
+        <div class="row border-bottom g-2">
+            <div class="col-2">Birthdate</div><div class="col-10" data-bind="text: Players"></div>
+        </div>
+        <!-- /ko -->
+        
+        
+        <!-- ko if:Opened().length > 0 -->
+        
+        <!-- /ko -->
+        <div class="row border-bottom g-2" data-bind="visible: Photo() != '' && Photo() != null">
+            <div class="col-2">Photo</div><div class="small col-10">
+                <img class="img-thumbnail" data-bind="attr:{src: Photo}"><br />
+                <i class="fa fa-link"></i> [<a class="link-dark text-decoration-none" data-bind="attr: { href: Photo }, text: Photo" target="_blank"></a>]
+            </div>
+        </div>
+        <!-- /ko -->
+        <a href="./Players.html" class="btn btn-default btn-sm small"><i class="fa fa-list"></i> Back to List</a>
+    </div>
     <!-- Modal -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -60,6 +89,6 @@
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.1/knockout-latest.min.js"></script>
-    <script src="PlayerDetails.js"></script>
+    <script src="Numplayers.js"></script>
 </body>
 </html>

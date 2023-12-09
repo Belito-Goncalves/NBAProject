@@ -10,40 +10,38 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="myCSS.css" />
+    <link rel="stylesheet" href="../css/myCSS.css" />
+    <link rel="stylesheet" href="../css/navbar.css" />
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="index.html" tabindex="NBA">
-                <img src="https://th.bing.com/th/id/OIP.nTQBASzYJk40EW4yph3BbQHaHa?w=512&h=512&rs=1&pid=ImgDetMain" height="24" />
-            </a>
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:  rgb(201, 190, 190)">
+        <div class="container-fluid">
+            <a href="index.html" style="margin-right: 2%;"><img src="../Imagens/NBA.png" height="40" width="100" /></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link" aria-current="page" href="arenas.html"><i class="fa fa-soccer-ball-o text-warning"></i> Arenas</a></li>
-                    <li class="nav-item dropdown"><a class="nav-link active" aria-current="page" href="Players.html"><i class="fa fa-user-o text-primary"></i> Players</a>
-                            <div class="dropdown-menu" aria-labelledby="playersDropdown">
-                                <a class="dropdown-item" href="#top-scorers">Top Scorers</a>
-                                <a class="dropdown-item" href="#mvp">MVPs</a>
-                                <a class="dropdown-item" href="#rookies">Rookies</a>
-                            </div>
-                        </li>
-                    
+                    <li class="nav-item">
+                        <a class="nav-link" style="color:white;" href="arenas.html">Arenas</a>
                     </li>
-                    <li class="nav-item"><a class="nav-link" aria-current="page" href="Teams.html"><i class="fa fa-flag-o text-danger"></i> Teams</a></li>
-                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="States.html"><i class="fa fa-map-marker text-success"></i> States</a></li>
-                    <li class="nav-item"><a class="nav-link" aria-current="page" href="Seasons.html"><i class="fa fa-bookmark-o text-info "></i> Seasons</a></li>
-                    <li class="nav-item"><a class="nav-link" aria-current="page" href="xxx.html"><i class="fa fa-magic" title="The party continues..."></i> &middot;&middot;&middot;</a></li>
-                </ul>
-                
-                <!-- Subnavigation for Players -->
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item"><a class="nav-link" href="Players.html#top-scorers">Top Scorers</a></li>
-                    <li class="nav-item"><a class="nav-link" href="Players.html#mvp">MVPs</a></li>
-                    <li class="nav-item"><a class="nav-link" href="Players.html#rookies">Rookies</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link" style="color:white;" href="Players.html">Players</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" style="color:white;" href="Teams.html">Teams</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active rounded-pill bg-light text-dark" style="color:white;" href="States.html"> <img src="Imagens/States.png" height="30px">
+                            <c style="font-weight: bold;">States</c>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" style="color:white;" href="Seasons.html">Seasons</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" style="color:white;" href="FAQs.html">FAQs</a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -109,6 +107,6 @@
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.1/knockout-latest.min.js"></script>
-    <script src="States.js"></script>
+    <script src="../js/States.js"></script>
 </body>
 </html>

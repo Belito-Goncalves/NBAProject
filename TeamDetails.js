@@ -7,6 +7,7 @@ var vm = function () {
     self.displayName = 'NBA Team Details';
     self.error = ko.observable('');
     self.passingMessage = ko.observable('');
+    self.Opened = ko.observable('');
     // Data Record
     self.Id = ko.observable('');
     self.Acronym = ko.observable('');
