@@ -1,55 +1,32 @@
-.navbar {
-    background-color: #343a40;
-    padding: 15px 0;
-    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+a {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
 }
 
-.navbar-brand img {
-    height: 40px;
-    width: auto;
+b {
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    font-size: 20px;
+    background: linear-gradient(to bottom, #000, #000 60%, #fff 60%, #fff 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    background-repeat: no-repeat;
+    transition: background 0.2s ease-out;
+    white-space: nowrap;
 }
 
-.navbar-toggler {
-    border: none;
-    outline: none;
+h5 {
+    position: relative;
 }
 
-.navbar-toggler-icon {
-    background-color: #fff;
+b:hover {
+    background-position: 0 6px;
 }
 
-.navbar-nav {
-    margin-top: 8px;
-}
-
-.navbar-nav a {
-    color: #fff;
-    padding: 8px 15px;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-}
-
-.navbar-nav a:hover,
-.navbar-nav a.active {
-    background-color: #28a745;
-}
-
-.navbar-text {
-    color: #fff;
-    font-size: 14px;
-}
-
-.navbar-light .navbar-text a {
-    color: #28a745;
-    text-decoration: none;
-}
-
-.navbar-light .navbar-text a:hover {
-    text-decoration: underline;
-}
-
-@media (max-width: 768px) {
-    .navbar-toggler-icon {
-        background-color: #28a745;
-    }
+h5:hover:before {
+    transform: translateY(10px)
 }

@@ -7,6 +7,8 @@
 .card-block:hover {
     box-shadow: -1px 10px 100px -12px rgba(0, 0, 0, 0.75);
     background-color: rgb(129, 129, 129);
+    transform: scale(1.2);
+    transform: rotate(-10deg);
     color: rgb(0, 0, 0);
 }
 
