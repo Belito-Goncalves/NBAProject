@@ -1,20 +1,35 @@
 .card-block {
-    background-color: rgb(199, 207, 207);
+    background-color:rgb(236, 97, 17);
     width: 15em;
     height: 15em;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+    border: 2px solid orange;
 }
 
 .card-block:hover {
     box-shadow: -1px 10px 100px -12px rgba(0, 0, 0, 0.75);
     background-color: rgb(129, 129, 129);
+    background-color: rgb(183, 113, 16);
     transform: scale(1.2);
     transform: rotate(-10deg);
     color: rgb(0, 0, 0);
 }
 
-a {
+.card-block a {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    height: 100%;
     text-decoration: none;
-    color: #111;
+    color: #fff; /* Cor do texto abaixo dos cartões */
+    
+}
+
+.card-body {
+    margin-bottom: 15px;
 }
 
 .main1 {
@@ -22,4 +37,23 @@ a {
     display: flex;
     justify-content: center;
     align-items: center;
+
 }
+
+
+
+.card-block img {
+    width: 100%;
+    height: auto;
+}
+
+.card-block img {
+    width: 100%;
+    height: 70%;
+    object-fit: cover; /* Garante que a imagem cubra todo o contêiner mantendo a proporção */
+}
+
+
+
+
+
