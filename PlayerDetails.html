@@ -13,99 +13,115 @@
     <link rel="stylesheet" href="myCSS.css" />
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="index.html" tabindex="NBA"><img src="https://th.bing.com/th/id/OIP.nTQBASzYJk40EW4yph3BbQHaHa?w=512&h=512&rs=1&pid=ImgDetMain" height="24" /></a>
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:  rgb(201, 190, 190)">
+        <div class="container-fluid">
+            <a href="index.html" style="margin-right: 2%;"><img src="Imagens/NBA.png" height="40" width="100" /></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent" >
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="arenas.html"><i class="fa fa-soccer-ball-o text-warning"></i> Arenas</a></li>
-                    <li class="nav-item"><a class="nav-link" aria-current="page" href="Players.html"><i class="fa fa-user-o text-primary"></i> Players</a></li>
-                    <li class="nav-item"><a class="nav-link" aria-current="page" href="Teams.html"><i class="fa fa-flag-o text-danger"></i> Teams</a></li>
-                    <li class="nav-item"><a class="nav-link" aria-current="page" href="States.html"><i class="fa fa-map-marker text-success"></i> States</a></li>
-                    <li class="nav-item"><a class="nav-link" aria-current="page" href="Seasons.html"><i class="fa fa-bookmark-o text-info "></i> Seasons</a></li>
-                    <li class="nav-item"><a class="nav-link" aria-current="page" href="xxx.html"><i class="fa fa-magic" title="The party continues..."></i> &middot;&middot;&middot;</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link" style="color:white;" href="arenas.html">Arenas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active rounded-pill bg-light text-dark" href="Players.html"><img src="Imagens/Players.png" height="30px">
+                            <c style="font-weight: bold;">Players</c>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" style="color:white;" href="Teams.html">Teams</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" style="color:white;" href="States.html">States</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" style="color:white;" href="Seasons.html">Seasons</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" style="color:white;" href="FAQs.html">FAQs</a>
+                    </li>
                 </ul>
             </div>
         </div>
     </nav>
     <!-- Work Area-->
-    <div class="container">
-        <div class="py-2 border-bottom mb-3">
-            <h2 data-bind="text:Name() +' [' + Id() + ']'"></h2>
-        </div>
-        <!-- ko if:Name().length > 0 -->
-        <div class="row border-bottom g-2">
-            <div class="col-2">Game Id</div><div class="col-10" data-bind="text: Id"></div>
-        </div>
-        <div class="row border-bottom g-2">
-            <div class="col-2">Name</div><div class="col-10" data-bind="text: Name"></div>
-        </div>
-        <div class="row border-bottom g-2">
-            <div class="col-2">Birthdate</div><div class="col-10" data-bind="text: Birthdate"></div>
-        </div>
-        <div class="row border-bottom g-2">
-            <div class="col-2">State</div><div class="col-10"><a class="nav-link" data-bind="text: CountryId"></a></div>
-        </div>
-        <div class="row border-bottom g-2">
-            <div class="col-2">CountryName</div><div class="col-10"><a class="nav-link" data-bind="text: CountryName"></a></div>
-        </div>
-        <div class="row border-bottom g-2">
-            <div class="col-2">Teams</div><div class="col-10" data-bind="displayListValues:Teams"></div>
-        </div>
-        <div class="row border-bottom g-2">
-            <div class="col-2">DraftYear</div><div class="col-10" data-bind="text: DraftYear"></div>
-        </div>
-        <div class="row border-bottom g-2">
-            <div class="col-2">PositionId</div><div class="col-10" data-bind="text: PositionId"></div>
-        </div>
-        <div class="row border-bottom g-2">
-            <div class="col-2">PositionName</div><div class="col-10" data-bind="text: PositionName"></div>
-        </div>
-        <div class="row border-bottom g-2">
-            <div class="col-2">Height</div><div class="col-10" data-bind="text: Height"></div>
-        </div>
-        <div class="row border-bottom g-2">
-            <div class="col-2">Weight</div><div class="col-10" data-bind="text: Weight"></div>
-        </div>
-        <div class="row border-bottom g-2">
-            <div class="col-2">School</div><div class="col-10" data-bind="text: School"></div>
-        </div>
-        <div class="row border-bottom g-2">
-            <div class="col-2">Biography</div><div class="col-10" data-bind="text: Biography"></div>
-        </div>
-        <!-- /ko -->
-        
-        
-        <!-- ko if:Opened().length > 0 -->
-        
-        <!-- /ko -->
-        <div class="row border-bottom g-2" data-bind="visible: Photo() != '' && Photo() != null">
-            <div class="col-2">Photo</div><div class="small col-10">
-                <img class="img-thumbnail" data-bind="attr:{src: Photo}"><br />
-                <i class="fa fa-link"></i> [<a class="link-dark text-decoration-none" data-bind="attr: { href: Photo }, text: Photo" target="_blank"></a>]
+    <main class="background" style="min-height: 737px;">
+        <div class="container">
+            <div class="py-2 border-bottom mb-3">
+                <h2 data-bind="text:Name() +' [' + Id() + ']'"></h2>
             </div>
-        </div>
-        <!-- /ko -->
-        <a href="./Players.html" class="btn btn-default btn-sm small"><i class="fa fa-list"></i> Back to List</a>
-    </div>
-    <!-- Modal -->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">
-                        <img src="https://th.bing.com/th/id/R.a59293ce0fde19e2b09f8ff3efa8e1ab?rik=2jzIvrxcuU5%2bvA&riu=http%3a%2f%2fwww.stickpng.com%2fassets%2fimages%2f58428defa6515b1e0ad75ab4.png&ehk=ltCnKNoDPGV0hObY3nJXCn9p9jufYXqgDwfZ6LbttCU%3d&risl=&pid=ImgRaw&r=0" height="30" /> Loading data...
-                    </h5>
-                </div>
-                <div class="modal-body text-center">
-                    <img src="https://media1.giphy.com/media/GGjE4LAJ2uzGiwdk55/giphy.gif?cid=ecf05e47cagspnu3sgjctew69xu7jufojrunse35hx4fmm3x&ep=v1_gifs_search&rid=giphy.gif&ct=g" style="width: 250px; height: 250px; border-radius: 50%;">
+            <!-- ko if:Name().length > 0 -->
+            <div class="row border-bottom g-2">
+                <div class="col-2">Game Id</div><div class="col-10" data-bind="text: Id"></div>
+            </div>
+            <div class="row border-bottom g-2">
+                <div class="col-2">Name</div><div class="col-10" data-bind="text: Name"></div>
+            </div>
+            <div class="row border-bottom g-2">
+                <div class="col-2">Birthdate</div><div class="col-10" data-bind="text: Birthdate"></div>
+            </div>
+            <div class="row border-bottom g-2">
+                <div class="col-2">State</div><div class="col-10"><a class="nav-link" data-bind="text: CountryId"></a></div>
+            </div>
+            <div class="row border-bottom g-2">
+                <div class="col-2">CountryName</div><div class="col-10"><a class="nav-link" data-bind="text: CountryName"></a></div>
+            </div>
+            <div class="row border-bottom g-2">
+                <div class="col-2">Teams</div><div class="col-10" data-bind="displayListValues:Teams"></div>
+            </div>
+            <div class="row border-bottom g-2">
+                <div class="col-2">DraftYear</div><div class="col-10" data-bind="text: DraftYear"></div>
+            </div>
+            <div class="row border-bottom g-2">
+                <div class="col-2">PositionId</div><div class="col-10" data-bind="text: PositionId"></div>
+            </div>
+            <div class="row border-bottom g-2">
+                <div class="col-2">PositionName</div><div class="col-10" data-bind="text: PositionName"></div>
+            </div>
+            <div class="row border-bottom g-2">
+                <div class="col-2">Height</div><div class="col-10" data-bind="text: Height"></div>
+            </div>
+            <div class="row border-bottom g-2">
+                <div class="col-2">Weight</div><div class="col-10" data-bind="text: Weight"></div>
+            </div>
+            <div class="row border-bottom g-2">
+                <div class="col-2">School</div><div class="col-10" data-bind="text: School"></div>
+            </div>
+            <div class="row border-bottom g-2">
+                <div class="col-2">Biography</div><div class="col-10" data-bind="text: Biography"></div>
+            </div>
+            <!-- /ko -->
+            
+            
+            <!-- ko if:Opened().length > 0 -->
+            
+            <!-- /ko -->
+            <div class="row border-bottom g-2" data-bind="visible: Photo() != '' && Photo() != null">
+                <div class="col-2">Photo</div><div class="small col-10">
+                    <img class="img-thumbnail" data-bind="attr:{src: Photo}"><br />
+                    <i class="fa fa-link"></i> [<a class="link-dark text-decoration-none" data-bind="attr: { href: Photo }, text: Photo" target="_blank"></a>]
                 </div>
             </div>
+            <!-- /ko -->
+            <a href="./Players.html" class="btn btn-default btn-sm small"><i class="fa fa-list"></i> Back to List</a>
         </div>
-    </div>
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">
+                            <img src="https://th.bing.com/th/id/R.a59293ce0fde19e2b09f8ff3efa8e1ab?rik=2jzIvrxcuU5%2bvA&riu=http%3a%2f%2fwww.stickpng.com%2fassets%2fimages%2f58428defa6515b1e0ad75ab4.png&ehk=ltCnKNoDPGV0hObY3nJXCn9p9jufYXqgDwfZ6LbttCU%3d&risl=&pid=ImgRaw&r=0" height="30" /> Loading data...
+                        </h5>
+                    </div>
+                    <div class="modal-body text-center">
+                        <img src="https://media1.giphy.com/media/GGjE4LAJ2uzGiwdk55/giphy.gif?cid=ecf05e47cagspnu3sgjctew69xu7jufojrunse35hx4fmm3x&ep=v1_gifs_search&rid=giphy.gif&ct=g" style="width: 250px; height: 250px; border-radius: 50%;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
     <!-- End of Work Area -->
     <nav class="navbar navbar-light bg-light fixed-bottom">
         <div class="container small">
