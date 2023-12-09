@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
 <head>
     <!-- Required meta tags -->
@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="myCSS.css" />
+    <link rel="stylesheet" href="../css/myCSS.css" />
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
@@ -61,17 +61,14 @@
             <div class="col-2">Opened</div><div class="col-10" data-bind="text: Opened"></div>
         </div>
         <!-- /ko -->
-        <div class="row border-bottom g-2" data-bind="visible: Logo() != '' && Logo() != null">
-            <div class="col-2">Logo</div><div class="small col-10">
-                <img class="img-thumbnail" data-bind="attr:{src: Logo}"><br />
-                <i class="fa fa-link"></i> [<a class="link-dark text-decoration-none" data-bind="attr: { href: Logo }, text: Logo" target="_blank"></a>]
+        <div class="row border-bottom g-2" data-bind="visible: Photo() != '' && Photo() != null">
+            <div class="col-2">Photo</div><div class="small col-10">
+                <img class="img-thumbnail" data-bind="attr:{src: Photo}"><br />
+                <i class="fa fa-link"></i> [<a class="link-dark text-decoration-none" data-bind="attr: { href: Photo }, text: Photo" target="_blank"></a>]
             </div>
         </div>
         <!-- /ko -->
-        
-        
-        <!-- ko if:Opened().length > 0 -->
-        <!-- /ko -->
+        <a href="./arenas.html" class="btn btn-default btn-sm small"><i class="fa fa-list"></i> Back to List</a>
     </div>
     <!-- Modal -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -101,6 +98,6 @@
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.1/knockout-latest.min.js"></script>
-    <script src="TeamDetails.js"></script>
+    <script src="../js/arenaDetails.js"></script>
 </body>
 </html>
