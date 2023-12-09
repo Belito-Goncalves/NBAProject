@@ -10,13 +10,10 @@
 
 .card-block:hover {
     box-shadow: -1px 10px 100px -12px rgba(0, 0, 0, 0.75);
-<<<<<<< Updated upstream
     background-color: rgb(129, 129, 129);
-=======
     background-color: rgb(183, 113, 16);
     transform: scale(1.2);
     transform: rotate(-10deg);
->>>>>>> Stashed changes
     color: rgb(0, 0, 0);
 }
 
@@ -40,10 +37,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-<<<<<<< Updated upstream
+
 }
-=======
-}
+
+
 
 .card-block img {
     width: 100%;
@@ -60,5 +57,3 @@
 
 
 
-
->>>>>>> Stashed changes
