@@ -10,8 +10,8 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="../myCSS.css" />
-    <link rel="stylesheet" href="../navbar.css" />
+    <link rel="stylesheet" href="../css/myCSS.css" />
+    <link rel="stylesheet" href="../css/navbar.css" />
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:  rgb(201, 190, 190)">
@@ -174,36 +174,6 @@
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.1/knockout-latest.min.js"></script>
-    <script src="Players.js"></script>
-    <script>
-        window.onload = function() {
-            // Pré-carregamento da imagem de fundo
-            var background = new Image();
-            background.src = 'caminho/para/sua/imagem.jpg'; // Substitua pelo caminho real para a sua imagem de fundo
-
-            background.onload = function() {
-                document.body.classList.add('loaded');
-            };
-
-            // Verificação de carregamento das imagens dentro de .row-cols-1
-            var images = document.querySelectorAll('.row-cols-1 img');
-            var loadedCount = 0;
-
-            function imageLoaded() {
-                loadedCount++;
-                if (loadedCount === images.length) {
-                    document.querySelector('.row-cols-1').classList.add('loaded');
-                }
-            }
-
-            images.forEach(function(image) {
-                if (image.complete) {
-                    imageLoaded();
-                } else {
-                    image.onload = imageLoaded;
-                }
-            });
-        };
-    </script>
+    <script src="../js/Players.js"></script>
 </body>
 </html>
