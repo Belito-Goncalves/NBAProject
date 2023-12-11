@@ -11,7 +11,6 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="../css/myCSS.css" />
-    <link rel="stylesheet" href="../css/TDetails.css" />
     
 </head>
 <body>
@@ -97,40 +96,45 @@
             </div>
         </div>
     
-        <!-- The rest of your HTML content -->
-            <div class="container" style="width: 100%;margin-top:10px">
-                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-6 g-3" data-bind="foreach: Players">
-                    <div class="col mb-4"> <!-- Add mb-4 class for bottom margin -->
-                        <div class = "card" style="height:180px; width:180px;margin-right:1px;margin-left:1px" >
-                            <a data-bind="attr: { href: './PlayerDetails.html?id=' + Id }">
-                            <img class="mx-auto" data-bind="attr:{src: Photo}" style="object-fit: cover; height:180px; width:180px;" /> 
-                            </a>
-                            <div class="card-content" data-bind="text:Name">
-                                <h2 id="dynamicHeading"></h2>
-                            <p>
-                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nesciunt exercitationem iste, voluptatum, quia explicabo laboriosam rem adipisci voluptates cumque, veritatis atque nostrum corrupti ipsa asperiores harum? Dicta odio aut hic.
-                            </p>
+
+        <div class="container" style="width: 100%; margin-top:10px">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-6 g-3" data-bind="foreach: displayedPlayers">
+                <div class="col mb-4">
+                    <div class="card" style="height:180px; width:180px; margin-right:1px; margin-left:1px">
+                        <a data-bind="attr: { href: './PlayerDetails.html?id=' + Id }">
+                            <img class="mx-auto" data-bind="attr:{src: Photo}" style="object-fit: cover; height:180px; width:180px;" />
+                        </a>
+                        <div class="card-content" data-bind="text: Name">
+                            <h2 id="dynamicHeading"></h2>
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit...</p>
                             <a href="#" class="button">
-                                Find out more 
+                                Find out more
                                 <span class="material-symbols-outlined">
-                                arrow_right_alt
+                                    arrow_right_alt
                                 </span>
                             </a>
-                            </div>
                         </div>
-                                        
                     </div>
                 </div>
             </div>
+            <div class="text-center">
+                <button data-bind="click: loadMore" class="btn btn-primary">Load More</button>
+            </div>
 
-
+        </div>
 
         
 
     
-        <div class="row border-bottom g-2">
-            <div class="col-2">Seasons</div>
-            <div class="col-10" data-bind="text: Seasons().join(', ')"></div>
+        <div class="container">
+            <div class="col" style="text-align: center; margin-bottom: 10px;background-color: grey;">Seasons</div>
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-6 g-3 justify-content-center" data-bind="foreach: Seasons">
+                <div style="text-align: center;" data-bind="text: Season"></div>
+
+
+
+            </div>
+            
         </div>
     
     </div>
