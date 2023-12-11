@@ -49,18 +49,21 @@
     <main class="background" style="min-height: 737px;">
         <div class="container">
             <div class="py-2 border-bottom mb-3">
-                <h2 data-bind="text:Name() "></h2>
+                <h2 data-bind="text:Name()"></h2>
             </div>
+    
             <div class="row">
                 <div class="col-lg-8">
                     <div class="card">
                         <div class="card-body">
-                            <!-- ko if:Name().length > 0 -->
+                            <!-- Player Details -->
                             <div class="row border-bottom g-2">
-                                <div class="col-3">Name</div><div class="col-9" data-bind="text: Name"></div>
+                                <div class="col-3">Name</div>
+                                <div class="col-9" data-bind="text: Name"></div>
                             </div>
                             <div class="row border-bottom g-2">
-                                <div class="col-3">Birthdate</div><div class="col-9" data-bind="text: Birthdate"></div>
+                                <div class="col-3">Birthdate</div>
+                                <div class="col-9" data-bind="text: Birthdate"></div>
                             </div>
                             <div class="row border-bottom g-2">
                                 <div class="col-3">State</div><div class="col-9"><a class="nav-link" data-bind="text: CountryId"></a></div>
@@ -71,13 +74,8 @@
                             <div class="row border-bottom g-2">
                                 <div class="col-3">Teams</div>
                                 <div class="col-9">
-                                    <!-- Utilize a diretiva 'foreach' para iterar sobre a lista de equipes -->
-                                    <!-- 'foreach: Teams' pressupõe que 'Teams' é um array -->
-                                    <!-- Adicione um link ao redor do bloco div e ajuste as propriedades conforme necessário -->
-                                    <!-- Ajuste os nomes das propriedades conforme necessário -->
                                     <div data-bind="foreach: Teams">
                                         <a class="nav-link" data-bind="attr: { href: './teamDetails.html?id=' + Id + '&acronym=' + Acronym }" title="Show Team Details">
-                                            <!-- Exibe o atributo 'Name' de cada equipe -->
                                             <div data-bind="text: Name"></div>
                                         </a>
                                     </div>
@@ -99,50 +97,50 @@
                             <div class="row border-bottom g-2">
                                 <div class="col-3">School</div><div class="col-9" data-bind="text: School"></div>
                             </div>
-                            <div class="row border-bottom g-2">
-                                <div class="col-3">Seasons</div>
-                                <div class="col-9">
-                                    <!-- Utilize a diretiva 'foreach' para iterar sobre a lista de equipes -->
-                                    <!-- 'foreach: Teams' pressupõe que 'Teams' é um array -->
-                                    <!-- Adicione um link ao redor do bloco div e ajuste as propriedades conforme necessário -->
-                                    <!-- Ajuste os nomes das propriedades conforme necessário -->
-                                    <div data-bind="foreach: Seasons">
-                                        <a class="nav-link" data-bind="attr: { href: './seasonsDetails.html?id=' + Id + '&acronym='  }" title="Show Team Details">
-                                            <!-- Exibe o atributo 'Name' de cada equipe -->
+    
+                            <!-- Seasons -->
+                            <div class="section-heading mt-4">
+                                <h3>Seasons</h3>
+                            </div>
+                            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-3" data-bind="foreach: Seasons">
+                                <a class="nav-link" data-bind="attr: { href: './seasonsDetails.html?id=' + Id + '&acronym='  }" title="Show Team Details">
+                                    <div class="card season-card">
+                                        <div class="card-body">
                                             <div data-bind="text: Season"></div>
-                                        </a>
+                                        </div>
                                     </div>
-                                </div>
+                                </a>
+                            </div>
+    
+                            <!-- Biography -->
+                            <div class="section-heading mt-4">
+                                <h3>Biography</h3>
                             </div>
                             <div class="row border-bottom g-2">
-                                <div class="col-3">Biography</div><div class="col-9" data-bind="text: Biography"></div>
+                                <div class="col-12" data-bind="text: Biography"></div>
                             </div>
-                            
-
-                            <!-- /ko -->
                         </div>
                     </div>
                 </div>
-            
-            
-            <!-- ko if:Opened().length > 0 -->
-            
-            <!-- /ko -->
-            <div class="col-lg-4">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="row border-bottom g-2" data-bind="visible: Photo() != '' && Photo() != null">
-                            <div class="col-12 text-center">
-                                <img class="img-thumbnail" data-bind="attr:{src: Photo}" alt="Player Photo">
+    
+                <!-- Player Photo -->
+                <div class="col-lg-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row border-bottom g-2" data-bind="visible: Photo() != '' && Photo() != null">
+                                <div class="col-12 text-center">
+                                    <img class="img-thumbnail" data-bind="attr:{src: Photo}" alt="Player Photo">
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+    
+            <!-- Back to List Button -->
+            <a href="./Players.html" class="btn btn-default btn-sm small mt-3"><i class="fa fa-list"></i> Back to List</a>
         </div>
-            <!-- /ko -->
-            <a href="./Players.html" class="btn btn-default btn-sm small"><i class="fa fa-list"></i> Back to List</a>
-        </div>
+
         <!-- Modal -->
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
