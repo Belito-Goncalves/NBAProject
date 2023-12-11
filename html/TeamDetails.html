@@ -47,6 +47,9 @@
         </div>
     </nav>
     <!-- Work Area-->
+
+
+    
     <div class="container">
         <div class="row">
             <div class="col-8 card" style="margin-top: 10px;padding-left:5px;padding-right:0px">
@@ -90,12 +93,15 @@
     
             <div class="col-4 card" style="float: right; margin-top: 10px;">
                 <!-- Logo section -->
-                <div class="small col-10" data-bind="visible: Logo() != '' && Logo() != null">
-                    <img class="img-thumbnail" data-bind="attr:{src: Logo}"><br />
+                <div class="small col-10 justify-content-center
+                " data-bind="visible: Logo() != '' && Logo() != null" style="height: 300px;">
+                    <img style="height: 300px;" class="img-thumbnail" data-bind="attr:{src: Logo}"><br />
                 </div>
             </div>
         </div>
     
+
+
 
         <div class="container" style="width: 100%; margin-top:10px">
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-6 g-3" data-bind="foreach: displayedPlayers">

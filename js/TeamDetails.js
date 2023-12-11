@@ -121,11 +121,6 @@ var vm = function () {
         self.displayedPlayers(newSlice);
     };
 
-    // Initialize displayedPlayers with the first 24 players
-    if (self.Players && self.Players.length > 0) {
-        self.displayedPlayers(self.Players.slice(0, self.cardsPerPage));
-    }
-
     // Initial loading
     self.activate(pg, acr);
 };
