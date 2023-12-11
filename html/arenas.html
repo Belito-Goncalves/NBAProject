@@ -54,13 +54,13 @@
                 <h2 data-bind="text:displayName"></h2>
             </div>
             <!-- ko if:records().length > 0 -->
-            <div class="row small">
+            <div class="row small ">
                 <p class=" col-4 mr-auto pt-2">
                     <span data-bind="html: 'Page: ' + currentPage() + ' of ' + totalPages()"></span><br />
                     <span data-bind="html: 'Games: '+ fromRecord() + '-' + toRecord() + ' of ' + totalRecords()"></span>
                 </p>
                 <div class="col-8 my-0 pt-3">
-                    <ul class="pagination float-end">
+                    <ul class="pagination float-right">
                         <!-- ko if: currentPage() > 5 && totalPages() > 10 -->
                         <li class="page-item float-end"><a class="page-link" title="First Page" data-bind="attr: { href: './arenas.html?page=' + '1',  rel:'prev'}">⇤</a></li>
                         <li class="page-item float-end"><a class="page-link" title="Previous Page" data-bind="attr: { href: './arenas.html?page=' + previousPage(),  rel:'prev'}">←</a></li>
