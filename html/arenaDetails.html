@@ -65,7 +65,7 @@
             <div class="row border-bottom g-2">
                 <div class="col-2">State</div>
                 <div class="col-10">
-                    <a class="nav-link" data-bind="text: StateName, attr: { href:'./stateDetails.html?id=' + StateId }" title="Show State Details"></a>
+                    <a class="nav-link" data-bind="text: StateName()  , attr: { href:'./stateDetails.html?id=' + StateId }" title="Show State Details"></a>
                 </div>
             </div>
             <div class="row border-bottom g-2">
@@ -80,17 +80,15 @@
             </div>
             <div class="row border-bottom g-2">
                 <div class="col-2">Capacity</div>
-                <div class="col-10" data-bind="text: Capacity"></div>
+                <div class="col-10" data-bind="text: Capacity() + ' persons' "></div>
             </div>
-            <!-- ko if: Opened().length > 0 -->
             <div class="row border-bottom g-2">
                 <div class="col-2">Opened</div>
-                <div class="col-10" data-bind="text: Opened"></div>
+                <div class="col-10" data-bind="text: 'In ' + Opened()"></div>
             </div>
             <!-- /ko -->
             <div class="row border-bottom g-2" data-bind="visible: Photo() != '' && Photo() != null">
-                <div class="col-2">Photo</div>
-                <div class="small col-10">
+                <div class="small col-12">
                     <img class="img-thumbnail" data-bind="attr:{src: Photo}">
                     <br />
                     <i class="fa fa-link"></i> [<a class="link-dark text-decoration-none" data-bind="attr: { href: Photo }, text: Photo" target="_blank"></a>]

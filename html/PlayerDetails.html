@@ -57,9 +57,6 @@
                         <div class="card-body">
                             <!-- ko if:Name().length > 0 -->
                             <div class="row border-bottom g-2">
-                                <div class="col-3">Game Id</div><div class="col-9" data-bind="text: Id"></div>
-                            </div>
-                            <div class="row border-bottom g-2">
                                 <div class="col-3">Name</div><div class="col-9" data-bind="text: Name"></div>
                             </div>
                             <div class="row border-bottom g-2">
@@ -91,10 +88,7 @@
                                 <div class="col-3">DraftYear</div><div class="col-9" data-bind="text: DraftYear"></div>
                             </div>
                             <div class="row border-bottom g-2">
-                                <div class="col-3">PositionId</div><div class="col-9" data-bind="text: PositionId"></div>
-                            </div>
-                            <div class="row border-bottom g-2">
-                                <div class="col-3">PositionName</div><div class="col-9" data-bind="text: PositionName"></div>
+                                <div class="col-3">Position</div><div class="col-9" data-bind="text: '[' + PositionId() + '] ' + PositionName() "></div>
                             </div>
                             <div class="row border-bottom g-2">
                                 <div class="col-3">Height</div><div class="col-9" data-bind="text: Height"></div>
@@ -106,8 +100,25 @@
                                 <div class="col-3">School</div><div class="col-9" data-bind="text: School"></div>
                             </div>
                             <div class="row border-bottom g-2">
+                                <div class="col-3">Seasons</div>
+                                <div class="col-9">
+                                    <!-- Utilize a diretiva 'foreach' para iterar sobre a lista de equipes -->
+                                    <!-- 'foreach: Teams' pressupõe que 'Teams' é um array -->
+                                    <!-- Adicione um link ao redor do bloco div e ajuste as propriedades conforme necessário -->
+                                    <!-- Ajuste os nomes das propriedades conforme necessário -->
+                                    <div data-bind="foreach: Seasons">
+                                        <a class="nav-link" data-bind="attr: { href: './seasonsDetails.html?id=' + Id + '&acronym='  }" title="Show Team Details">
+                                            <!-- Exibe o atributo 'Name' de cada equipe -->
+                                            <div data-bind="text: Season"></div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row border-bottom g-2">
                                 <div class="col-3">Biography</div><div class="col-9" data-bind="text: Biography"></div>
                             </div>
+                            
+
                             <!-- /ko -->
                         </div>
                     </div>
