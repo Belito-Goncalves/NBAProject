@@ -134,12 +134,11 @@
     
         <div class="container">
             <div class="col" style="text-align: center; margin-bottom: 10px;background-color: grey;">Seasons</div>
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-6 g-3 justify-content-center" data-bind="foreach: Seasons">
-                <div style="text-align: center;" data-bind="text: Season"></div>
-
-
-
-            </div>
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-6 g-3 justify-content-center" data-bind="foreach: Seasons">
+                    <a class="nav-link" data-bind="attr: { href: './seasonsDetails.html?id=' + Id + '&acronym='  }" title="Show Team Details">
+                        <div style="text-align: center;" data-bind="text: Season"></div>
+                    </a>
+                </div>
             
         </div>
     
