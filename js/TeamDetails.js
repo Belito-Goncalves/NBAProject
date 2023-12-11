@@ -49,6 +49,7 @@ var vm = function () {
                 self.History(data.History || '');
                 self.Seasons(data.Seasons || []);
                 self.Players(data.Players || []);
+                console.log(data)
             } else {
                 console.error('Data is null or undefined!');
             }
@@ -120,3 +121,4 @@ $(document).ready(function () {
 $(document).ajaxComplete(function (event, xhr, options) {
     $("#myModal").modal('hide');
 })
+
