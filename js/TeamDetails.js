@@ -28,23 +28,30 @@ var vm = function () {
     self.activate = function (id, acronym) {
         console.log('CALL: getTeam...');
         var composedUri = `${self.baseUri()}${id}?acronym=${acronym}`;
+        
         ajaxHelper(composedUri, 'GET').done(function (data) {
             console.log(data);
             hideLoading();
-            self.Id(data.Id);
-            self.Acronym(data.Acronym);
-            self.Name(data.Name);
-            self.ConferenceId(data.ConferenceId);
-            self.ConferenceName(data.ConferenceName);
-            self.DivisionId(data.DivisionId);
-            self.DivisionName(data.DivisionName);
-            self.StateId(data.StateId);
-            self.StateName(data.StateName);
-            self.City(data.City);
-            self.Logo(data.Logo);
-            self.History(data.History);
-            self.Seasons(data.Seasons);
-            self.Players(data.Players);
+    
+            // Check if data is not null or undefined
+            if (data) {
+                self.Id(data.Id || '');
+                self.Acronym(data.Acronym || '');
+                self.Name(data.Name || '');
+                self.ConferenceId(data.ConferenceId || '');
+                self.ConferenceName(data.ConferenceName || '');
+                self.DivisionId(data.DivisionId || '');
+                self.DivisionName(data.DivisionName || '');
+                self.StateId(data.StateId || '');
+                self.StateName(data.StateName || '');
+                self.City(data.City || '');
+                self.Logo(data.Logo || '');
+                self.History(data.History || '');
+                self.Seasons(data.Seasons || []);
+                self.Players(data.Players || []);
+            } else {
+                console.error('Data is null or undefined!');
+            }
         });
     };
 
@@ -95,11 +102,12 @@ var vm = function () {
     //--- start ....
     showLoading();
     var pg = getUrlParameter('id');
+    var acr = getUrlParameter('acronym');
     console.log(pg);
     if (pg == undefined)
         self.activate(1);
     else {
-        self.activate(pg);
+        self.activate(pg,acr);
     }
     console.log("VM initialized!");
 };
