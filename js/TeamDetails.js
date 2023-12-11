@@ -23,6 +23,8 @@ var vm = function () {
     self.History = ko.observable('');
     self.Seasons = ko.observableArray([]);
     self.Players = ko.observableArray([]);
+    self.displayedPlayers = ko.observableArray([]);
+    self.cardsPerPage = 24;
 
     // Page Events
     self.activate = function (id, acronym) {
@@ -111,6 +113,21 @@ var vm = function () {
         self.activate(pg,acr);
     }
     console.log("VM initialized!");
+
+
+    self.loadMore = function () {
+        var currentSliceEnd = self.displayedPlayers().length + self.cardsPerPage;
+        var newSlice = self.Players.slice(0, currentSliceEnd);
+        self.displayedPlayers(newSlice);
+    };
+
+    // Initialize displayedPlayers with the first 24 players
+    if (self.Players && self.Players.length > 0) {
+        self.displayedPlayers(self.Players.slice(0, self.cardsPerPage));
+    }
+
+    // Initial loading
+    self.activate(pg, acr);
 };
 
 $(document).ready(function () {
