@@ -47,36 +47,51 @@
         </div>
     </nav>
     <div class="container">
-        <div class="border-bottom py-2 mb-2 centro"><b>
-        <h2 data-bind="text:displayName"></h2></b>
-    </div>
-    <!-- ko if:records().length > 0 -->
-    <div class="row small">
-        <p class=" col-4 mr-auto pt-2">
-            <span class="font" data-bind="html: 'Page: ' + currentPage() + ' of ' + totalPages()"></span><br />
-            <span class="font" data-bind="html: 'Games: '+ fromRecord() + '-' + toRecord() + ' of ' + totalRecords()"></span>
-        </p>
-        <div class="col-8 my-0 pt-3">
-            <ul class="pagination direita">
-                <!-- ko if: currentPage() > 5 && totalPages() > 10 -->
-                <li class="page-item float-end"><a class="page-link" title="First Page" data-bind="attr: { href: './Teams.html?page=' + '1',  rel:'prev'}">⇤</a></li>
-                <li class="page-item float-end"><a class="page-link" title="Previous Page" data-bind="attr: { href: './Teams.html?page=' + previousPage(),  rel:'prev'}">←</a></li>
-                <!-- /ko -->
-                <!-- ko foreach: pageArray()-->
-                <!-- ko if:$data == $parent.currentPage() -->
-                <li class="active page-item"><a class="page-link" data-bind="attr: { title:'Current Page ' + $data }, text: $data"></a></li>
-                <!-- /ko -->
-                <!-- ko if:$data != $parent.currentPage() -->
-                <li class="page-item"><a class="page-link" data-bind="attr: { href: './Teams.html?page=' + $data, title:'Goto Page ' + $data }, text:$data"></a></li>
-                <!-- /ko -->
-                <!-- /ko -->
-                <!-- ko if: currentPage() < totalPages() - 4 && totalPages() > 9 -->
-                <li class="page-item"><a class="page-link" title="Next Page" data-bind="attr: { href: './Teams.html?page=' + nextPage(), rel:'next' }">→</a></li>
-                <li class="page-item"><a class="page-link" title="Last Page" data-bind="attr: { href: './Teams.html?page=' + totalPages() }">⇥</a></li>
-                <!-- /ko -->
-            </ul>
+        <div class="border-bottom py-2 mb-2 centro">
+            <h2 data-bind="text:displayName"></h2>
         </div>
-    </div>
+    <!-- ko if:records().length > 0 -->
+        
+        <div class="row small">
+            <div class=" col-md-4">
+                <p class=" col-4 mr-auto pt-2">
+                        <span data-bind="html: 'Page: ' + currentPage() + ' of ' + totalPages()"></span><br />
+                        <span data-bind="html: 'Games: '+ fromRecord() + '-' + toRecord() + ' of ' + totalRecords()"></span>
+                </p>
+            </div>
+            <div class=" col-md-4">
+                <div class="row small mb-2">
+                    
+                    
+                    <div class="col-12 col-md-6 col-lg-9" style="margin-top: 20px;">
+                        <div class="d-inline-flex mt-4" id="forms" style="width: 465px ; margin-left: auto; margin-right: auto;">
+                            <input id="searchbar" class="form-control searchBar" type="search" placeholder="Search" aria-label="Search">
+                            <button style="margin-left: 5px;" class="fa fa-search btn btn-outline-info" id="lupadef" type="submit" onclick="search()"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4 my-0 pt-3">
+                <ul class="pagination direita">
+                    <!-- ko if: currentPage() > 5 && totalPages() > 10 -->
+                    <li class="page-item float-end"><a class="page-link" title="First Page" data-bind="attr: { href: './Teams.html?page=' + '1',  rel:'prev'}">⇤</a></li>
+                    <li class="page-item float-end"><a class="page-link" title="Previous Page" data-bind="attr: { href: './Teams.html?page=' + previousPage(),  rel:'prev'}">←</a></li>
+                    <!-- /ko -->
+                    <!-- ko foreach: pageArray()-->
+                    <!-- ko if:$data == $parent.currentPage() -->
+                    <li class="active page-item"><a class="page-link" data-bind="attr: { title:'Current Page ' + $data }, text: $data"></a></li>
+                    <!-- /ko -->
+                    <!-- ko if:$data != $parent.currentPage() -->
+                    <li class="page-item"><a class="page-link" data-bind="attr: { href: './Teams.html?page=' + $data, title:'Goto Page ' + $data }, text:$data"></a></li>
+                    <!-- /ko -->
+                    <!-- /ko -->
+                    <!-- ko if: currentPage() < totalPages() - 4 && totalPages() > 9 -->
+                    <li class="page-item"><a class="page-link" title="Next Page" data-bind="attr: { href: './Teams.html?page=' + nextPage(), rel:'next' }">→</a></li>
+                    <li class="page-item"><a class="page-link" title="Last Page" data-bind="attr: { href: './Players.html?page=' + totalPages() }">⇥</a></li>
+                    <!-- /ko -->
+                </ul>
+            </div>
+        </div>
     <!-- /ko -->
     </div>
 
@@ -88,11 +103,13 @@
                             <div class="container vinte">
                                 <div class="card">
                                     <div class="image">
-                                            <img class="mx-auto" width="200" height="200" data-bind="attr:{src: Logo}" style="object-fit: cover;" />
+                                            <img class="mx-auto logo" data-bind="attr:{src: Logo}" style="object-fit: cover;" />
                                     </div>
                                     <div class="content">
                                         <br>
-                                        <a class="link-dark text-decoration-none" data-bind="attr: { href: './TeamDetails.html?id=' + Id + '&acronym=' + Acronym }" target="_blank"><i class="fa fa-eye" title="Show details"></i></a>
+                                        <a data-bind="attr: { href: $root.getTeamUrl(team.Id, team.Acronym) }">
+                                            <!-- Your other team data bindings go here -->
+                                        </a>
                                         <h3><div data-bind="text: Acronym"></div></h3>
                                         <b><h2><div data-bind="text: Name"></div></h2></b>
                                     </div>

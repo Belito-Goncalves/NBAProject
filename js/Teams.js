@@ -95,6 +95,7 @@ var vm = function () {
         });
     }
 
+
     function sleep(milliseconds) {
         const start = Date.now();
         while (Date.now() - start < milliseconds);
@@ -257,10 +258,14 @@ var vm = function () {
         }
     });
     
+    self.records().forEach(function (team) {
+        console.log(team.Acronym);
+    });
 
-
-
-
+    self.getTeamUrl = function(id, acronym) {
+        // Adjust the URL format as needed
+        return 'http://192.168.160.58/NBA/API/Teams/' + id + '?acronym=' + acronym;
+    };
 
 
 

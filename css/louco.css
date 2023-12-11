@@ -29,7 +29,7 @@
   }
   
   .vinte .card:hover {
-    height : 320px;    
+    height : 430px;    
   }
   
   .card{
@@ -79,8 +79,8 @@
 
 
   .image{
-    min-width: 250px;
-    min-height: 250px ;
+    min-height: 250px;
+    min-width: 2500px;
     max-width: 400px;
     max-height: 400px;
     display: grid;
@@ -88,11 +88,8 @@
 
   }
   .logo {
-    min-width: 175px;
-    min-height: 175px;
-    max-height: 200px;
-    max-width: 200px;
-    
+    max-height: 210px;
+    max-width: 210px;
   }
 
   
