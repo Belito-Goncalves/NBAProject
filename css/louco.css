@@ -10,12 +10,13 @@
     display : flex;
     align-items : center;
     justify-content : center;
+    min-width: 400px;
   }
   
   .vinte .card {
     position: relative;
     max-width : 400px;
-    height : 215px;  
+    height : 250px;  
     background-color : #fff;
     margin : 30px 10px;
     padding : 20px 15px;
@@ -26,10 +27,17 @@
     transition : 0.3s ease-in-out;
     border-radius : 15px;
   }
+  
   .vinte .card:hover {
-    height : 320px;    
+    height : 430px;    
   }
   
+  .card{
+    min-height: 300px;
+    display: grid;
+    place-items: center;
+
+  }
   
   .vinte .card .image {
     position : relative;
@@ -42,7 +50,7 @@
     z-index : 1;
   }
   
-  .vinte .card .image img {
+  .vinte .card .image {
     max-width : 100%;
     border-radius : 15px;
   }
@@ -67,6 +75,21 @@
      transition-delay: 0.2s;
      font-family: 'Open Sans', sans-serif;
     
+  }
+
+
+  .image{
+    min-height: 250px;
+    min-width: 2500px;
+    max-width: 400px;
+    max-height: 400px;
+    display: grid;
+    place-items: center;
+
+  }
+  .logo {
+    max-height: 210px;
+    max-width: 210px;
   }
 
   

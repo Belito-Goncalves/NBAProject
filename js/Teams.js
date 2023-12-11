@@ -2,13 +2,15 @@ var vm = function () {
     console.log('ViewModel initiated...');
     //---Variáveis locais
     var self = this;
+    self.search = '';
+    self.filter = 'null';
     self.baseUri = ko.observable('http://192.168.160.58/NBA/API/Teams');
     self.displayName = 'NBA Arenas List';
     self.error = ko.observable('');
     self.passingMessage = ko.observable('');
     self.records = ko.observableArray([]);
     self.currentPage = ko.observable(1);
-    self.pagesize = ko.observable(20);
+    self.pagesize = ko.observable(21);
     self.totalRecords = ko.observable(50);
     self.hasPrevious = ko.observable(false);
     self.hasNext = ko.observable(false);
@@ -57,6 +59,23 @@ var vm = function () {
             self.totalRecords(data.TotalRecords);
             //self.SetFavourites();
         });
+        composedUri2 = self.baseUri();
+        ajaxHelper(composedUri2, 'GET').done(function(data) {
+            hideLoading();
+            var tags = [];
+            var tags1 = [];
+            for (var x = 0; x < data.Total; x++) {
+                var c = data.List[x];
+                tags.push(c.Name);
+            };
+
+            for (var x = 0; x < tags.length; x++) {
+                if (!tags1.includes(tags[x])) {
+                    tags1.push(tags[x])
+                }
+            };
+            
+        });
     };
 
     //--- Internal functions
@@ -75,6 +94,7 @@ var vm = function () {
             }
         });
     }
+
 
     function sleep(milliseconds) {
         const start = Date.now();
@@ -118,6 +138,137 @@ var vm = function () {
         self.activate(pg);
     }
     console.log("VM initialized!");
+
+    search = function() {
+        console.log("search");
+        self.search = $("#searchbar").val();
+    
+        if (self.search.trim() === "") {
+            // Refresh the page
+            location.reload();
+            return;
+        }
+    
+    
+        var changeuri = 'http://192.168.160.58/NBA/API/Teams/search?q=' + self.search;
+        self.teamslist = [];
+        ajaxHelper(changeuri, 'GET').done(function(data) {
+            console.log(data);
+            showLoading();
+            if (self.filter != 'null') {
+                p = self.filter;
+                var auto = []
+                for (var a = 0; a < data.length; a++) {
+                    var v = data[a];
+                    if (v.Nationality == p) {
+                        auto.push(v);
+                    }
+                }
+                self.records(auto);
+                self.totalRecords(auto.length);
+                for (var info in auto) {
+                    self.teamslist.push(auto[info]);
+                }
+            } else {
+                self.records(data);
+                self.totalRecords(data.length);
+                for (var info in data) {
+                    self.teamslist.push(data[info]);
+                }
+            }
+            $("#pagination").addClass("d-none");
+            $("#line").addClass("d-none");
+            hideLoading();
+    
+        });
+    }
+    
+    $(".countryFilter").change(function() {
+    
+        p = $(this).children("option:selected").val();
+        self.filter = p;
+        if (p != 'null') {
+            showLoading();
+            var url = '';
+            if (self.search != '') {
+                url = 'http://192.168.160.58/NBA/api/Search/Teams?q=' + self.search;
+            } else {
+                url = self.baseUri();
+            }
+            ajaxHelper(url, 'GET').done(function(data) {
+                var auto = [];
+                if (self.search != '') {
+                    for (var a = 0; a < data.length; a++) {
+                        var v = data[a];
+                        if (v.Nationality == p) {
+                            auto.push(v);
+                        }
+                    }
+                } else {
+                    for (var a = 0; a < data.List.length; a++) {
+                        var v = data.List[a];
+                        if (v.Nationality == p) {
+                            auto.push(v);
+                        }
+                    }
+                }
+                self.records(auto);
+                self.totalRecords(auto.length);
+                $("#pagination").addClass("d-none");
+                $("#line").addClass("d-none");
+                $('#mapa').addClass("d-none");
+            })
+    
+    
+            hideLoading();
+        } else {
+            showLoading();
+            var url = '';
+            if (self.search != '') {
+                url = 'http://192.168.160.58/NBA/api/Search/Teams?q=' + self.search;
+            } else {
+                url = self.baseUri();
+            }
+            ajaxHelper(url, 'GET').done(function(data) {
+                var auto = [];
+                if (self.search != '') {
+                    for (var a = 0; a < data.length; a++) {
+                        var v = data[a];
+                        auto.push(v);
+                    }
+                } else {
+                    for (var a = 0; a < data.List.length; a++) {
+                        var v = data.List[a];
+                        auto.push(v);
+                    }
+                }
+                self.records(auto);
+                self.totalRecords(auto.length);
+                $("#pagination").addClass("d-none");
+                $("#line").addClass("d-none");
+                $('#mapa').addClass("d-none")
+            })
+            hideLoading();
+        }
+    });
+    
+    $(document).keypress(function(key) {
+        if (key.which == 13) {
+            search();
+        }
+    });
+    
+    self.records().forEach(function (team) {
+        console.log(team.Acronym);
+    });
+
+    self.getTeamUrl = function(id, acronym) {
+        // Adjust the URL format as needed
+        return 'http://192.168.160.58/NBA/API/Teams/' + id + '?acronym=' + acronym;
+    };
+
+
+
 };
 
 $(document).ready(function () {
