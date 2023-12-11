@@ -11,6 +11,8 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="../css/myCSS.css" />
+    <link rel="stylesheet" href="../css/TDetails.css" />
+    
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:  rgb(201, 190, 190)">
@@ -47,50 +49,61 @@
     </nav>
     <!-- Work Area-->
     <div class="container">
-        <div class="py-2 border-bottom mb-3">
-            <h2 data-bind="text: Name()"></h2>
-        </div>
+        <div class="row">
+            <div class="col-8 card" style="margin-top: 10px;padding-left:5px;padding-right:0px">
+                <div class="py-2 border-bottom mb-3">
+                    <h2 data-bind="text: Name()"></h2>
+                </div>
+            
+                <div class="row border-bottom g-2">
+                    <div class="col-2">Team</div>
+                    <div class="col-10" data-bind="text:'[' + Acronym() + '] ' + Name()" title="Show Team Details"></a>
+                    </div>
+                </div>
+            
+                <div class="row border-bottom g-2">
+                    <div class="col-2">State</div>
+                    <div class="col-10">
+                        <a class="nav-link" data-bind="text: StateName, attr: { href:'./stateDetails.html?id=' + StateId }" title="Show State Details"></a>
+                    </div>
+                </div>
+            
+                <div class="row border-bottom g-2">
+                    <div class="col-2">Conference</div>
+                    <div class="col-10" data-bind="text: '[' + ConferenceId() + '] ' + ConferenceName()"></div>
+                </div>
+            
+                <div class="row border-bottom g-2">
+                    <div class="col-2">Division</div>
+                    <div class="col-10" data-bind="text: '[' + DivisionId() + '] ' + DivisionName()"></div>
+                </div>
+            
+                <div class="row border-bottom g-2">
+                    <div class="col-2">City</div>
+                    <div class="col-10" data-bind="text: City()"></div>
+                </div>
+            
+                <div class="row border-bottom g-2">
+                    <div class="col-2">History</div>
+                    <div class="col-10" data-bind="text: History()"></div>
+                </div>
+            </div>
     
-        <div class="row border-bottom g-2">
-            <div class="col-2">Team</div>
-            <div class="col-10" data-bind="text:'[' + Acronym() + '] ' + Name()" title="Show Team Details"></a>
+            <div class="col-4 card" style="float: right; margin-top: 10px;">
+                <!-- Logo section -->
+                <div class="small col-10" data-bind="visible: Logo() != '' && Logo() != null">
+                    <img class="img-thumbnail" data-bind="attr:{src: Logo}"><br />
+                </div>
             </div>
         </div>
     
-        <div class="row border-bottom g-2">
-            <div class="col-2">State</div>
-            <div class="col-10">
-                <a class="nav-link" data-bind="text: StateName, attr: { href:'./stateDetails.html?id=' + StateId }" title="Show State Details"></a>
-            </div>
-        </div>
-    
-        <div class="row border-bottom g-2">
-            <div class="col-2">Conference</div>
-            <div class="col-10" data-bind="text: '[' + ConferenceId() + '] ' + ConferenceName()"></div>
-        </div>
-    
-        <div class="row border-bottom g-2">
-            <div class="col-2">Division</div>
-            <div class="col-10" data-bind="text: '[' + DivisionId() + '] ' + DivisionName()"></div>
-        </div>
-    
-        <div class="row border-bottom g-2">
-            <div class="col-2">City</div>
-            <div class="col-10" data-bind="text: City()"></div>
-        </div>
-    
-        <div class="row border-bottom g-2">
-            <div class="col-2">History</div>
-            <div class="col-10" data-bind="text: History()"></div>
-        </div>
-    
-        <div class="album py-5 bg-body-tertiary">
-            <div class="container">
-                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" data-bind="foreach: Players">
+        <!-- The rest of your HTML content -->
+            <div class="container" style="width: 100%;margin-top:10px">
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-6 g-3" data-bind="foreach: Players">
                     <div class="col mb-4"> <!-- Add mb-4 class for bottom margin -->
-                        <div class = "card" >
+                        <div class = "card" style="height:180px; width:180px;margin-right:1px;margin-left:1px" >
                             <a data-bind="attr: { href: './PlayerDetails.html?id=' + Id }">
-                            <img class="mx-auto" width="290" height="290" data-bind="attr:{src: Photo}" style="object-fit: cover;" /> 
+                            <img class="mx-auto" data-bind="attr:{src: Photo}" style="object-fit: cover; height:180px; width:180px;" /> 
                             </a>
                             <div class="card-content" data-bind="text:Name">
                                 <h2 id="dynamicHeading"></h2>
@@ -109,21 +122,17 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+
+
+
+        
+
     
         <div class="row border-bottom g-2">
             <div class="col-2">Seasons</div>
             <div class="col-10" data-bind="text: Seasons().join(', ')"></div>
         </div>
     
-        <div class="row border-bottom g-2" data-bind="visible: Logo() != '' && Logo() != null">
-            <div class="col-2">Logo</div>
-            <div class="small col-10">
-                <img class="img-thumbnail" data-bind="attr:{src: Logo}"><br />
-                <i class="fa fa-link"></i> [<a class="link-dark text-decoration-none" data-bind="attr: { href: Logo }, text: Logo" target="_blank"></a>]
-            </div>
-        </div>
     </div>
     <!-- Modal -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

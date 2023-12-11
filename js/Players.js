@@ -68,6 +68,7 @@ var vm = function () {
             hideLoading();
             var tags = [];
             var tags1 = [];
+            console.log(tags1);
             for (var x = 0; x < data.Total; x++) {
                 var c = data.List[x];
                 tags.push(c.Name);
@@ -146,7 +147,6 @@ var vm = function () {
         self.activate(pg);
     }
     console.log("VM initialized!");
-
 
 search = function() {
     console.log("search");
