@@ -121,6 +121,8 @@ var vm = function () {
         self.displayedPlayers(newSlice);
     };
 
+    self.loadMore();
+
     // Initial loading
     self.activate(pg, acr);
 };
