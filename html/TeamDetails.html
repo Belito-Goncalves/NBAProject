@@ -47,55 +47,76 @@
         </div>
     </nav>
     <!-- Work Area-->
-    <div class="container">
-        <div class="row">
-            <div class="col-8 card" style="margin-top: 10px;padding-left:5px;padding-right:0px">
+        <main class="background" style="min-height: 737px;">
+            <div class="container">
                 <div class="py-2 border-bottom mb-3">
-                    <h2 data-bind="text: Name()"></h2>
+                    <h2 data-bind="text:Name()"></h2>
                 </div>
-            
-                <div class="row border-bottom g-2">
-                    <div class="col-2">Team</div>
-                    <div class="col-10" data-bind="text:'[' + Acronym() + '] ' + Name()" title="Show Team Details"></a>
+        
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="card">
+                            <div class="card-body">
+                            
+                                <div class="row border-bottom g-2">
+                                    <div class="col-2">Team</div>
+                                    <div class="col-10" data-bind="text:'[' + Acronym() + '] ' + Name()" title="Show Team Details"></a>
+                                    </div>
+                                </div>
+                            
+                                <div class="row border-bottom g-2">
+                                    <div class="col-2">State</div>
+                                    <div class="col-10">
+                                        <a class="nav-link" data-bind="text: StateName, attr: { href:'./stateDetails.html?id=' + StateId }" title="Show State Details"></a>
+                                    </div>
+                                </div>
+                            
+                                <div class="row border-bottom g-2">
+                                    <div class="col-2">Conference</div>
+                                    <div class="col-10" data-bind="text: '[' + ConferenceId() + '] ' + ConferenceName()"></div>
+                                </div>
+                            
+                                <div class="row border-bottom g-2">
+                                    <div class="col-2">Division</div>
+                                    <div class="col-10" data-bind="text: '[' + DivisionId() + '] ' + DivisionName()"></div>
+                                </div>
+                            
+                                <div class="row border-bottom g-2">
+                                    <div class="col-2">City</div>
+                                    <div class="col-10" data-bind="text: City()"></div>
+                                </div>
+                            
+                                <div class="row border-bottom g-2">
+                                    <div class="col-2">History</div>
+                                    <div class="col-10" data-bind="text: History()"></div>
+                                </div>
+
+        
+                            </div>
+                        </div>
+                    </div>
+        
+                    <!-- Player Photo -->
+                    <div class="col-lg-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row border-bottom g-2" data-bind="visible: Logo() != '' && Logo() != null">
+                                    <div class="col-12 text-center">
+                                        <img class="img-thumbnail" data-bind="attr:{src: Logo}" alt="Player Photo">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            
-                <div class="row border-bottom g-2">
-                    <div class="col-2">State</div>
-                    <div class="col-10">
-                        <a class="nav-link" data-bind="text: StateName, attr: { href:'./stateDetails.html?id=' + StateId }" title="Show State Details"></a>
-                    </div>
-                </div>
-            
-                <div class="row border-bottom g-2">
-                    <div class="col-2">Conference</div>
-                    <div class="col-10" data-bind="text: '[' + ConferenceId() + '] ' + ConferenceName()"></div>
-                </div>
-            
-                <div class="row border-bottom g-2">
-                    <div class="col-2">Division</div>
-                    <div class="col-10" data-bind="text: '[' + DivisionId() + '] ' + DivisionName()"></div>
-                </div>
-            
-                <div class="row border-bottom g-2">
-                    <div class="col-2">City</div>
-                    <div class="col-10" data-bind="text: City()"></div>
-                </div>
-            
-                <div class="row border-bottom g-2">
-                    <div class="col-2">History</div>
-                    <div class="col-10" data-bind="text: History()"></div>
-                </div>
+        
+                <!-- Back to List Button -->
+                <a href="./Players.html" class="btn btn-default btn-sm small mt-3"><i class="fa fa-list"></i> Back to List</a>
             </div>
-    
-            <div class="col-4 card" style="float: right; margin-top: 10px;">
-                <!-- Logo section -->
-                <div class="small col-10" data-bind="visible: Logo() != '' && Logo() != null">
-                    <img class="img-thumbnail" data-bind="attr:{src: Logo}"><br />
-                </div>
-            </div>
-        </div>
-    
+
+
+
+
 
         <div class="container" style="width: 100%; margin-top:10px">
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-6 g-3" data-bind="foreach: displayedPlayers">
