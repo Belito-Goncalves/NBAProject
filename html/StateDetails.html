@@ -47,78 +47,63 @@
         </div>
     </nav>
     <!-- Work Area-->
-        <main class="background" style="min-height: 737px;">
-            <div class="container">
-                <div class="py-2 border-bottom mb-3">
-                    <h2 data-bind="text:Name()"></h2>
-                </div>
-        
-                <div class="row">
-                    <div class="col-lg-8">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="row border-bottom g-2">
-                                    <div class="col-2">State</div>
-                                    <div class="col-10">
-                                        <a class="nav-link" data-bind="text: Name " title="Show State Details"></a>
-                                    </div>
-                                </div>
-                                <div class="container" style="width: 100%; margin-top:10px">
-                                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-6 g-3" data-bind="foreach: Teams">
-                                        <div class="col mb-4">
-                                            <div class="card" style="height:180px; width:180px; margin-right:1px; margin-left:1px">
-                                                <a data-bind="attr: { href: './teamDetails.html?id=' + Id + '&acronym=' + Acronym }">
-                                                    <img class="mx-auto" data-bind="attr:{src: Logo}" style="object-fit: cover; height:180px; width:180px;" />
-                                                </a>
-                                                <div class="card-content" data-bind="text: Name">
-                                                    <h2 id="dynamicHeading"></h2>
-                                                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit...</p>
-                                                    <a href="#" class="button">
-                                                        Find out more
-                                                        <span class="material-symbols-outlined">
-                                                            arrow_right_alt
-                                                        </span>
-                                                    </a>
-                                                </div>
+    <main class="background" style="min-height: 737px;">
+        <div class="container">
+            <div class="py-2 border-bottom mb-3">
+                <h2 data-bind="text: Name()"></h2>
+            </div>
+
+            <div class="row">
+                <!-- Card para as equipes -->
+                <div class="col-lg-8">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row border-bottom g-2">
+                                <div class="col-12" style="text-align: center; font-family: 'Arial', sans-serif; font-size: 24px;">Teams</div>
+                            </div>
+                            <div class="container" style="width: 100%; margin-top:10px">
+                                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" data-bind="foreach: Teams">
+                                    <div class="col mb-4">
+                                        <div class="card" style="height: 200px; width: 200px; margin-right: 10px; margin-left: 10px;">
+                                            <a data-bind="attr: { href: './teamDetails.html?id=' + Id + '&acronym=' + Acronym }">
+                                                <img class="card-img-top mx-auto" data-bind="attr: { src: Logo, alt: Name }" style="object-fit: cover; height: 150px; width: 100%;" />
+                                            </a>
+                                            <div class="card-body">
+                                                <h5 class="card-title" data-bind="text: Name"></h5>
+                                                <!-- Adicione outras informações se necessário -->
+                                                
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-
-                                
-        
                             </div>
                         </div>
                     </div>
-        
-                    <!-- Player Photo -->
-                    <div class="col-lg-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="row border-bottom g-2" data-bind="visible: Flag() != '' && Flag() != null">
-                                    <div class="col-12 text-center">
-                                        <img class="img-thumbnail" data-bind="attr:{src: Flag}" alt="Flag">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card" style="margin-top: 10px">
-                            <div class="card-body" data-bind="foreach: Arenas">
-                                    <div class="col text-center">
-                                        <img class="mx-auto" data-bind="attr:{src: Photo}" style="object-fit: cover; height:180px; width:180px;" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
                 </div>
 
-            
-                <!-- Back to List Button -->
-                <a href="States.html" class="btn btn-default btn-sm small mt-3"><i class="fa fa-list"></i> Back to List</a>
+                <!-- Card para o Estado -->
+                <div class="col-lg-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row border-bottom g-2">
+                                <div class="col-12 text-center">
+                                    <img class="img-thumbnail" data-bind="attr:{src: Flag}" alt="Flag">
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title" data-bind="text: Name"></h5>
+                                <!-- Adicione outras informações do estado, se necessário -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-        </main>
+        </div>
+
+        <!-- Back to List Button -->
+        <a href="States.html" class="btn btn-default btn-sm small mt-3"><i class="fa fa-list"></i> Back to List</a>
+    </main>
     <!-- Modal -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
