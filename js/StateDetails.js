@@ -1,34 +1,49 @@
 // ViewModel KnockOut
 var vm = function () {
     console.log('ViewModel initiated...');
-    //---Variáveis locais
+    //---Local variables
     var self = this;
-    self.baseUri = ko.observable('http://192.168.160.58/NBA/API/States/');
-    self.displayName = 'NBA Arena Details';
+    self.baseUri = ko.observable('http://192.168.160.58/NBA/API/Teams/');
+    self.displayName = 'NBA Team Details';
     self.error = ko.observable('');
     self.passingMessage = ko.observable('');
-    //--- Data Record
+    self.Opened = ko.observable('');
+    // Data Record
     self.Id = ko.observable('');
+    self.Acronym = ko.observable('');
     self.Name = ko.observable('');
-    self.Flag = ko.observable('');
-    self.Arenas = ko.observableArray([]);
-    self.Teams = ko.observableArray([]);
-    self.displayedTeams = ko.observableArray([]);
-    self.cardsPerPage = 24;
+    self.ConferenceId = ko.observable('');
+    self.ConferenceName = ko.observable('');
+    self.DivisionId = ko.observable('');
+    self.DivisionName = ko.observable('');
+    self.StateId = ko.observable('');
+    self.StateName = ko.observable('');
+    self.City = ko.observable('');
+    self.Logo = ko.observable('');
+    self.History = ko.observable('');
+    self.Seasons = ko.observableArray([]);
+    self.Players = ko.observableArray([]);
 
-
-    //--- Page Events
-    self.activate = function (id) {
-        console.log('CALL: getStates...');
-        var composedUri = self.baseUri() + id;
+    // Page Events
+    self.activate = function (id, acronym) {
+        console.log('CALL: getTeam...');
+        var composedUri = `${self.baseUri()}${id}?acronym=${acronym}`;
+        
         ajaxHelper(composedUri, 'GET').done(function (data) {
             console.log(data);
             hideLoading();
-            self.Id(data.Id);
-            self.Name(data.Name);
-            self.Flag(data.Flag);
-            self.Arenas(data.Arenas);
-            self.Teams(data.Teams);
+    
+            // Check if data is not null or undefined
+            if (data) {
+                self.Id(data.Id || '');
+                self.Flag(data.Flag || '');
+                self.Name(data.Name || '');
+                self.Teams(data.Teams || '');
+                self.Arenas(data.Arenas || '');
+                console.log(data)
+            } else {
+                console.error('Data is null or undefined!');
+            }
         });
     };
 
@@ -79,36 +94,14 @@ var vm = function () {
     //--- start ....
     showLoading();
     var pg = getUrlParameter('id');
+    var acr = getUrlParameter('acronym');
     console.log(pg);
     if (pg == undefined)
         self.activate(1);
     else {
-        self.activate(pg);
+        self.activate(pg,acr);
     }
     console.log("VM initialized!");
-
-    self.loadMore = function () {
-        // Get the starting index of the current slice, ignoring the first 24 Teams
-        var currentSliceStart = self.displayedTeams().length + 24;
-    
-        // Check if there are more Teams to display
-        if (currentSliceStart < self.Teams().length) {
-            // Calculate the ending index of the current slice
-            var currentSliceEnd = currentSliceStart + self.cardsPerPage;
-    
-            // Get a new slice of Teams
-            var newSlice = self.Teams.slice(currentSliceStart, currentSliceEnd);
-    
-            // Filter out Teams that are already displayed
-            newSlice = newSlice.filter(function(player) {
-                return self.displayedTeams.indexOf(player) === -1;
-            });
-    
-            // Display the new slice of Teams
-            self.displayedTeams(self.displayedTeams().concat(newSlice));
-        }
-    };
-
 };
 
 $(document).ready(function () {
@@ -119,3 +112,4 @@ $(document).ready(function () {
 $(document).ajaxComplete(function (event, xhr, options) {
     $("#myModal").modal('hide');
 })
+

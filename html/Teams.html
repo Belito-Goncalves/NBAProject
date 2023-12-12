@@ -100,10 +100,11 @@
         </div>
 
             
-                <div class="container vinte" style="float: left;">
-                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3"  data-bind="foreach: records">
+                <div class="container vinte">
+                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" data-bind="foreach: records">
                         <div class="col mb-4"> <!-- Add mb-4 class for bottom margin -->
-                                <div class="container vinte" style="margin-right: 40px;margin-left: 60px">
+                            <body>
+                                <div class="container vinte">
                                     <div class="card"  data-bind="attr: { href: './TeamDetails.html?id=' + Id + '&acronym=' + Acronym }">
                                         <div class="image" onclick="navigateToTeamDetails(this)">
                                                 <img class="mx-auto logo" data-bind="attr:{src: Logo}" style="object-fit: cover;" />
@@ -116,6 +117,7 @@
                                         </div>
                                     </div>
                                 </div>
+                            </body>
                         </div>
                     </div>
                 </div>

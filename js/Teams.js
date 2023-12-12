@@ -139,7 +139,7 @@ var vm = function () {
     }
     console.log("VM initialized!");
 
-    search = function () {
+    search = function() {
         console.log("search");
         self.search = $("#searchbar").val();
     
@@ -149,37 +149,37 @@ var vm = function () {
             return;
         }
     
-        var changeuri = 'http://192.168.160.58/NBA/API/Players/search?q=' + self.search;
-        self.playerslist = [];
-        ajaxHelper(changeuri, 'GET').done(function (data) {
+    
+        var changeuri = 'http://192.168.160.58/NBA/API/Teams/search?q=' + self.search;
+        self.teamslist = [];
+        ajaxHelper(changeuri, 'GET').done(function(data) {
             console.log(data);
             showLoading();
-    
-            // Check if there are no search results
-            if (data.length === 0) {
-                hideLoading();
-                alert("No results found."); // Display a message to the user
-                return;
-            }
-    
             if (self.filter != 'null') {
-                // Your existing code for handling filter
-                // ...
+                p = self.filter;
+                var auto = []
+                for (var a = 0; a < data.length; a++) {
+                    var v = data[a];
+                    if (v.Nationality == p) {
+                        auto.push(v);
+                    }
+                }
+                self.records(auto);
+                self.totalRecords(auto.length);
+                for (var info in auto) {
+                    self.teamslist.push(auto[info]);
+                }
             } else {
                 self.records(data);
                 self.totalRecords(data.length);
                 for (var info in data) {
-                    self.playerslist.push(data[info]);
+                    self.teamslist.push(data[info]);
                 }
             }
-    
             $("#pagination").addClass("d-none");
             $("#line").addClass("d-none");
             hideLoading();
-        }).fail(function (jqXHR, textStatus, errorThrown) {
-            // Handle AJAX failure, display an error message, or take appropriate action
-            hideLoading();
-            alert("Error fetching search results: " + textStatus);
+    
         });
     }
     

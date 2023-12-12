@@ -116,25 +116,9 @@ var vm = function () {
 
 
     self.loadMore = function () {
-        // Get the starting index of the current slice, ignoring the first 24 Teams
-        var currentSliceStart = self.displayedPlayers().length + 24;
-    
-        // Check if there are more Players to display
-        if (currentSliceStart < self.Players().length) {
-            // Calculate the ending index of the current slice
-            var currentSliceEnd = currentSliceStart + self.cardsPerPage;
-    
-            // Get a new slice of Players
-            var newSlice = self.Players.slice(currentSliceStart, currentSliceEnd);
-    
-            // Filter out Players that are already displayed
-            newSlice = newSlice.filter(function(player) {
-                return self.displayedPlayers.indexOf(player) === -1;
-            });
-    
-            // Display the new slice of Players
-            self.displayedPlayers(self.displayedPlayers().concat(newSlice));
-        }
+        var currentSliceEnd = self.displayedPlayers().length + self.cardsPerPage;
+        var newSlice = self.Players.slice(0, currentSliceEnd);
+        self.displayedPlayers(newSlice);
     };
 
     self.loadMore();

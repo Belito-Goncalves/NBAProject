@@ -148,49 +148,49 @@ var vm = function () {
     }
     console.log("VM initialized!");
 
-    search = function () {
-        console.log("search");
-        self.search = $("#searchbar").val();
-    
-        if (self.search.trim() === "") {
-            // Refresh the page
-            location.reload();
-            return;
-        }
-    
-        var changeuri = 'http://192.168.160.58/NBA/API/Players/search?q=' + self.search;
-        self.playerslist = [];
-        ajaxHelper(changeuri, 'GET').done(function (data) {
-            console.log(data);
-            showLoading();
-    
-            // Check if there are no search results
-            if (data.length === 0) {
-                hideLoading();
-                alert("No results found."); // Display a message to the user
-                return;
-            }
-    
-            if (self.filter != 'null') {
-                // Your existing code for handling filter
-                // ...
-            } else {
-                self.records(data);
-                self.totalRecords(data.length);
-                for (var info in data) {
-                    self.playerslist.push(data[info]);
+search = function() {
+    console.log("search");
+    self.search = $("#searchbar").val();
+
+    if (self.search.trim() === "") {
+        // Refresh the page
+        location.reload();
+        return;
+    }
+
+
+    var changeuri = 'http://192.168.160.58/NBA/API/Players/search?q=' + self.search;
+    self.playerslist = [];
+    ajaxHelper(changeuri, 'GET').done(function(data) {
+        console.log(data);
+        showLoading();
+        if (self.filter != 'null') {
+            p = self.filter;
+            var auto = []
+            for (var a = 0; a < data.length; a++) {
+                var v = data[a];
+                if (v.Nationality == p) {
+                    auto.push(v);
                 }
             }
-    
-            $("#pagination").addClass("d-none");
-            $("#line").addClass("d-none");
-            hideLoading();
-        }).fail(function (jqXHR, textStatus, errorThrown) {
-            // Handle AJAX failure, display an error message, or take appropriate action
-            hideLoading();
-            alert("Error fetching search results: " + textStatus);
-        });
-    }
+            self.records(auto);
+            self.totalRecords(auto.length);
+            for (var info in auto) {
+                self.playerslist.push(auto[info]);
+            }
+        } else {
+            self.records(data);
+            self.totalRecords(data.length);
+            for (var info in data) {
+                self.playerslist.push(data[info]);
+            }
+        }
+        $("#pagination").addClass("d-none");
+        $("#line").addClass("d-none");
+        hideLoading();
+
+    });
+}
 
 $(".countryFilter").change(function() {
 
