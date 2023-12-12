@@ -116,10 +116,28 @@
 
 
 
+            <div class="container" style="width: 100%; margin-top:10px">
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-6 g-3" data-bind="foreach: Players.slice(0, 24)">
+                    <div class="col mb-4">
+                        <div class="card" style="height:180px; width:180px; margin-right:1px; margin-left:1px">
+                            <a data-bind="attr: { href: './PlayerDetails.html?id=' + Id }">
+                                <img class="mx-auto" data-bind="attr:{src: Photo}" style="object-fit: cover; height:180px; width:180px;" />
+                            </a>
+                            <div class="card-content" data-bind="text: Name">
+                                <h2 id="dynamicHeading"></h2>
+                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit...</p>
+                                <a href="#" class="button">
+                                    Find out more
+                                    <span class="material-symbols-outlined">
+                                        arrow_right_alt
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-
-        <div class="container" style="width: 100%; margin-top:10px">
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-6 g-3" data-bind="foreach: displayedPlayers">
+             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-6 g-3" data-bind="foreach: displayedPlayers">
                 <div class="col mb-4">
                     <div class="card" style="height:180px; width:180px; margin-right:1px; margin-left:1px">
                         <a data-bind="attr: { href: './PlayerDetails.html?id=' + Id }">
@@ -137,7 +155,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+             </div>
             <div class="text-center">
                 <button data-bind="click: loadMore" class="btn btn-primary">Load More</button>
             </div>
