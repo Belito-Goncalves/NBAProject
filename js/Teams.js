@@ -151,7 +151,7 @@ var vm = function () {
     
     
         var changeuri = 'http://192.168.160.58/NBA/API/Teams/search?q=' + self.search;
-        self.teamslist = [];
+        self.playerslist = [];
         ajaxHelper(changeuri, 'GET').done(function(data) {
             console.log(data);
             showLoading();
@@ -167,13 +167,13 @@ var vm = function () {
                 self.records(auto);
                 self.totalRecords(auto.length);
                 for (var info in auto) {
-                    self.teamslist.push(auto[info]);
+                    self.playerslist.push(auto[info]);
                 }
             } else {
                 self.records(data);
                 self.totalRecords(data.length);
                 for (var info in data) {
-                    self.teamslist.push(data[info]);
+                    self.playerslist.push(data[info]);
                 }
             }
             $("#pagination").addClass("d-none");
@@ -266,8 +266,6 @@ var vm = function () {
         // Adjust the URL format as needed
         return 'http://192.168.160.58/NBA/API/Teams/' + id + '?acronym=' + acronym;
     };
-
-
 
 };
 
