@@ -201,4 +201,176 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.1/knockout-latest.min.js"></script>
     <script src="../js/StateDetails.js"></script>
 </body>
+</html><!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>ITW 2023/24 - NBA Arena Details</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/myCSS.css" />
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:  rgb(201, 190, 190)">
+        <div class="container-fluid">
+            <a href="index.html" style="margin-right: 2%;"><img src="../Imagens/NBA.png" height="40" width="100" /></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" style="color:white;" href="arenas.html">Arenas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" style="color:white;" href="Players.html">Players</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" style="color:white;" href="Teams.html">Teams</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active rounded-pill bg-light text-dark" style="color:white;" href="States.html" ><img src="../Imagens/States.png" height="30px"><c style="font-weight: bold;">Seasons</c></a> 
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" style="color:white;" href="Seasons.html">Seasons</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" style="color:white;" href="FAQs.html">FAQs</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Work Area-->
+    <main class="background" style="min-height: 737px;">
+        <div class="container">
+            <div class="py-2 border-bottom mb-3">
+                <h2 data-bind="text:Name()"></h2>
+            </div>
+    
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="card">
+                        <div class="card-body">
+                            <!-- Player Details -->
+                            <div class="row border-bottom g-2">
+                                <div class="col-3">Name</div>
+                                <div class="col-9" data-bind="text: Name"></div>
+                            </div>
+                            <div class="row border-bottom g-2">
+                                <div class="col-3">Birthdate</div>
+                                <div class="col-9" data-bind="text: Birthdate"></div>
+                            </div>
+                            <div class="row border-bottom g-2">
+                                <div class="col-3">State</div><div class="col-9"><a class="nav-link" data-bind="text: CountryId"></a></div>
+                            </div>
+                            <div class="row border-bottom g-2">
+                                <div class="col-3">CountryName</div><div class="col-9"><a class="nav-link" data-bind="text: CountryName"></a></div>
+                            </div>
+                            <div class="row border-bottom g-2">
+                                <div class="col-3">Teams</div>
+                                <div class="col-9">
+                                    <div data-bind="foreach: Teams">
+                                        <a class="nav-link" data-bind="attr: { href: './teamDetails.html?id=' + Id + '&acronym=' + Acronym }" title="Show Team Details">
+                                            <div data-bind="text: Name"></div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="row border-bottom g-2">
+                                <div class="col-3">DraftYear</div><div class="col-9" data-bind="text: DraftYear"></div>
+                            </div>
+                            <div class="row border-bottom g-2">
+                                <div class="col-3">Position</div><div class="col-9" data-bind="text: '[' + PositionId() + '] ' + PositionName() "></div>
+                            </div>
+                            <div class="row border-bottom g-2">
+                                <div class="col-3">Height</div><div class="col-9" data-bind="text: Height"></div>
+                            </div>
+                            <div class="row border-bottom g-2">
+                                <div class="col-3">Weight</div><div class="col-9" data-bind="text: Weight"></div>
+                            </div>
+                            <div class="row border-bottom g-2">
+                                <div class="col-3">School</div><div class="col-9" data-bind="text: School"></div>
+                            </div>
+    
+                            <!-- Seasons -->
+                            <div class="section-heading mt-4">
+                                <h3>Seasons</h3>
+                            </div>
+                            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-3" data-bind="foreach: Seasons">
+                                <a class="nav-link" data-bind="attr: { href: './seasonsDetails.html?id=' + Id + '&acronym='  }" title="Show Team Details">
+                                    <div class="card season-card">
+                                        <div class="card-body">
+                                            <div data-bind="text: Season"></div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+    
+                            <!-- Biography -->
+                            <div class="section-heading mt-4">
+                                <h3>Biography</h3>
+                            </div>
+                            <div class="row border-bottom g-2">
+                                <div class="col-12" data-bind="text: Biography"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- Player Photo -->
+                <div class="col-lg-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row border-bottom g-2" data-bind="visible: Photo() != '' && Photo() != null">
+                                <div class="col-12 text-center">
+                                    <img class="img-thumbnail" data-bind="attr:{src: Photo}" alt="Player Photo">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Back to List Button -->
+            <a href="./States.html" class="btn btn-default btn-sm small mt-3"><i class="fa fa-list"></i> Back to List</a>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">
+                            <img src="https://th.bing.com/th/id/R.a59293ce0fde19e2b09f8ff3efa8e1ab?rik=2jzIvrxcuU5%2bvA&riu=http%3a%2f%2fwww.stickpng.com%2fassets%2fimages%2f58428defa6515b1e0ad75ab4.png&ehk=ltCnKNoDPGV0hObY3nJXCn9p9jufYXqgDwfZ6LbttCU%3d&risl=&pid=ImgRaw&r=0" height="30" /> Loading data...
+                        </h5>
+                    </div>
+                    <div class="modal-body text-center">
+                        <img src="https://media1.giphy.com/media/GGjE4LAJ2uzGiwdk55/giphy.gif?cid=ecf05e47cagspnu3sgjctew69xu7jufojrunse35hx4fmm3x&ep=v1_gifs_search&rid=giphy.gif&ct=g" style="width: 250px; height: 250px; border-radius: 50%;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- End of Work Area -->
+    <nav class="navbar navbar-light bg-light fixed-bottom">
+        <div class="container small">
+            <div class="navbar-text">&copy;  Introdução as Tecnologias Web - 2023/24</div>
+            <div class="navbar-text">Made with <i class="fa fa-heart-o text-danger"></i> for U by <a href="mailto:jsp@ua.pt" class="text-decoration-none text-muted">jsp@ua.pt</a>.</div>
+            <div class="navbar-nav">
+                <div class="nav-item text-end"><a href="https://www.ua.pt" class="nav-link">Universidade de Aveiro</a></div>
+            </div>
+        </div>
+    </nav>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.1/knockout-latest.min.js"></script>
+    <script src="../js/StateDetails.js"></script>
+</body>
 </html>
