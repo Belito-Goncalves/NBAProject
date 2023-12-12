@@ -31,7 +31,7 @@
                         <a class="nav-link" style="color:white;" href="Teams.html">Teams</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active rounded-pill bg-light text-dark" style="color:white;" href="States.html" ><img src="../Imagens/States.png" height="30px"><c style="font-weight: bold;">Seasons</c></a> 
+                        <a class="nav-link active rounded-pill bg-light text-dark" style="color:white;" href="States.html" ><img src="../Imagens/States.png" height="30px"><c style="font-weight: bold;">States</c></a> 
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" style="color:white;" href="Seasons.html">Seasons</a>
@@ -96,7 +96,7 @@
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" data-bind="foreach: records">
                     <div class="col mb-4"> <!-- Add mb-4 class for bottom margin -->
                         <div class = "card" >
-                            <a data-bind="attr: { href: './PlayerDetails.html?id=' + Id }">
+                            <a data-bind="attr: { href: './StateDetails.html?id=' + Id }">
                             <img class="mx-auto" width="290" height="290" data-bind="attr:{src: Flag}" style="object-fit: cover;" /> 
                             </a>
                             <div class="card-content" data-bind="text:Name">
