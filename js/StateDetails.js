@@ -87,28 +87,6 @@ var vm = function () {
     }
     console.log("VM initialized!");
 
-    self.loadMore = function () {
-        // Get the starting index of the current slice, ignoring the first 24 Teams
-        var currentSliceStart = self.displayedTeams().length + 24;
-    
-        // Check if there are more Teams to display
-        if (currentSliceStart < self.Teams().length) {
-            // Calculate the ending index of the current slice
-            var currentSliceEnd = currentSliceStart + self.cardsPerPage;
-    
-            // Get a new slice of Teams
-            var newSlice = self.Teams.slice(currentSliceStart, currentSliceEnd);
-    
-            // Filter out Teams that are already displayed
-            newSlice = newSlice.filter(function(player) {
-                return self.displayedTeams.indexOf(player) === -1;
-            });
-    
-            // Display the new slice of Teams
-            self.displayedTeams(self.displayedTeams().concat(newSlice));
-        }
-    };
-
 };
 
 $(document).ready(function () {

@@ -19,6 +19,8 @@ var vm = function () {
     self.Capacity = ko.observable('');
     self.Opened = ko.observable('');
     self.Photo = ko.observable('');
+    self.Lon = ko.observable(0); // Initialize with a default value, or use the actual default value from your data
+    self.Lat = ko.observable(0);
 
     //--- Page Events
     self.activate = function (id) {
@@ -38,8 +40,23 @@ var vm = function () {
             self.Capacity(data.Capacity);
             self.Opened(data.Opened);
             self.Photo(data.Photo);
+            self.Lon(parseFloat(data.Lon) || 0);
+            self.Lat(parseFloat(data.Lat) || 0);
+
+            console.log('Lon:', self.Lon());
+            console.log('Lat:', self.Lat());
+
+            
         });
     };
+
+    function createMapAndMarker(lat, lon) {
+        // Add your map creation and marker code here
+        // Example: Replace 'YOUR_MAP_CONTAINER_ID' with the actual ID of your map container
+        var map = L.map('YOUR_MAP_CONTAINER_ID').setView([lat, lon], 13);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+        L.marker([lat, lon]).addTo(map);
+    }
 
     //--- Internal functions
     function ajaxHelper(uri, method, data) {
