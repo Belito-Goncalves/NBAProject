@@ -103,7 +103,7 @@
                                 <h3>Seasons</h3>
                             </div>
                             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-3" data-bind="foreach: Seasons">
-                                <a class="nav-link" data-bind="attr: { href: './seasonsDetails.html?id=' + Id + '&acronym='  }" title="Show Team Details">
+                                <a class="nav-link" data-bind="attr: { href: './SeasonDetails.html?id=' + Id}" title="Show Team Details">
                                     <div class="card season-card">
                                         <div class="card-body">
                                             <div data-bind="text: Season"></div>
@@ -124,7 +124,7 @@
                 </div>
     
                 <!-- Player Photo -->
-                <div class="col-lg-4">
+                <div class="col-lg-4 justify-content-center">
                     <div class="card">
                         <div class="card-body">
                             <div class="row border-bottom g-2" data-bind="visible: Photo() != '' && Photo() != null">
@@ -132,6 +132,18 @@
                                     <img class="img-thumbnail" data-bind="attr:{src: Photo}" alt="Player Photo">
                                 </div>
                             </div>
+                        </div>
+                        <div class="card justify-content-center" style="text-align: center; padding-left:20px">Teams
+                            
+                            <div class="row" data-bind="foreach: Teams">
+                                <div>
+                                <a class="nav-link" data-bind="attr: { href: './teamDetails.html?id=' + Id + '&acronym=' + Acronym }" title="Show Team Details">
+                                    <div data-bind="text: Name"></div>
+                                    <img class="mx-auto logo" data-bind="attr:{src: Logo}" style="object-fit: cover; height: 75px; width:75px ;" />
+                                </a>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>

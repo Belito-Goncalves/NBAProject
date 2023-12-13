@@ -29,15 +29,13 @@
                         <a class="nav-link" style="color:white;" href="Players.html">Players</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" style="color:white;" href="Teams.html"> 
-                            <c style="font-weight: bold;">Teams</c>
-                        </a>
+                        <a class="nav-link" style="color:white;" href="Teams.html">Teams</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active rounded-pill bg-light text-dark" style="color:white;" href="States.html" ><img src="../Imagens/States.png" height="30px"><c style="font-weight: bold;">States</c></a> 
+                        <a class="nav-link" style="color:white;" href="States.html">States</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" style="color:white;" href="Seasons.html">Seasons</a>
+                        <a class="nav-link active rounded-pill bg-light text-dark" style="color:white;" href="Seasons.html" ><img src="../Imagens/Seasons.png" height="30px"><c style="font-weight: bold;">Seasons</c></a> 
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" style="color:white;" href="FAQs.html">FAQs</a>
@@ -55,16 +53,20 @@
 
             <div class="row">
                 <!-- Card para as equipes -->
-                <div class="col-lg-8">
+                <div class="col-lg-6">
                     <div class="card">
                         <div class="card-body">
                             <div class="row border-bottom g-2">
-                                <div class="col-12" style="text-align: center; font-family: 'Arial', sans-serif; font-size: 24px;">Teams</div>
+                                <div class="col-12" style="text-align: left; font-family: 'Arial', sans-serif; font-size: 24px;">Teams</div>
+                                <div class="d-inline-flex mt-4" id="forms" style="width: 365px ; margin-left: auto; margin-right: auto;">
+                                    <input id="searchbar" class="form-control searchBar" type="search" placeholder="Search" aria-label="Search">
+                                    <button style="margin-left: 5px;" class="fa fa-search btn btn-outline-info" id="lupadef" type="submit" onclick="search()"></button>
+                                </div>
                             </div>
                             <div class="container" style="width: 100%; margin-top:10px">
-                                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" data-bind="foreach: Teams">
+                                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" data-bind="foreach: Teams.slice(0, 24)">
                                     <div class="col mb-4">
-                                        <div class="card" style="height: 200px; width: 200px; margin-right: 10px; margin-left: 10px;">
+                                        <div class="card" style="height: 150px; width: 150px; margin-right: 10px; margin-left: 10px;">
                                             <a data-bind="attr: { href: './teamDetails.html?id=' + Id + '&acronym=' + Acronym }">
                                                 <img class="card-img-top mx-auto" data-bind="attr: { src: Logo, alt: Name }" style="object-fit: cover; height: 130px; width: 100%;" />
                                             </a>
@@ -76,23 +78,75 @@
                                         </div>
                                     </div>
                                 </div>
+
+                                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" data-bind="foreach: displayedTeams">
+                                    <div class="col mb-4">
+                                        <div class="card" style="height: 150px; width: 150px; margin-right: 10px; margin-left: 10px;">
+                                            <a data-bind="attr: { href: './teamDetails.html?id=' + Id + '&acronym=' + Acronym }">
+                                                <img class="card-img-top mx-auto" data-bind="attr: { src: Logo, alt: Name }" style="object-fit: cover; height: 130px; width: 100%;" />
+                                            </a>
+                                            <div class="card-body">
+                                                <h6 class="card-title" data-bind="text: Name"></h6>
+                                                <!-- Adicione outras informações se necessário -->
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="text-center">
+                                    <button data-bind="click: loadMoreTeams" class="btn btn-primary" style="margin-bottom: 10px;">Load More</button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Card para o Estado -->
-                <div class="col-lg-4">
+                <div class="col-lg-6">
                     <div class="card">
-                        <div class="card-body">
-                            <div class="row border-bottom g-2">
-                                <div class="col-12 text-center">
-                                    <img class="img-thumbnail" data-bind="attr:{src: Flag}" alt="Flag">
+                      <div class="card-body">
+                        <div class="row border-bottom g-2">
+                            <div class="col-12" style="text-align: center; font-family: 'Arial', sans-serif; font-size: 24px;">Jogadores</div>
+                            <div class="d-inline-flex mt-4" id="forms" style="width: 365px ; margin-left: auto; margin-right: auto;">
+                                <input id="searchbar" class="form-control searchBar" type="search" placeholder="Search" aria-label="Search">
+                                <button style="margin-left: 5px;" class="fa fa-search btn btn-outline-info" id="lupadef" type="submit" onclick="search()"></button>
+                            </div>
+                        </div>
+                        <div class="container" style="width: 100%; margin-top:10px;">
+                            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" data-bind="foreach: Players.slice(0, 24)">
+                                <div class="col mb-4">
+                                    <div class="card" style="height: 150px; width: 150px; margin-right: 10px; margin-left: 10px;">
+                                        <a data-bind="attr: { href: './PlayerDetails.html?id=' + Id}">
+                                            <img class="card-img-top mx-auto" data-bind="attr: { src: Photo, alt: Name }" style="object-fit: cover; height: 130px; width: 100%;" />
+                                        </a>
+                                        <div class="card-body">
+                                            <h6 class="card-title" data-bind="text: Name"></h6>
+                                            <!-- Adicione outras informações se necessário -->
+                                            
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="card-body">
-                                <h5 class="card-title" data-bind="text: Name"></h5>
-                                <!-- Adicione outras informações do estado, se necessário -->
+                            
+                            
+                            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" data-bind="foreach: displayedPlayers">
+                                <div class="col mb-4">
+                                    <div class="card" style="height: 150px; width: 150px; margin-right: 10px; margin-left: 10px;">
+                                        <a data-bind="attr: { href: './PlayerDetails.html?id=' + Id}">
+                                            <img class="card-img-top mx-auto" data-bind="attr: { src: Photo, alt: Name }" style="object-fit: cover; height: 130px; width: 100%;" />
+                                        </a>
+                                        <div class="card-body">
+                                            <h6 class="card-title" data-bind="text: Name"></h6>
+                                            <!-- Adicione outras informações se necessário -->
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="text-center">
+                                <button data-bind="click: loadMore" class="btn btn-primary" style="margin-bottom: 10px;">Load More</button>
                             </div>
                         </div>
                     </div>
