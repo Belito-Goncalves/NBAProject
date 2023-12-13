@@ -24,7 +24,7 @@
 }
 
 .card {
-    background-color: #e29538;
+    background-color: #FFA500;
     border: 5px solid #120a0400;
     border-radius: 10%;
     overflow: hidden;
@@ -82,12 +82,12 @@
 
             <div class="row row-cols-2 row-cols-sm-3 row-cols-md-5 g-3" data-bind="foreach: records">
                 <div class="col mb-4">
+                    <a class="nav-link" data-bind="attr: { href: './SeasonsDetails.html?id=' + Id }" title="Show Team Details">
                     <div class="card">
                         <!-- Substitua os dados abaixo pelos dados reais de sua aplicação -->
-                        <div class="card-content" data-bind="text:Season">
-                            
-                        </div>
+                        <div class="card-content" data-bind="text: Season"></div>
                     </div>
+                    </a>
                 </div>
             </div>
         </div>
