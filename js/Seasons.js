@@ -3,7 +3,7 @@ var vm = function () {
     //---Variáveis locais
     var self = this;
     self.baseUri = ko.observable('http://192.168.160.58/NBA/API/Seasons');
-    self.displayName = 'NBA Arenas List';
+    self.displayName = 'NBA Seasons';
     self.error = ko.observable('');
     self.passingMessage = ko.observable('');
     self.records = ko.observableArray([]);
