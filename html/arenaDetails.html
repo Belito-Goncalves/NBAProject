@@ -92,7 +92,7 @@
             <a href="./arenas.html" class="btn btn-default btn-sm small"><i class="fa fa-list"></i> Back to List</a>
         </div>
 
-        <div class="col-6 container arena-container">
+        <div class="col-6 col-xs-4 container arena-container">
             <!-- ko if: Name().length > 0 -->
             <div class="row border-bottom g-2" data-bind="visible: Photo() != '' && Photo() != null">
                 <div class="small col-12">
@@ -103,10 +103,13 @@
             </div>
 
             <div style="text-align: center;"><h2>Localização</h2></div>
-            <iframe width="720px" height="432px" frameborder="2" scrolling="no" marginheight="0" marginwidth="0" id="map"
+            <div class="col-12 col-xs-9">
+                <iframe class="col-12 col-xs-9" height="432px" frameborder="2" scrolling="no" marginheight="0" marginwidth="0" id="map"
                     data-bind="attr: { src: 'https://www.openstreetmap.org/export/embed.html?bbox=' + Lon() + ',' + Lat() + ',' + Lon() + ',' + Lat() + '&amp;layer=mapnik&amp;marker=' + Lat() + '%2C' + Lon() },
                     style: { border: '1px solid black' }"></iframe><br />
-            <!-- /ko -->
+                
+            </div>
+        <!-- /ko -->
        </div> 
 
 

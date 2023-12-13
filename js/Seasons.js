@@ -2,13 +2,14 @@ var vm = function () {
     console.log('ViewModel initiated...');
     //---Variáveis locais
     var self = this;
+    self.selectedSeasonType = ko.observable('null');
     self.baseUri = ko.observable('http://192.168.160.58/NBA/API/Seasons');
     self.displayName = 'NBA Seasons';
     self.error = ko.observable('');
     self.passingMessage = ko.observable('');
     self.records = ko.observableArray([]);
     self.currentPage = ko.observable(1);
-    self.pagesize = ko.observable(80);
+    self.pagesize = ko.observable(72);
     self.totalRecords = ko.observable(50);
     self.hasPrevious = ko.observable(false);
     self.hasNext = ko.observable(false);
@@ -107,6 +108,8 @@ var vm = function () {
             }
         }
     };
+
+    
 
     //--- start ....
     showLoading();

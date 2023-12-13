@@ -15,7 +15,6 @@ var vm = function () {
     self.Teams = ko.observableArray([]);
     self.displayedTeams = ko.observableArray([]);
     self.displayedPlayers = ko.observableArray([]);
-    self.displayedTeams = ko.observableArray([]);
     self.cardsPerPage = 24;
 
 

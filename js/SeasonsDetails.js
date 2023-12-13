@@ -2,6 +2,8 @@ var vm = function () {
     console.log('ViewModel initiated...');
     //---Local variables
     var self = this;
+    self.search = '';
+    self.filter = ko.observable(''); // Add this line to your ViewModel
     self.baseUri = ko.observable('http://192.168.160.58/NBA/API/Season/');
     self.displayName = 'NBA Team Details';
     self.error = ko.observable('');
@@ -15,9 +17,9 @@ var vm = function () {
 
 
     // Page Events
-    self.activate = function (id, acronym) {
+    self.activate = function (id) {
         console.log('CALL: getTeam...');
-        var composedUri = `${self.baseUri()}${id}?acronym=${acronym}`;
+        var composedUri = `${self.baseUri()}${id}`;
         
         ajaxHelper(composedUri, 'GET').done(function (data) {
             console.log(data);
@@ -80,6 +82,7 @@ var vm = function () {
         }
     };
 
+    
     //--- start ....
     showLoading();
     var pg = getUrlParameter('id');

@@ -52,7 +52,7 @@
             </div>
         <!-- ko if:records().length > 0 -->
             
-            <div class="row small">
+            <div class="row small ">
                 <div class=" col-md-4">
                     <p class=" col-4 mr-auto pt-2">
                             <span data-bind="html: 'Page: ' + currentPage() + ' of ' + totalPages()"></span><br />
@@ -60,8 +60,29 @@
                     </p>
                 </div>
                 <div class=" col-md-4">
+
+                    
                     <div class="row small mb-2">
-                        
+                        <div class="col-md-4 my-0 pt-3 direita">
+                            <ul class="pagination">
+                                <!-- ko if: currentPage() > 5 && totalPages() > 10 -->
+                                <li class="page-item float-end"><a class="page-link" title="First Page" data-bind="attr: { href: './Players.html?page=' + '1',  rel:'prev'}">⇤</a></li>
+                                <li class="page-item float-end"><a class="page-link" title="Previous Page" data-bind="attr: { href: './PLayers.html?page=' + previousPage(),  rel:'prev'}">←</a></li>
+                                <!-- /ko -->
+                                <!-- ko foreach: pageArray()-->
+                                <!-- ko if:$data == $parent.currentPage() -->
+                                <li class="active page-item"><a class="page-link" data-bind="attr: { title:'Current Page ' + $data }, text: $data"></a></li>
+                                <!-- /ko -->
+                                <!-- ko if:$data != $parent.currentPage() -->
+                                <li class="page-item"><a class="page-link" data-bind="attr: { href: './Players.html?page=' + $data, title:'Goto Page ' + $data }, text:$data"></a></li>
+                                <!-- /ko -->
+                                <!-- /ko -->
+                                <!-- ko if: currentPage() < totalPages() - 4 && totalPages() > 9 -->
+                                <li class="page-item"><a class="page-link" title="Next Page" data-bind="attr: { href: './Players.html?page=' + nextPage(), rel:'next' }">→</a></li>
+                                <li class="page-item"><a class="page-link" title="Last Page" data-bind="attr: { href: './Players.html?page=' + totalPages() }">⇥</a></li>
+                                <!-- /ko -->
+                            </ul>
+                        </div>
                         
                         <div class="col-12 col-md-6 col-lg-9" style="margin-top: 20px;">
                             <div class="d-inline-flex mt-4" id="forms" style="width: 465px ; margin-left: auto; margin-right: auto;">
@@ -71,26 +92,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-4 my-0 pt-3">
-                    <ul class="pagination direita">
-                        <!-- ko if: currentPage() > 5 && totalPages() > 10 -->
-                        <li class="page-item float-end"><a class="page-link" title="First Page" data-bind="attr: { href: './Players.html?page=' + '1',  rel:'prev'}">⇤</a></li>
-                        <li class="page-item float-end"><a class="page-link" title="Previous Page" data-bind="attr: { href: './PLayers.html?page=' + previousPage(),  rel:'prev'}">←</a></li>
-                        <!-- /ko -->
-                        <!-- ko foreach: pageArray()-->
-                        <!-- ko if:$data == $parent.currentPage() -->
-                        <li class="active page-item"><a class="page-link" data-bind="attr: { title:'Current Page ' + $data }, text: $data"></a></li>
-                        <!-- /ko -->
-                        <!-- ko if:$data != $parent.currentPage() -->
-                        <li class="page-item"><a class="page-link" data-bind="attr: { href: './Players.html?page=' + $data, title:'Goto Page ' + $data }, text:$data"></a></li>
-                        <!-- /ko -->
-                        <!-- /ko -->
-                        <!-- ko if: currentPage() < totalPages() - 4 && totalPages() > 9 -->
-                        <li class="page-item"><a class="page-link" title="Next Page" data-bind="attr: { href: './Players.html?page=' + nextPage(), rel:'next' }">→</a></li>
-                        <li class="page-item"><a class="page-link" title="Last Page" data-bind="attr: { href: './Players.html?page=' + totalPages() }">⇥</a></li>
-                        <!-- /ko -->
-                    </ul>
-                </div>
             </div>
         <!-- /ko -->
 
@@ -98,9 +99,9 @@
                 <div class="container">
                     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" data-bind="foreach: records">
                         <div class="col mb-4"> <!-- Add mb-4 class for bottom margin -->
-                            <div class = "card" >
+                            <div class = "card center-container" >
                                 <a data-bind="attr: { href: './PlayerDetails.html?id=' + Id }">
-                                <img class="mx-auto" width="290" height="290" data-bind="attr:{src: Photo}" style="object-fit: cover;" /> 
+                                <img class="mx-auto" width="290" height="290" data-bind="attr:{src: Photo}" style="object-fit: cover; " /> 
                                 </a>
                                 <div class="card-content" data-bind="text:Name">
                                     <h2 id="dynamicHeading"></h2>

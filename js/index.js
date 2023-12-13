@@ -11,7 +11,7 @@ $(document).ready(function() {
     $('.carousel').carousel({
         interval: 7000
     })
-    $('.col-lg-3').hover(
+    $('.col-lg-4').hover(
         function() {
             $(this).animate({
                 marginTop: "-=3%",

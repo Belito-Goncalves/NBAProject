@@ -167,3 +167,9 @@ li.page-item {
   background-size: cover;
   
 }
+
+.center-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

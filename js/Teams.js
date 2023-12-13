@@ -182,7 +182,10 @@ var vm = function () {
     
         });
     }
+
     
+
+
     $(".countryFilter").change(function() {
     
         p = $(this).children("option:selected").val();
