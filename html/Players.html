@@ -37,7 +37,7 @@
                         <a class="nav-link" style="color:white;" href="Seasons.html">Seasons</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" style="color:white;" href="FAQs.html">FAQs</a>
+                        <a class="nav-link" style="color:white;" href="Favoritos.html">FAQs</a>
                     </li>
                 </ul>
             </div>
@@ -103,11 +103,10 @@
                                 <a data-bind="attr: { href: './PlayerDetails.html?id=' + Id }">
                                 <img class="mx-auto" width="290" height="290" data-bind="attr:{src: Photo}" style="object-fit: cover; " /> 
                                 </a>
+                                <button class="btn btn-default btn-sm" id="favs-button" type="button"><i class="fa fa-heart-o" aria-hidden="true" data-bind="click: $parent.favButton.bind($data,Id,event), css: $parent.checkButton(Id) == true ? 'active' : ''"></i></button>
                                 <div class="card-content" data-bind="text:Name">
                                     <h2 id="dynamicHeading"></h2>
-                                <p>
-                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nesciunt exercitationem iste, voluptatum, quia explicabo laboriosam rem adipisci voluptates cumque, veritatis atque nostrum corrupti ipsa asperiores harum? Dicta odio aut hic.
-                                </p>
+                                
                                 <a href="#" class="button">
                                     Find out more 
                                     <span class="material-symbols-outlined">

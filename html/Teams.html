@@ -112,6 +112,7 @@
                                             <br>
                                             <h3><div data-bind="text: Acronym"></div></h3>
                                             <b><h2><div data-bind="text: Name"></div></h2></b>
+                                            <button class="btn btn-default btn-sm" id="favs-button" type="button"><i class="fa fa-heart-o" aria-hidden="true" data-bind="click: $parent.favButton.bind($data,Id,event), css: $parent.checkButton(Id) == true ? 'active' : ''"></i></button>
                                         </div>
                                     </div>
                                 </div>
