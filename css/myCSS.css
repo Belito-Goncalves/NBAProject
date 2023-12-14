@@ -1,6 +1,7 @@
 ﻿body {
     font-family: 'Open Sans', sans-serif;
     margin: 0px 0 56px 0;
+    margin-bottom: 0;
 }
 
 /* button default
@@ -173,3 +174,9 @@ li.page-item {
   justify-content: center;
   align-items: center;
 }
+
+.active2 {
+  color: red;
+  font-weight: bold;
+}
+

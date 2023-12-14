@@ -47,10 +47,13 @@ var vm = function () {
         return list;
     };
 
+
+
     //--- Page Events
     self.activate = function (id) {
         console.log('CALL: getPlayers...');
         var composedUri = self.baseUri() + "?page=" + id + "&pageSize=" + self.pagesize();
+        console.log(composedUri)
         ajaxHelper(composedUri, 'GET').done(function (data) {
             console.log(data);
             hideLoading();
@@ -63,27 +66,7 @@ var vm = function () {
             self.totalRecords(data.TotalRecords);
             //self.SetFavourites();
         });
-        composedUri2 = self.baseUri();
-        ajaxHelper(composedUri2, 'GET').done(function(data) {
-            hideLoading();
-            var tags = [];
-            var tags1 = [];
-            console.log(tags1);
-            for (var x = 0; x < data.Total; x++) {
-                var c = data.List[x];
-                tags.push(c.Name);
-            };
-
-            for (var x = 0; x < tags.length; x++) {
-                if (!tags1.includes(tags[x])) {
-                    tags1.push(tags[x])
-                }
-            };
-            $("#searchbar").autocomplete({
-                minLength: 2,
-                source: tags1
-            });
-        });
+       
         
     };
     
@@ -184,82 +167,62 @@ search = function() {
             for (var info in data) {
                 self.playerslist.push(data[info]);
             }
+
         }
         $("#pagination").addClass("d-none");
         $("#line").addClass("d-none");
         hideLoading();
 
+        
     });
+
+    
+};
+
+search2= function() {
+ $("#searchbar").autocomplete({
+    source: function (request, response) {
+      SearcUri =
+        "http://192.168.160.58/NBA/API/Players/Search?q=" + request.term;
+      console.log("accessing:" + SearcUri);
+      $.ajax({
+        url: SearcUri,
+        method: "GET",
+        dataType: "json",
+        success: function (data) {
+          let result = [];
+
+          console.log(data);
+
+          if (data.length) {
+            data.forEach(function (item) {
+              if (result.length < 10) {
+                let obj = {
+                  label: item.Name,
+                  id: item.Id,
+                };
+                result.push(obj);
+              }
+            });
+
+            console.log(result);
+          } else {
+            console.log("No data received.");
+          }
+          response(result);
+        },
+        error: function () {
+          console.log("Error ");
+        },
+      });
+    },
+    select: function (event, ui) {
+      window.location.href = "./playerDetails.html?id=" + ui.item.id;
+    },
+  });
+
 }
 
-$(".countryFilter").change(function() {
-
-    p = $(this).children("option:selected").val();
-    self.filter = p;
-    if (p != 'null') {
-        showLoading();
-        var url = '';
-        if (self.search != '') {
-            url = 'http://192.168.160.58/NBA/api/Search/Players?q=' + self.search;
-        } else {
-            url = self.baseUri();
-        }
-        ajaxHelper(url, 'GET').done(function(data) {
-            var auto = [];
-            if (self.search != '') {
-                for (var a = 0; a < data.length; a++) {
-                    var v = data[a];
-                    if (v.Nationality == p) {
-                        auto.push(v);
-                    }
-                }
-            } else {
-                for (var a = 0; a < data.List.length; a++) {
-                    var v = data.List[a];
-                    if (v.Nationality == p) {
-                        auto.push(v);
-                    }
-                }
-            }
-            self.records(auto);
-            self.totalRecords(auto.length);
-            $("#pagination").addClass("d-none");
-            $("#line").addClass("d-none");
-            $('#mapa').addClass("d-none");
-        })
-
-
-        hideLoading();
-    } else {
-        showLoading();
-        var url = '';
-        if (self.search != '') {
-            url = 'http://192.168.160.58/NBA/api/Search/Players?q=' + self.search;
-        } else {
-            url = self.baseUri();
-        }
-        ajaxHelper(url, 'GET').done(function(data) {
-            var auto = [];
-            if (self.search != '') {
-                for (var a = 0; a < data.length; a++) {
-                    var v = data[a];
-                    auto.push(v);
-                }
-            } else {
-                for (var a = 0; a < data.List.length; a++) {
-                    var v = data.List[a];
-                    auto.push(v);
-                }
-            }
-            self.records(auto);
-            self.totalRecords(auto.length);
-            $("#pagination").addClass("d-none");
-            $("#line").addClass("d-none");
-            $('#mapa').addClass("d-none")
-        })
-        hideLoading();
-    }
-});
 
 $(document).keypress(function(key) {
     if (key.which == 13) {
@@ -280,14 +243,14 @@ self.favButton = (id, event) => {
         self.updateLocalStorage("playerFavorites", self.favorites())
         event.target.classList.remove('fa-heart-o');
         event.target.classList.add('fa-heart');
-        event.target.classList.add('active');
+        event.target.classList.add('active2');
         console.log(self.favorites())
     } else {
         self.favorites.splice(self.favorites.indexOf(id), 1)
         self.updateLocalStorage("playerFavorites", self.favorites())
         event.target.classList.remove('fa-heart-o');
         event.target.classList.add('fa-heart-o');
-        event.target.classList.remove('active');
+        event.target.classList.remove('active2');
         console.log(self.favorites())
     }
 }
@@ -297,12 +260,20 @@ self.checkButton = function(id) {
     return self.favorites().includes(id)
 }
 
-};
+
+
+ };
+
+
+
+
+
 
 
 $(document).ready(function () {
     console.log("ready!");
     ko.applyBindings(new vm());
+    
 });
 
 $(document).ajaxComplete(function (event, xhr, options) {
