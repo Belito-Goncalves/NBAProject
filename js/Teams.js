@@ -257,10 +257,10 @@ var vm = function () {
 
     self.updateLocalStorage = (key, data) => {
         localStorage.setItem(key, JSON.stringify(data))
-    };
-
-    self.favorites = ko.observableArray(JSON.parse(localStorage.getItem("teamFavorites")));
-
+    }
+    
+    self.favorites = ko.observableArray(JSON.parse(localStorage.getItem("teamFavorites")))
+    
     self.favButton = (id, event) => {
         if (!event.target.classList.contains('active')) {
             if (self.favorites.indexOf(id) === -1)
@@ -273,17 +273,16 @@ var vm = function () {
         } else {
             self.favorites.splice(self.favorites.indexOf(id), 1)
             self.updateLocalStorage("teamFavorites", self.favorites())
-            event.target.classList.remove('fa-heart');
+            event.target.classList.remove('fa-heart-o');
             event.target.classList.add('fa-heart-o');
             event.target.classList.remove('active');
             console.log(self.favorites())
         }
-    };
-
+    }
 
     self.checkButton = function(id) {
         return self.favorites().includes(id)
-    };
+    }
 
 
 
@@ -293,10 +292,7 @@ var vm = function () {
             search();
         }
     });
-    
-    self.records().forEach(function (team) {
-        console.log(team.Acronym);
-    });
+
 
     self.getTeamUrl = function(id, acronym) {
         // Adjust the URL format as needed

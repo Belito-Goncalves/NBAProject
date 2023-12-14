@@ -35,19 +35,19 @@ function Favorites() {
 
     self.playersData(self.loadPlayers());
 
+    console.log("PlayersData:", ko.toJS(self.playersData));
 
-
-
-    self.teamsData = ko.observableArray([])
-    self.loadTeams = () => {
-        let data = JSON.parse(localStorage.getItem("teamFavorites"))
+    // arenas
+    self.arenasData = ko.observableArray([])
+    self.loadarenas = () => {
+        let data = JSON.parse(localStorage.getItem("arenaFavorites"))
         let temp = []
         if (data != null) {
 
             data.forEach(e => {
                 $.ajax({
                     type: "GET",
-                    url: "http://192.168.160.58/NBA/API/Teams/Team",
+                    url: "http://192.168.160.58/NBA/API/Arenas/Arena",
                     async: false,
                     data: {
                         id: e
@@ -68,41 +68,12 @@ function Favorites() {
 
         return temp;
     };
-    self.teamsData(self.loadTeams());
+    
+    self.arenasData(self.loadarenas());
 
-    // Races
-    self.Data = ko.observableArray([])
-    self.loadRaces = () => {
-        let data = JSON.parse(localStorage.getItem("raceFavorites"))
-        let temp = []
-        if (data != null) {
+    console.log("ArenasData:", ko.toJS(self.arenasData));
 
-            data.forEach(e => {
-                $.ajax({
-                    type: "GET",
-                    url: "http://192.168.160.58/formula1/api/races/race",
-                    async: false,
-                    data: {
-                        id: e
-                    },
-                    dataType: "json",
-                    contentType: 'application/json',
-                    success: function(response) {
-                        temp.push(response)
-                    },
-                    error: function(e) {
-                        console.log(e);
-                    }
-                });
-            });
-        } else {
-            temp = []
-        }
-
-        return temp;
-    };
-
-    self.racesData(self.loadRaces());
+    
 
 }
 
