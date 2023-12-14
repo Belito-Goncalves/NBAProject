@@ -182,10 +182,7 @@ var vm = function () {
     
         });
     }
-
     
-
-
     $(".countryFilter").change(function() {
     
         p = $(this).children("option:selected").val();
@@ -254,45 +251,16 @@ var vm = function () {
             hideLoading();
         }
     });
-
-    self.updateLocalStorage = (key, data) => {
-        localStorage.setItem(key, JSON.stringify(data))
-    }
-    
-    self.favorites = ko.observableArray(JSON.parse(localStorage.getItem("teamFavorites")))
-    
-    self.favButton = (id, event) => {
-        if (!event.target.classList.contains('active2')) {
-            if (self.favorites.indexOf(id) === -1)
-                self.favorites.push(id)
-            self.updateLocalStorage("teamFavorites", self.favorites())
-            event.target.classList.remove('fa-heart-o');
-            event.target.classList.add('fa-heart');
-            event.target.classList.add('active');
-            console.log(self.favorites())
-        } else {
-            self.favorites.splice(self.favorites.indexOf(id), 1)
-            self.updateLocalStorage("teamFavorites", self.favorites())
-            event.target.classList.remove('fa-heart-o');
-            event.target.classList.add('fa-heart-o');
-            event.target.classList.remove('active');
-            console.log(self.favorites())
-        }
-    }
-
-    self.checkButton = function(id) {
-        return self.favorites().includes(id)
-    }
-
-
-
     
     $(document).keypress(function(key) {
         if (key.which == 13) {
             search();
         }
     });
-
+    
+    self.records().forEach(function (team) {
+        console.log(team.Acronym);
+    });
 
     self.getTeamUrl = function(id, acronym) {
         // Adjust the URL format as needed
