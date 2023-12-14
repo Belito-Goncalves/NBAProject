@@ -31,7 +31,7 @@
         </div>
     </nav>
     <!-- Working Area -->
-    <main class="background" style="min-height: 785px; padding-top: 140px; padding-bottom: 54px;">
+    <main class="background main1" style="min-height: 785px; padding-top: 140px; padding-bottom: 54px;">
         <div class="container" style="margin-left: 110px;">
             <div class="circle-container">
                 <div class="row justify-content-center">
@@ -93,18 +93,42 @@
                             </div>
                         </a>
                     </div>
-    
-                    <div class="col-12 col-md-6 col-lg-4 mb-2">
-                        <a class="btn" href="xxx.html">
+                    <div class="col-12 col-md-6 col-lg-4 mb-2" onmouseover="showFAQCards()" onmouseout="hideFAQCards()">
+                        <a class="btn" href="#">
                             <div class="card-block">
                                 <img src="../Imagens/Cards/FAQs.png" alt="FAQs" class="card-img-top" height="160px">
                                 <div class="card-body">
                                     <h5 class="card-title">FAQs</h5>
                                 </div>
                             </div>
+                            <div class="additional-cards" id="faq-cards" style="display: none;">
+                                <a class="btn" href="faq1.html">
+                                    <div class="additional-card">
+                                        <img src="../Imagens/Cards/FAQs.png" alt="FAQs">
+                                        <div class="card-body">
+                                            <h5 class="card-title">FAQ 1</h5>
+                                        </div>
+                                    </div>
+                                </a>
+                                <a class="btn" href="faq2.html">
+                                    <div class="additional-card">
+                                        <img src="../Imagens/Cards/FAQs.png" alt="FAQs">
+                                        <div class="card-body">
+                                            <h5 class="card-title">FAQ 2</h5>
+                                        </div>
+                                    </div>
+                                </a>
+                                <a class="btn" href="faq3.html">
+                                    <div class="additional-card">
+                                        <img src="../Imagens/Cards/FAQs.png" alt="FAQs">
+                                        <div class="card-body">
+                                            <h5 class="card-title">FAQ 3</h5>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
                         </a>
-                    </div>
-    
+                    </div>                           
                 </div>
             </div>
         </div>
@@ -142,6 +166,14 @@
             toast1.show();
             $('#sub').val(null);
         };
+
+        function showFAQCards() {
+            document.querySelector('.additional-cards').style.display = 'block';
+        }
+
+        function hideFAQCards() {
+            document.querySelector('.additional-cards').style.display = 'none';
+        }
     </script>
 </body>
 </html>

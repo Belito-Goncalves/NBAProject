@@ -25,3 +25,16 @@ $(document).ready(function() {
         }
     );
 });
+
+
+
+
+    function showSeasonSelect() {
+        // Exibe o select
+        document.getElementById("seasonSelect").style.display = "block";
+    }
+
+    function hideSeasonSelect() {
+        // Oculta o select
+        document.getElementById("seasonSelect").style.display = "none";
+    }
