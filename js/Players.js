@@ -148,6 +148,8 @@ var vm = function () {
     }
     console.log("VM initialized!");
 
+
+
 search = function() {
     console.log("search");
     self.search = $("#searchbar").val();
@@ -308,5 +310,8 @@ $(document).ready(function () {
 $(document).ajaxComplete(function (event, xhr, options) {
     $("#myModal").modal('hide');
 })
+
+
+
 
 
