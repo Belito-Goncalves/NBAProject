@@ -43,6 +43,11 @@
                     <li class="nav-item">
                         <a class="nav-link" style="color:white;" href="FAQs.html">FAQs</a>
                     </li>
+                    <li class="nav-item" style="margin-left:auto ;">
+                        <a class="nav-link active rounded-pill bg-light text-dark" style="color:white;" href="Favoritos.html">
+                            <c style="font-weight: bold";></c><i class="fa fa-heart" ><c style="font-weight: bold;"></c></i>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -105,7 +110,7 @@
                         </td>
                         <td class="text-end">
                             <a class="btn btn-default btn-light btn-xs" data-bind="attr: { href:'./arenaDetails.html?id=' + Id }"><i class="fa fa-eye" title="Show details"></i></a>
-                            <button class="btn btn-default btn-sm" id="favs-button" type="button"><i class="fa fa-heart-o" aria-hidden="true" data-bind="click: $parent.favButton.bind($data,Id,event), css: $parent.checkButton(Id) == true ? 'active' : ''"></i></button>
+                            <button class="btn btn-default btn-sm" id="favs-button" type="button"><i class="fa fa-heart-o" aria-hidden="true" data-bind="click: $parent.favButton.bind($data,Id,event), css: $parent.checkButton(Id) == true ? 'active2' : ''"></i></button>
                         </td>
                     </tr>
                 </tbody>

@@ -183,60 +183,77 @@ var vm = function () {
         });
     }
 
-    search2= function() {
-        $("#searchbar").autocomplete({
-           source: function (request, response) {
-             SearcUri =
-               "http://192.168.160.58/NBA/API/Teams/Search?q=" + request.term;
-             console.log("accessing:" + SearcUri);
-             $.ajax({
-               url: SearcUri,
-               method: "GET",
-               dataType: "json",
-               success: function (data) {
-                 let result = [];
-       
-                 console.log(data);
-       
-                 if (data.length) {
-                   data.forEach(function (item) {
-                     if (result.length < 10) {
-                       let obj = {
-                         label: item.Name,
-                         id: item.Id,
-                       };
-                       result.push(obj);
-                     }
-                   });
-       
-                   console.log(result);
-                 } else {
-                   console.log("No data received.");
-                 }
-                 response(result);
-               },
-               error: function () {
-                 console.log("Error ");
-               },
-             });
-           },
-           select: function (event, ui) {
-            var redirectURL = "./TeamDetails.html?id=" + ui.item.id + '&acronym=' + ui.item.acronym;
-
-            // Log the URL to the console
-            console.log("Redirecting to:", redirectURL);
-        
-            // Redirect the user
-            window.location.href = redirectURL;
-           },
-         });
-       
-       }
-
     
 
 
+    $(".countryFilter").change(function() {
     
+        p = $(this).children("option:selected").val();
+        self.filter = p;
+        if (p != 'null') {
+            showLoading();
+            var url = '';
+            if (self.search != '') {
+                url = 'http://192.168.160.58/NBA/api/Search/Teams?q=' + self.search;
+            } else {
+                url = self.baseUri();
+            }
+            ajaxHelper(url, 'GET').done(function(data) {
+                var auto = [];
+                if (self.search != '') {
+                    for (var a = 0; a < data.length; a++) {
+                        var v = data[a];
+                        if (v.Nationality == p) {
+                            auto.push(v);
+                        }
+                    }
+                } else {
+                    for (var a = 0; a < data.List.length; a++) {
+                        var v = data.List[a];
+                        if (v.Nationality == p) {
+                            auto.push(v);
+                        }
+                    }
+                }
+                self.records(auto);
+                self.totalRecords(auto.length);
+                $("#pagination").addClass("d-none");
+                $("#line").addClass("d-none");
+                $('#mapa').addClass("d-none");
+            })
+    
+    
+            hideLoading();
+        } else {
+            showLoading();
+            var url = '';
+            if (self.search != '') {
+                url = 'http://192.168.160.58/NBA/api/Search/Teams?q=' + self.search;
+            } else {
+                url = self.baseUri();
+            }
+            ajaxHelper(url, 'GET').done(function(data) {
+                var auto = [];
+                if (self.search != '') {
+                    for (var a = 0; a < data.length; a++) {
+                        var v = data[a];
+                        auto.push(v);
+                    }
+                } else {
+                    for (var a = 0; a < data.List.length; a++) {
+                        var v = data.List[a];
+                        auto.push(v);
+                    }
+                }
+                self.records(auto);
+                self.totalRecords(auto.length);
+                $("#pagination").addClass("d-none");
+                $("#line").addClass("d-none");
+                $('#mapa').addClass("d-none")
+            })
+            hideLoading();
+        }
+    });
 
     self.updateLocalStorage = (key, data) => {
         localStorage.setItem(key, JSON.stringify(data))
@@ -245,7 +262,7 @@ var vm = function () {
     self.favorites = ko.observableArray(JSON.parse(localStorage.getItem("teamFavorites")))
     
     self.favButton = (id, event) => {
-        if (!event.target.classList.contains('active')) {
+        if (!event.target.classList.contains('active2')) {
             if (self.favorites.indexOf(id) === -1)
                 self.favorites.push(id)
             self.updateLocalStorage("teamFavorites", self.favorites())

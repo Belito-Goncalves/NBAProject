@@ -239,7 +239,7 @@ self.updateLocalStorage = (key, data) => {
 self.favorites = ko.observableArray(JSON.parse(localStorage.getItem("playerFavorites")))
 
 self.favButton = (id, event) => {
-    if (!event.target.classList.contains('active')) {
+    if (!event.target.classList.contains('active2')) {
         if (self.favorites.indexOf(id) === -1)
             self.favorites.push(id)
         self.updateLocalStorage("playerFavorites", self.favorites())
