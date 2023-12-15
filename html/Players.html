@@ -115,7 +115,12 @@
                         <div class="col mb-4"> <!-- Add mb-4 class for bottom margin -->
                             <div class = "card center-container" >
                                 <a data-bind="attr: { href: './PlayerDetails.html?id=' + Id }">
-                                <img class="mx-auto" width="290" height="290" data-bind="attr:{src: Photo}" style="object-fit: cover; " /> 
+                                <!-- ko ifnot: $data.Photo -->
+                                    <img class="mx-auto" width="290" height="290" src="https://th.bing.com/th/id/R.85940e99208a94c8f1d9628f42cf36f8?rik=oUbEF2S%2bY6attQ&pid=ImgRaw&r=0" style="object-fit: cover; " />
+                                <!-- /ko -->
+                                <!-- ko if: $data.Photo -->
+                                    <img class="mx-auto" width="290" height="290" data-bind="attr:{src: Photo}" style="object-fit: cover; " />
+                                 <!-- /ko --> 
                                 </a>
                                 <button class="btn btn-default btn-sm" id="favs-button" type="button"><i class="fa fa-heart-o" aria-hidden="true" data-bind="click: $parent.favButton.bind($data,Id,event), css: $parent.checkButton(Id) == true ? 'active2' : ''"></i></button>
                                 <div class="card-content" data-bind="text:Name">

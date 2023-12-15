@@ -6,11 +6,12 @@ var simplemaps_usmap_mapdata={
     background_transparent: "yes",
     border_color: "#ffffff",
     popups: "detect",
+    state_popups: "off",
     
     //State defaults
     state_description: "State Description",
     state_color: "#88A4BC",
-    state_hover_color: "#3B729F",
+    state_hover_color: "#88A4BC",
     state_url: "",
     border_size: 1.5,
     all_states_inactive: "no",
@@ -60,7 +61,7 @@ var simplemaps_usmap_mapdata={
     //Advanced settings
     div: "map",
     auto_load: "yes",
-    url_new_tab: "yes",
+    url_new_tab: "no",
     images_directory: "/static/lib/simplemaps/map_images/",
     fade_time: 0.1,
     import_labels: "no",
@@ -71,14 +72,13 @@ var simplemaps_usmap_mapdata={
   },
   state_specific: {
     HI: {
-      name: "Hawaii"
+      hide: "yes"
     },
     AK: {
-      name: "Alaska"
+      hide: "yes"
     },
     FL: {
-      name: "Florida",
-      image_url: "https://www.daddyshangout.com/wp-content/uploads/2021/03/NBA-Eastern-Conference.jpg"
+      name: "Florida"
     },
     NH: {
       name: "New Hampshire"
@@ -93,12 +93,10 @@ var simplemaps_usmap_mapdata={
       name: "Rhode Island"
     },
     NY: {
-      name: "New York",
-      image_url: "https://www.daddyshangout.com/wp-content/uploads/2021/03/NBA-Eastern-Conference.jpg"
+      name: "New York"
     },
     PA: {
-      name: "Pennsylvania",
-      image_url: "https://www.daddyshangout.com/wp-content/uploads/2021/03/NBA-Eastern-Conference.jpg"
+      name: "Pennsylvania"
     },
     NJ: {
       name: "New Jersey"
@@ -116,35 +114,28 @@ var simplemaps_usmap_mapdata={
       name: "West Virginia"
     },
     OH: {
-      name: "Ohio",
-      image_url: "https://www.daddyshangout.com/wp-content/uploads/2021/03/NBA-Eastern-Conference.jpg"
+      name: "Ohio"
     },
     IN: {
-      name: "Indiana",
-      image_url: "https://www.daddyshangout.com/wp-content/uploads/2021/03/NBA-Eastern-Conference.jpg"
+      name: "Indiana"
     },
     IL: {
-      name: "Illinois",
-      image_url: "https://www.daddyshangout.com/wp-content/uploads/2021/03/NBA-Eastern-Conference.jpg"
+      name: "Illinois"
     },
     CT: {
       name: "Connecticut"
     },
     WI: {
-      name: "Wisconsin",
-      image_url: "https://www.daddyshangout.com/wp-content/uploads/2021/03/NBA-Eastern-Conference.jpg"
+      name: "Wisconsin"
     },
     NC: {
-      name: "North Carolina",
-      image_url: "https://www.daddyshangout.com/wp-content/uploads/2021/03/NBA-Eastern-Conference.jpg"
+      name: "North Carolina"
     },
     DC: {
-      name: "District of Columbia",
-      image_url: "https://www.daddyshangout.com/wp-content/uploads/2021/03/NBA-Eastern-Conference.jpg"
+      name: "District of Columbia"
     },
     MA: {
-      name: "Massachusetts",
-      image_url: "https://www.daddyshangout.com/wp-content/uploads/2021/03/NBA-Eastern-Conference.jpg"
+      name: "Massachusetts"
     },
     TN: {
       name: "Tennessee"
@@ -156,8 +147,7 @@ var simplemaps_usmap_mapdata={
       name: "Missouri"
     },
     GA: {
-      name: "Georgia",
-      image_url: "https://www.daddyshangout.com/wp-content/uploads/2021/03/NBA-Eastern-Conference.jpg"
+      name: "Georgia"
     },
     SC: {
       name: "South Carolina"
@@ -208,8 +198,7 @@ var simplemaps_usmap_mapdata={
       name: "Montana"
     },
     CO: {
-      name: "Colorado",
-      image_url: "https://3andd.files.wordpress.com/2015/09/nba-western-conference-1600-1200.jpg?w=590"
+      name: "Colorado"
     },
     UT: {
       name: "Utah"
@@ -230,8 +219,7 @@ var simplemaps_usmap_mapdata={
       name: "California"
     },
     MI: {
-      name: "Michigan",
-      image_url: "https://www.daddyshangout.com/wp-content/uploads/2021/03/NBA-Eastern-Conference.jpg"
+      name: "Michigan"
     },
     ID: {
       name: "Idaho"
@@ -259,83 +247,11 @@ var simplemaps_usmap_mapdata={
   },
   locations: {},
   labels: {
-    NH: {
-      parent_id: "NH",
-      x: "932",
-      y: "183",
-      pill: "yes",
-      width: 45,
-      display: "all"
-    },
-    VT: {
-      parent_id: "VT",
-      x: "883",
-      y: "243",
-      pill: "yes",
-      width: 45,
-      display: "all"
-    },
-    RI: {
-      parent_id: "RI",
-      x: "932",
-      y: "273",
-      pill: "yes",
-      width: 45,
-      display: "all"
-    },
-    NJ: {
-      parent_id: "NJ",
-      x: "883",
-      y: "273",
-      pill: "yes",
-      width: 45,
-      display: "all"
-    },
-    DE: {
-      parent_id: "DE",
-      x: "883",
-      y: "303",
-      pill: "yes",
-      width: 45,
-      display: "all"
-    },
-    MD: {
-      parent_id: "MD",
-      x: "932",
-      y: "303",
-      pill: "yes",
-      width: 45,
-      display: "all"
-    },
-    DC: {
-      parent_id: "DC",
-      x: "884",
-      y: "332",
-      pill: "yes",
-      width: 45,
-      display: "all"
-    },
-    MA: {
-      parent_id: "MA",
-      x: "932",
-      y: "213",
-      pill: "yes",
-      width: 45,
-      display: "all"
-    },
-    CT: {
-      parent_id: "CT",
-      x: "932",
-      y: "243",
-      pill: "yes",
-      width: 45,
-      display: "all"
-    },
     HI: {
       parent_id: "HI",
       x: 305,
       y: 565,
-      pill: "yes"
+      pill: "no"
     },
     AK: {
       parent_id: "AK",
@@ -586,8 +502,9 @@ var simplemaps_usmap_mapdata={
       ],
       name: "western",
       color: "blue",
-      zoomable: "yes",
-      href: "./ConferencesDetails.html?id=2"
+      zoomable: "no",
+      url: "http://127.0.0.1:5500/html/ConferencesDetails.html?id=2",
+      description: "<img src=\"https://3andd.files.wordpress.com/2015/09/nba-western-conference-1600-1200.jpg?w=590\" style=\"width: 75px\" />"
     },
     "1": {
       states: [
@@ -606,8 +523,18 @@ var simplemaps_usmap_mapdata={
       ],
       name: "eastern",
       color: "red",
-      zoomable: "yes",
-      href: "./ConferencesDetails.html?id=1"
+      url: "http://127.0.0.1:5500/html/ConferencesDetails.html?id=1",
+      description: "<img src=\"https://www.daddyshangout.com/wp-content/uploads/2021/03/NBA-Eastern-Conference.jpg\" style=\"width: 75px\" />",
+      zoomable: "no"
+    },
+    "2": {
+      states: [
+        "MA",
+        "NY",
+        "PA",
+        "ON"
+      ],
+      zoomable: "no"
     }
   }
 };

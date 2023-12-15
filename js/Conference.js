@@ -77,6 +77,38 @@ var vm = function () {
         });
     }
 
+    newvm = function () {
+        console.log('ViewModel initiated...');
+        //---Variáveis locais
+        var self = this;
+        self.newUri = ko.observable('http://192.168.160.58/NBA/API/Conferences/');
+        self.displayName = 'NBA Arena Details';
+        self.error = ko.observable('');
+        self.passingMessage = ko.observable('');
+        //--- Data Record
+        self.Id = ko.observable('');
+        self.Name = ko.observable('');
+        self.Logo = ko.observable('');
+        self.Teams = ko.observableArray([]);
+        self.Divisions = ko.observableArray([]);
+    
+    
+        //--- Page Events
+        self.activate = function (id) {
+            console.log('CALL: getNewVm...');
+            var composedUri = self.newUri() + id;
+            ajaxHelper(composedUri, 'GET').done(function (data) {
+                console.log(data);
+                hideLoading();
+                self.Id(data.Id);
+                self.Name(data.Name);
+                self.Logo(data.Logo);
+                self.Teams(data.Teams);
+                self.Divisions(data.Divisions);
+            });
+        };
+    }
+
     function sleep(milliseconds) {
         const start = Date.now();
         while (Date.now() - start < milliseconds);
@@ -128,6 +160,13 @@ $(document).ready(function () {
     ko.applyBindings(new vm());
 });
 
+$(document).ready(function () {
+    console.log("ready!");
+    ko.applyBindings(new newvm());
+});
+
+
 $(document).ajaxComplete(function (event, xhr, options) {
     $("#myModal").modal('hide');
 })
+
