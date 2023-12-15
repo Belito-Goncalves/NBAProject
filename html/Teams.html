@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="../css/myCSS.css" />
     <link rel="stylesheet" href="../css/louco.css" />
 </head>
-<body>
+<body class="background">
     <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:  rgb(201, 190, 190)">
         <div class="container-fluid">
             <a href="index.html" style="margin-right: 2%;"><img src="../Imagens/NBA.png" height="40" width="100" /></a>
@@ -62,7 +62,7 @@
 
      <!-- Work Area-->
 
-    <main class="background" style="min-height: 737px;">
+    <main style="min-height: 737px;">
         <div class="container">
             <div class="border-bottom py-2 mb-2 centro">
                 <h2 data-bind="text:displayName"></h2>
@@ -125,7 +125,6 @@
                                             <br>
                                             <h3><div data-bind="text: Acronym"></div></h3>
                                             <b><h2><div data-bind="text: Name"></div></h2></b>
-                                            <button class="btn btn-default btn-sm" id="favs-button" type="button"><i class="fa fa-heart-o" aria-hidden="true" data-bind="click: $parent.favButton.bind($data,Id,event), css: $parent.checkButton(Id) == true ? 'active' : ''"></i></button>
                                         </div>
                                     </div>
                                 </div>

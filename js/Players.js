@@ -6,7 +6,12 @@ var vm = function () {
     console.log('ViewModel initiated...');
     //---Variáveis locais
     var self = this;
-    self.selectedOption = ko.observable('Grelha');
+    var initialLayout = localStorage.getItem('layout') || 'null';
+    self.layout = ko.observable(initialLayout);
+
+    self.layout.subscribe(function(newValue) {
+        localStorage.setItem('layout', newValue);
+    });
     self.search = '';
     self.filter = 'null';
     self.baseUri = ko.observable('http://192.168.160.58/NBA/API/Players');
