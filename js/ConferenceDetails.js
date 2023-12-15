@@ -1,4 +1,4 @@
-var vm = function () {
+var vm2 = function () {
     console.log('ViewModel initiated...');
     //---Variáveis locais
     var self = this;
@@ -89,7 +89,7 @@ var vm = function () {
 
 $(document).ready(function () {
     console.log("document.ready!");
-    ko.applyBindings(new vm());
+    ko.applyBindings(new vm2());
 });
 
 $(document).ajaxComplete(function (event, xhr, options) {

@@ -1,16 +1,11 @@
-
-    // Example function to perform the search
-
-
 var vm = function () {
     console.log('ViewModel initiated...');
     //---Variáveis locais
     var self = this;
-    self.selectedOption = ko.observable('Grelha');
     self.search = '';
     self.filter = 'null';
-    self.baseUri = ko.observable('http://192.168.160.58/NBA/API/Players');
-    self.displayName = 'NBA Players List';
+    self.baseUri = ko.observable('http://192.168.160.58/NBA/API/Divisions');
+    self.displayName = 'NBA States';
     self.error = ko.observable('');
     self.passingMessage = ko.observable('');
     self.records = ko.observableArray([]);
@@ -48,13 +43,10 @@ var vm = function () {
         return list;
     };
 
-
-
     //--- Page Events
     self.activate = function (id) {
         console.log('CALL: getPlayers...');
         var composedUri = self.baseUri() + "?page=" + id + "&pageSize=" + self.pagesize();
-        console.log(composedUri)
         ajaxHelper(composedUri, 'GET').done(function (data) {
             console.log(data);
             hideLoading();
@@ -67,7 +59,24 @@ var vm = function () {
             self.totalRecords(data.TotalRecords);
             //self.SetFavourites();
         });
-       
+        composedUri2 = self.baseUri();
+        ajaxHelper(composedUri2, 'GET').done(function(data) {
+            hideLoading();
+            var tags = [];
+            var tags1 = [];
+            console.log(tags1);
+            for (var x = 0; x < data.Total; x++) {
+                var c = data.List[x];
+                tags.push(c.Name);
+            };
+
+            for (var x = 0; x < tags.length; x++) {
+                if (!tags1.includes(tags[x])) {
+                    tags1.push(tags[x])
+                }
+            };
+
+        });
         
     };
     
@@ -133,157 +142,20 @@ var vm = function () {
     console.log("VM initialized!");
 
 
-
-search = function() {
-    console.log("search");
-    self.search = $("#searchbar").val();
-
-    if (self.search.trim() === "") {
-        // Refresh the page
-        location.reload();
-        return;
-    }
-
-
-    var changeuri = 'http://192.168.160.58/NBA/API/Players/search?q=' + self.search;
-    self.playerslist = [];
-    ajaxHelper(changeuri, 'GET').done(function(data) {
-        console.log(data);
-        showLoading();
-        if (self.filter != 'null') {
-            p = self.filter;
-            var auto = []
-            for (var a = 0; a < data.length; a++) {
-                var v = data[a];
-                if (v.Nationality == p) {
-                    auto.push(v);
-                }
-            }
-            self.records(auto);
-            self.totalRecords(auto.length);
-            for (var info in auto) {
-                self.playerslist.push(auto[info]);
-            }
-        } else {
-            self.records(data);
-            self.totalRecords(data.length);
-            for (var info in data) {
-                self.playerslist.push(data[info]);
-            }
-
-        }
-        $("#pagination").addClass("d-none");
-        $("#line").addClass("d-none");
-        hideLoading();
-
-        
-    });
-
-    
-};
-
-search2= function() {
- $("#searchbar").autocomplete({
-    source: function (request, response) {
-      SearcUri =
-        "http://192.168.160.58/NBA/API/Players/Search?q=" + request.term;
-      console.log("accessing:" + SearcUri);
-      $.ajax({
-        url: SearcUri,
-        method: "GET",
-        dataType: "json",
-        success: function (data) {
-          let result = [];
-
-          console.log(data);
-
-          if (data.length) {
-            data.forEach(function (item) {
-              if (result.length < 10) {
-                let obj = {
-                  label: item.Name,
-                  id: item.Id,
-                };
-                result.push(obj);
-              }
-            });
-
-            console.log(result);
-          } else {
-            console.log("No data received.");
-          }
-          response(result);
-        },
-        error: function () {
-          console.log("Error ");
-        },
-      });
-    },
-    select: function (event, ui) {
-      window.location.href = "./playerDetails.html?id=" + ui.item.id;
-    },
-  });
-
-}
-
-
 $(document).keypress(function(key) {
     if (key.which == 13) {
         search();
     }
 });
 
-self.updateLocalStorage = (key, data) => {
-    localStorage.setItem(key, JSON.stringify(data))
-}
-
-self.favorites = ko.observableArray(JSON.parse(localStorage.getItem("playerFavorites")))
-
-self.favButton = (id, event) => {
-    if (!event.target.classList.contains('active2')) {
-        if (self.favorites.indexOf(id) === -1)
-            self.favorites.push(id)
-        self.updateLocalStorage("playerFavorites", self.favorites())
-        event.target.classList.remove('fa-heart-o');
-        event.target.classList.add('fa-heart');
-        event.target.classList.add('active2');
-        console.log(self.favorites())
-    } else {
-        self.favorites.splice(self.favorites.indexOf(id), 1)
-        self.updateLocalStorage("playerFavorites", self.favorites())
-        event.target.classList.remove('fa-heart-o');
-        event.target.classList.add('fa-heart-o');
-        event.target.classList.remove('active2');
-        console.log(self.favorites())
-    }
-}
-
-
-self.checkButton = function(id) {
-    return self.favorites().includes(id)
-}
-
-
-
- };
-
-
-
-
-
+};
 
 
 $(document).ready(function () {
     console.log("ready!");
     ko.applyBindings(new vm());
-    
 });
 
 $(document).ajaxComplete(function (event, xhr, options) {
     $("#myModal").modal('hide');
 })
-
-
-
-
-

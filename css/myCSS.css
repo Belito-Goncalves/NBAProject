@@ -203,7 +203,7 @@ li.page-item {
 details {
   width: 80%;
   margin: 0 auto ;
-  background: #282828;
+  background: #ffffff;
   margin-bottom: .5rem;
   box-shadow: 0 .1rem 1rem -.5rem rgba(0,0,0,.4);
   border-radius: 5px;
@@ -213,7 +213,7 @@ details {
 summary {
   padding: 1rem;
   display: block;
-  background: #333;
+  background: #ffffff;
   padding-left: 2.2rem;
   position: relative;
   cursor: pointer;
@@ -248,10 +248,10 @@ details > ul {
 }
 
 .body2 {
-  background: #222;
+  background: #c2c1c1;
   height: 100vh;
   font-family: sans-serif;
-  color: white;
+  color: rgb(6, 6, 6);
   line-height: 1.5;
   letter-spacing: 1px;
   margin-top: 2rem;
