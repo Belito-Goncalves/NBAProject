@@ -73,56 +73,56 @@
                     </p>
                 </div>
 
-                <div class=" col-md-4">
+                <div class="col-6 my-0 pt-3" style="" >
+                    <ul class="pagination" style="margin-left: 300px; margin-top:30px">
+                        <!-- ko if: currentPage() > 5 && totalPages() > 10 -->
+                        <li class="page-item float-end"><a class="page-link" title="First Page" data-bind="attr: { href: './Players.html?page=' + '1',  rel:'prev'}">⇤</a></li>
+                        <li class="page-item float-end"><a class="page-link" title="Previous Page" data-bind="attr: { href: './PLayers.html?page=' + previousPage(),  rel:'prev'}">←</a></li>
+                        <!-- /ko -->
+                        <!-- ko foreach: pageArray()-->
+                        <!-- ko if:$data == $parent.currentPage() -->
+                        <li class="active page-item"><a class="page-link" data-bind="attr: { title:'Current Page ' + $data }, text: $data"></a></li>
+                        <!-- /ko -->
+                        <!-- ko if:$data != $parent.currentPage() -->
+                        <li class="page-item"><a class="page-link" data-bind="attr: { href: './Players.html?page=' + $data, title:'Goto Page ' + $data }, text:$data"></a></li>
+                        <!-- /ko -->
+                        <!-- /ko -->
+                        <!-- ko if: currentPage() < totalPages() - 4 && totalPages() > 9 -->
+                        <li class="page-item"><a class="page-link" title="Next Page" data-bind="attr: { href: './Players.html?page=' + nextPage(), rel:'next' }">→</a></li>
+                        <li class="page-item"><a class="page-link" title="Last Page" data-bind="attr: { href: './Players.html?page=' + totalPages() }">⇥</a></li>
+                        <!-- /ko -->
+                    </ul>
+                </div>
 
-                    <div class="row">
-                        <div class="row small mb-2">
-                                <div class="col-md-4 my-0 pt-3 direita">
-                                    <ul class="pagination">
-                                        <!-- ko if: currentPage() > 5 && totalPages() > 10 -->
-                                        <li class="page-item float-end"><a class="page-link" title="First Page" data-bind="attr: { href: './Players.html?page=' + '1',  rel:'prev'}">⇤</a></li>
-                                        <li class="page-item float-end"><a class="page-link" title="Previous Page" data-bind="attr: { href: './PLayers.html?page=' + previousPage(),  rel:'prev'}">←</a></li>
-                                        <!-- /ko -->
-                                        <!-- ko foreach: pageArray()-->
-                                        <!-- ko if:$data == $parent.currentPage() -->
-                                        <li class="active page-item"><a class="page-link" data-bind="attr: { title:'Current Page ' + $data }, text: $data"></a></li>
-                                        <!-- /ko -->
-                                        <!-- ko if:$data != $parent.currentPage() -->
-                                        <li class="page-item"><a class="page-link" data-bind="attr: { href: './Players.html?page=' + $data, title:'Goto Page ' + $data }, text:$data"></a></li>
-                                        <!-- /ko -->
-                                        <!-- /ko -->
-                                        <!-- ko if: currentPage() < totalPages() - 4 && totalPages() > 9 -->
-                                        <li class="page-item"><a class="page-link" title="Next Page" data-bind="attr: { href: './Players.html?page=' + nextPage(), rel:'next' }">→</a></li>
-                                        <li class="page-item"><a class="page-link" title="Last Page" data-bind="attr: { href: './Players.html?page=' + totalPages() }">⇥</a></li>
-                                        <!-- /ko -->
-                                    </ul>
-                                </div>
-                                
-                        </div>
-                        <div class="row" style="width: 1000px; height: -50px" >
-                            <select style="height: 40px;margin-top: 40px;" class='countryFilter btn btn-default' data-bind="value: layout" id="selection">
-                                <option value='null'>Grelha</option>
-                                <option value='1'>Tabela</option>
-                            </select>
+                
+
+                <div class="row col-12">
+                    
+                    
+                            
+                    <div class="row col-12 justify-content-center" style="width: 1000px; height: -50px" >
+                        <select style="height: 35px;margin-top: 45px;" class='countryFilter btn btn-default' data-bind="value: layout" id="selection">
+                            <option value='null'>Grelha</option>
+                            <option value='1'>Tabela</option>
+                        </select>
 
 
-                            <div class="col-12 col-md-6 col-lg-9" style="margin-top: 20px;">
-                                <div class="d-inline-flex mt-4" id="forms" style="width: 465px ; margin-left: auto; margin-right: auto;">
-                                    <input id="searchbar" class="form-control searchBar autocomplete" type="text" placeholder="Search" aria-label="Search" onclick="search2()">
-                                    <button style="margin-left: 5px;" class="fa fa-search btn btn-default" id="lupadef" type="submit" onclick="search()"></button>
-    
-                                </div>
+                        <div class="col-4 col-md-6 col-lg-9" style="margin-top: 20px;">
+                            <div class="d-inline-flex mt-4" id="forms" style="width: 365px ;">
+                                <input id="searchbar" class="form-control searchBar autocomplete" type="text" placeholder="Search" aria-label="Search" onclick="search2()">
+                                <button style="margin-left: 5px;" class="fa fa-search btn btn-default" id="lupadef" type="submit" onclick="search()"></button>
+
                             </div>
                         </div>
-
-                        
                     </div>
+
+                    
                 </div>
             </div>
         <!-- /ko -->
+        <div class="row col-12 mx-auto" style="width: 1000px; height: -50px; margin-top: 10px" >
 
-
-            <div class="album py-5 bg-body-tertiary" data-bind="visible: layout() == 'null'">
+            <div class="album py-5 bg-body-tertiary col-12 mx-auto" data-bind="visible: layout() == 'null'">
                 <div class="container">
                     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" data-bind="foreach: records">
                         <div class="col mb-4"> <!-- Add mb-4 class for bottom margin -->
@@ -160,6 +160,7 @@
                         <th scope="col">Id</th>
                         <th scope="col">Name</th>
                         <th scope="col" class="text-right"></th>
+                        <th scope="col" class="text-right"></th>
                     </tr>
                 </thead>
                 <tbody data-bind="foreach: records">
@@ -167,7 +168,7 @@
                         <td class="align-middle" data-bind="text:Id"></td>
                         <td class="align-middle" data-bind="text:Name"></td>
                         <td class="align-middle">
-                            <div class="card" style="height: 90px; width: 90px; margin-right: 10px; margin-left: 10px;">
+                            <div class="card" style="height: 90px; width: 90px;">
                                 <a data-bind="attr: { href: './PlayerDetails.html?id=' + Id }">
                                     <img class="card-img-top mx-auto" data-bind="attr: { src: Photo}" style="object-fit: cover; height: 80px; width: 100%;" />
                                 </a>

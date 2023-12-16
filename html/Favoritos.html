@@ -71,6 +71,7 @@
                                     <th scope="col">Id</th>
                                     <th scope="col">Name</th>
                                     <th scope="col" class="text-right"></th>
+                                    <th scope="col" class="text-right"></th>
                                 </tr>
                             </thead>
                             <tbody data-bind="foreach: playersData">
@@ -78,12 +79,18 @@
                                     <td class="align-middle" data-bind="text:Id"></td>
                                     <td class="align-middle" data-bind="text:Name"></td>
                                     <td class="align-middle">
-                                        <!-- ko ifnot: $data.Photo -->
-                                        <img class="mx-auto" width="100" height="100" src="https://th.bing.com/th/id/R.85940e99208a94c8f1d9628f42cf36f8?rik=oUbEF2S%2bY6attQ&pid=ImgRaw&r=0" style="object-fit: cover; " />
-                                    <!-- /ko -->
-                                    <!-- ko if: $data.Photo -->
-                                        <img class="mx-auto" width="100" height="100" data-bind="attr:{src: Photo}" style="object-fit: cover; " />
-                                     <!-- /ko --> 
+                                        <div class="card" style="height:100px; width:100px; margin-right:1px; margin-left:1px">
+                                            <a data-bind="attr: { href: './PlayerDetails.html?id=' + Id }">
+                                               <!-- ko ifnot: $data.Photo -->
+                                            <img class="mx-auto" width="100" height="100" src="https://th.bing.com/th/id/R.85940e99208a94c8f1d9628f42cf36f8?rik=oUbEF2S%2bY6attQ&pid=ImgRaw&r=0" style="object-fit: cover; " />
+                                                <!-- /ko -->
+                                                <!-- ko if: $data.Photo -->
+                                            <img class="mx-auto" width="100" height="100" data-bind="attr:{src: Photo}" style="object-fit: cover; " />
+                                                <!-- /ko --> 
+
+                                            </a>
+                                        </div>
+                                        
                                     </td>
                                     <td class="text-end">
                                         <a class="btn btn-default btn-sm" data-bind="attr: { href:'./PlayerDetails.html?id=' + Id }"><i class="fa fa-eye" title="Selecione para ver detalhes"></i></a>
@@ -97,11 +104,12 @@
                     <h3>Arenas</h3>
                     <hr style="height: 2px; border-width:0; color: gray; background-color: gray">
                     <div id="favsContainer" class="row">
-                        <table class="table table-striped table-sm small mt-3">
-                            <thead class="bg-dark text-light">
+                        <table class="table table-striped table-sm small mt-3" >
+                            <thead class="bg-dark text-light" >
                                 <tr>
                                     <th scope="col">Id</th>
                                     <th scope="col">Name</th>
+                                    <th scope="col" class="text-right"></th>
                                     <th scope="col" class="text-right"></th>
                                 </tr>
                             </thead>
@@ -111,11 +119,15 @@
                                     <td class="align-middle" data-bind="text: Name"></td>
                                     
                                     <td class="align-middle">
-                                        <img width="100px" height="100px" data-bind="attr:{src: Photo}" />
+                                        <div class="card" style="height:100px; width:100px; margin-right:1px; margin-left:1px">
+                                            <a data-bind="attr: { href: './PlayerDetails.html?id=' + Id }">
+                                                <img class="mx-auto" data-bind="attr:{src: Photo}" style="object-fit: cover; height:100px; width:100px;" />
+                                            </a>
+                                        </div>
                                     </td>
                                     <td class="text-end">
                                         <a class="btn btn-default btn-sm" data-bind="attr: { href:'./ArenaDetails.html?id=' + Id }"><i class="fa fa-eye" title="Selecione para ver detalhes"></i></a>
-                                        <button class="btn btn-default btn-sm" id="favs-button" type="button"><i class="fa fa-heart-o" aria-hidden="true" data-bind="click: $parent.favButton.bind($data,Id,event), css: $parent.checkButton(Id) == true ? 'active2' : ''"></i></button>
+                                        <button class="btn btn-default btn-sm" id="favs-button" type="button"><i class="fa fa-heart-o" aria-hidden="true" data-bind="click: $parent.favButton2.bind($data,Id,event), css: $parent.checkButton(Id) == true ? 'active2' : ''"></i></button>
                                     </td>
                                 </tr>
                             </tbody>

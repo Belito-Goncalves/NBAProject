@@ -161,6 +161,10 @@ var vm = function () {
         ajaxHelper(changeuri, 'GET').done(function(data) {
             console.log(data);
             showLoading();
+            if (data.length === 0) {
+                alert("No results found.");
+                return;
+            }
             if (self.filter != 'null') {
                 p = self.filter;
                 var auto = []
