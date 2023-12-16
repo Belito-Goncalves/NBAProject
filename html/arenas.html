@@ -131,7 +131,7 @@
                     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" data-bind="foreach: records">
                         <div class="col mb-4"> <!-- Add mb-4 class for bottom margin -->
                             <div class = "card center-container" >
-                                <a data-bind="attr: { href: './PlayerDetails.html?id=' + Id }">
+                                <a data-bind="attr: { href: './arenaDetails.html?id=' + Id }">
                                 <!-- ko ifnot: $data.Photo -->
                                     <img class="mx-auto" width="290" height="290" src="https://th.bing.com/th/id/R.85940e99208a94c8f1d9628f42cf36f8?rik=oUbEF2S%2bY6attQ&pid=ImgRaw&r=0" style="object-fit: cover; " />
                                 <!-- /ko -->
@@ -177,7 +177,7 @@
                         <td class="align-middle" data-bind="text:Location"></td>
                         <td class="align-middle">
                             <div class="card" style="height: 90px; width: 90px; margin-right: 10px; margin-left: 10px;">
-                                <a data-bind="attr: { href: './ArenaDetails.html?id=' + Id }">
+                                <a data-bind="attr: { href: './arenaDetails.html?id=' + Id }">
                                     <img class="card-img-top mx-auto" data-bind="attr: { src: Photo}" style="object-fit: cover; height: 80px; width: 100%;" />
                                 </a>
                             </div>
