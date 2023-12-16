@@ -501,7 +501,7 @@ var simplemaps_usmap_mapdata={
         "LA"
       ],
       name: "western",
-      color: "blue",
+      color: "red",
       zoomable: "no",
       url: "http://127.0.0.1:5500/html/ConferencesDetails.html?id=2",
       description: "<img src=\"https://3andd.files.wordpress.com/2015/09/nba-western-conference-1600-1200.jpg?w=590\" style=\"width: 75px\" />"
@@ -522,7 +522,7 @@ var simplemaps_usmap_mapdata={
         "DC"
       ],
       name: "eastern",
-      color: "red",
+      color: "blue",
       url: "http://127.0.0.1:5500/html/ConferencesDetails.html?id=1",
       description: "<img src=\"https://www.daddyshangout.com/wp-content/uploads/2021/03/NBA-Eastern-Conference.jpg\" style=\"width: 75px\" />",
       zoomable: "no"
