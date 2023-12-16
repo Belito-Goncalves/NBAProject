@@ -61,7 +61,7 @@
     <main class="background" style="min-height: 737px;">
         <div class="container">
             <div class="py-2 border-bottom mb-3">
-                <h2 data-bind="text:Name()"></h2>
+                <h2 style="text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; color: antiquewhite;"data-bind="text:Name()"></h2>
             </div>
     
             <div class="row">
@@ -143,7 +143,12 @@
                         <div class="card-body">
                             <div class="row border-bottom g-2" data-bind="visible: Photo() != '' && Photo() != null">
                                 <div class="col-12 text-center">
-                                    <img class="img-thumbnail" data-bind="attr:{src: Photo}" alt="Player Photo">
+                                    <!-- ko ifnot: $data.Photo -->
+                                    <img class="mx-auto" width="290" height="290" src="https://th.bing.com/th/id/R.85940e99208a94c8f1d9628f42cf36f8?rik=oUbEF2S%2bY6attQ&pid=ImgRaw&r=0" style="object-fit: cover; " />
+                                <!-- /ko -->
+                                <!-- ko if: $data.Photo -->
+                                    <img class="mx-auto" width="290" height="290" data-bind="attr:{src: Photo}" style="object-fit: cover; " />
+                                 <!-- /ko --> 
                                 </div>
                             </div>
                         </div>

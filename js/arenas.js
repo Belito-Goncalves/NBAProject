@@ -2,13 +2,19 @@
     console.log('ViewModel initiated...');
     //---Variáveis locais
     var self = this;
+    var initialLayout = localStorage.getItem('layout') || 'null';
+    self.layout = ko.observable(initialLayout);
+
+    self.layout.subscribe(function(newValue) {
+        localStorage.setItem('layout', newValue);
+    });
     self.baseUri = ko.observable('http://192.168.160.58/NBA/API/Arenas');
     self.displayName = 'NBA Arenas List';
     self.error = ko.observable('');
     self.passingMessage = ko.observable('');
     self.records = ko.observableArray([]);
     self.currentPage = ko.observable(1);
-    self.pagesize = ko.observable(20);
+    self.pagesize = ko.observable(21);
     self.totalRecords = ko.observable(50);
     self.hasPrevious = ko.observable(false);
     self.hasNext = ko.observable(false);
