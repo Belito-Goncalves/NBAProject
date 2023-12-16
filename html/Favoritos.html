@@ -78,11 +78,16 @@
                                     <td class="align-middle" data-bind="text:Id"></td>
                                     <td class="align-middle" data-bind="text:Name"></td>
                                     <td class="align-middle">
-                                        <img width="100px" height="100px" data-bind="attr:{src: Photo}" />
+                                        <!-- ko ifnot: $data.Photo -->
+                                        <img class="mx-auto" width="100" height="100" src="https://th.bing.com/th/id/R.85940e99208a94c8f1d9628f42cf36f8?rik=oUbEF2S%2bY6attQ&pid=ImgRaw&r=0" style="object-fit: cover; " />
+                                    <!-- /ko -->
+                                    <!-- ko if: $data.Photo -->
+                                        <img class="mx-auto" width="100" height="100" data-bind="attr:{src: Photo}" style="object-fit: cover; " />
+                                     <!-- /ko --> 
                                     </td>
                                     <td class="text-end">
                                         <a class="btn btn-default btn-sm" data-bind="attr: { href:'./PlayerDetails.html?id=' + Id }"><i class="fa fa-eye" title="Selecione para ver detalhes"></i></a>
-                                        
+                                        <button class="btn btn-default btn-sm" id="favs-button" type="button"><i class="fa fa-heart-o" aria-hidden="true" data-bind="click: $parent.favButton.bind($data,Id,event), css: $parent.checkButton(Id) == true ? 'active2' : ''"></i></button>
                                     </td>
                                 </tr>
                             </tbody>
@@ -110,6 +115,7 @@
                                     </td>
                                     <td class="text-end">
                                         <a class="btn btn-default btn-sm" data-bind="attr: { href:'./ArenaDetails.html?id=' + Id }"><i class="fa fa-eye" title="Selecione para ver detalhes"></i></a>
+                                        <button class="btn btn-default btn-sm" id="favs-button" type="button"><i class="fa fa-heart-o" aria-hidden="true" data-bind="click: $parent.favButton.bind($data,Id,event), css: $parent.checkButton(Id) == true ? 'active2' : ''"></i></button>
                                     </td>
                                 </tr>
                             </tbody>
