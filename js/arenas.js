@@ -8,6 +8,8 @@
     self.layout.subscribe(function(newValue) {
         localStorage.setItem('layout', newValue);
     });
+    self.search = '';
+    self.filter = 'null';
     self.baseUri = ko.observable('http://192.168.160.58/NBA/API/Arenas');
     self.displayName = 'NBA Arenas List';
     self.error = ko.observable('');
@@ -154,6 +156,109 @@
         }
     }
     
+    search = function() {
+        console.log("search");
+        self.search = $("#searchbar").val();
+    
+        if (self.search.trim() === "") {
+            // Refresh the page
+            location.reload();
+            return;
+        }
+    
+    
+        var changeuri = 'http://192.168.160.58/NBA/API/Arenas/search?q=' + self.search;
+        self.playerslist = [];
+        ajaxHelper(changeuri, 'GET').done(function(data) {
+            console.log(data);
+            showLoading();
+    
+            if (data.length === 0) {
+                alert("No results found.");
+                return;
+            }
+            if (self.filter != 'null') {
+                p = self.filter;
+                var auto = []
+                for (var a = 0; a < data.length; a++) {
+                    var v = data[a];
+                    if (v.Nationality == p) {
+                        auto.push(v);
+                    }
+                }
+                self.records(auto);
+                self.totalRecords(auto.length);
+                for (var info in auto) {
+                    self.playerslist.push(auto[info]);
+                }
+            } else {
+                self.records(data);
+                self.totalRecords(data.length);
+                for (var info in data) {
+                    self.playerslist.push(data[info]);
+                }
+    
+            }
+            $("#pagination").addClass("d-none");
+            $("#line").addClass("d-none");
+            hideLoading();
+    
+            
+        });
+    
+        
+    };
+    
+    search2= function() {
+     $("#searchbar").autocomplete({
+        source: function (request, response) {
+          SearcUri =
+            "http://192.168.160.58/NBA/API/Arenas/Search?q=" + request.term;
+          console.log("accessing:" + SearcUri);
+          $.ajax({
+            url: SearcUri,
+            method: "GET",
+            dataType: "json",
+            success: function (data) {
+              let result = [];
+    
+              console.log(data);
+    
+              if (data.length) {
+                data.forEach(function (item) {
+                  if (result.length < 10) {
+                    let obj = {
+                      label: item.Name,
+                      id: item.Id,
+                    };
+                    result.push(obj);
+                  }
+                });
+    
+                console.log(result);
+              } else {
+                console.log("No data received.");
+              }
+              response(result);
+            },
+            error: function () {
+              console.log("Error ");
+            },
+          });
+        },
+        select: function (event, ui) {
+          window.location.href = "./playerDetails.html?id=" + ui.item.id;
+        },
+      });
+    
+    }
+    
+    
+    $(document).keypress(function(key) {
+        if (key.which == 13) {
+            search();
+        }
+    });
     
     self.checkButton = function(id) {
         return self.favorites().includes(id)

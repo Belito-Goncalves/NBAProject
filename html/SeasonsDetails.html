@@ -59,8 +59,8 @@
     <!-- Work Area-->
     <main class="background" style="min-height: 737px;">
         <div class="container">
-            <div class="py-2 border-bottom mb-3">
-                <h2 data-bind="text: Name()"></h2>
+            <div class="py-2 border-bottom mb-3" style="text-align: center;">
+                <h2 data-bind="text: Id()"></h2>
             </div>
 
             <div class="row">
@@ -70,10 +70,7 @@
                         <div class="card-body">
                             <div class="row border-bottom g-2">
                                 <div class="col-12" style="text-align: Center; font-family: 'Arial', sans-serif; font-size: 24px;">Teams</div>
-                                <div class="d-inline-flex mt-4" id="forms" style="width: 365px ; margin-left: auto; margin-right: auto;">
-                                    <input id="searchbar" class="form-control searchBar" type="search" placeholder="Search" aria-label="Search">
-                                    <button style="margin-left: 5px;" class="fa fa-search btn btn-outline-info" id="lupadef" type="submit" onclick="search()"></button>
-                                </div>
+                                
                             </div>
                             <div class="container" style="width: 100%; margin-top:10px">
                                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" data-bind="foreach: Teams.slice(0, 24)">
@@ -120,10 +117,7 @@
                       <div class="card-body">
                         <div class="row border-bottom g-2">
                             <div class="col-12" style="text-align: center; font-family: 'Arial', sans-serif; font-size: 24px;">Jogadores</div>
-                            <div class="d-inline-flex mt-4" id="forms" style="width: 365px ; margin-left: auto; margin-right: auto;">
-                                <input id="searchbar" class="form-control searchBar" type="search" placeholder="Search" aria-label="Search">
-                                <button style="margin-left: 5px;" class="fa fa-search btn btn-outline-info" id="lupadef" type="submit" onclick="search()"></button>
-                            </div>
+                            
                         </div>
                         <div class="container" style="width: 100%; margin-top:10px;">
                             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" data-bind="foreach: Players.slice(0, 24)">
