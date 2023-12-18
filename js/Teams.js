@@ -161,6 +161,7 @@ var vm = function () {
         ajaxHelper(changeuri, 'GET').done(function(data) {
             console.log(data);
             showLoading();
+    
             if (data.length === 0) {
                 alert("No results found.");
                 return;
@@ -185,82 +186,61 @@ var vm = function () {
                 for (var info in data) {
                     self.playerslist.push(data[info]);
                 }
+    
             }
             $("#pagination").addClass("d-none");
             $("#line").addClass("d-none");
             hideLoading();
     
+            
         });
+    
+        
+    };
+    
+    search2 = function() {
+     $("#searchbar").autocomplete({
+        source: function (request, response) {
+          SearcUri =
+            "http://192.168.160.58/NBA/API/Teams/Search?q=" + request.term;
+          console.log("accessing:" + SearcUri);
+          $.ajax({
+            url: SearcUri,
+            method: "GET",
+            dataType: "json",
+            success: function (data) {
+              let result = [];
+    
+              console.log(data);
+    
+              if (data.length) {
+                data.forEach(function (item) {
+                  if (result.length < 10) {
+                    let obj = {
+                      label: item.Name,
+                      id: item.Id,
+                    };
+                    result.push(obj);
+                  }
+                });
+    
+                console.log(result);
+              } else {
+                console.log("No data received.");
+              }
+              response(result);
+            },
+            error: function () {
+              console.log("Error ");
+            },
+          });
+        },
+        select: function (event, ui) {
+          window.location.href = "./playerDetails.html?id=" + ui.item.id;
+        },
+      });
+    
     }
-    
-    $(".countryFilter").change(function() {
-    
-        p = $(this).children("option:selected").val();
-        self.filter = p;
-        if (p != 'null') {
-            showLoading();
-            var url = '';
-            if (self.search != '') {
-                url = 'http://192.168.160.58/NBA/api/Search/Teams?q=' + self.search;
-            } else {
-                url = self.baseUri();
-            }
-            ajaxHelper(url, 'GET').done(function(data) {
-                var auto = [];
-                if (self.search != '') {
-                    for (var a = 0; a < data.length; a++) {
-                        var v = data[a];
-                        if (v.Nationality == p) {
-                            auto.push(v);
-                        }
-                    }
-                } else {
-                    for (var a = 0; a < data.List.length; a++) {
-                        var v = data.List[a];
-                        if (v.Nationality == p) {
-                            auto.push(v);
-                        }
-                    }
-                }
-                self.records(auto);
-                self.totalRecords(auto.length);
-                $("#pagination").addClass("d-none");
-                $("#line").addClass("d-none");
-                $('#mapa').addClass("d-none");
-            })
-    
-    
-            hideLoading();
-        } else {
-            showLoading();
-            var url = '';
-            if (self.search != '') {
-                url = 'http://192.168.160.58/NBA/api/Search/Teams?q=' + self.search;
-            } else {
-                url = self.baseUri();
-            }
-            ajaxHelper(url, 'GET').done(function(data) {
-                var auto = [];
-                if (self.search != '') {
-                    for (var a = 0; a < data.length; a++) {
-                        var v = data[a];
-                        auto.push(v);
-                    }
-                } else {
-                    for (var a = 0; a < data.List.length; a++) {
-                        var v = data.List[a];
-                        auto.push(v);
-                    }
-                }
-                self.records(auto);
-                self.totalRecords(auto.length);
-                $("#pagination").addClass("d-none");
-                $("#line").addClass("d-none");
-                $('#mapa').addClass("d-none")
-            })
-            hideLoading();
-        }
-    });
     
     $(document).keypress(function(key) {
         if (key.which == 13) {

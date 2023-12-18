@@ -141,118 +141,102 @@ var vm = function () {
     }
     console.log("VM initialized!");
 
-search = function() {
-    console.log("search");
-    self.search = $("#searchbar").val();
-
-    if (self.search.trim() === "") {
-        // Refresh the page
-        location.reload();
-        return;
-    }
-
-
-    var changeuri = 'http://192.168.160.58/NBA/API/States/search?q=' + self.search;
-    self.playerslist = [];
-    ajaxHelper(changeuri, 'GET').done(function(data) {
-        console.log(data);
-        showLoading();
-        if (self.filter != 'null') {
-            p = self.filter;
-            var auto = []
-            for (var a = 0; a < data.length; a++) {
-                var v = data[a];
-                if (v.Nationality == p) {
-                    auto.push(v);
-                }
-            }
-            self.records(auto);
-            self.totalRecords(auto.length);
-            for (var info in auto) {
-                self.playerslist.push(auto[info]);
-            }
-        } else {
-            self.records(data);
-            self.totalRecords(data.length);
-            for (var info in data) {
-                self.playerslist.push(data[info]);
-            }
+    search = function() {
+        console.log("search");
+        self.search = $("#searchbar").val();
+    
+        if (self.search.trim() === "") {
+            // Refresh the page
+            location.reload();
+            return;
         }
-        $("#pagination").addClass("d-none");
-        $("#line").addClass("d-none");
-        hideLoading();
-
-    });
-}
-
-$(".countryFilter").change(function() {
-
-    p = $(this).children("option:selected").val();
-    self.filter = p;
-    if (p != 'null') {
-        showLoading();
-        var url = '';
-        if (self.search != '') {
-            url = 'http://192.168.160.58/NBA/api/Search/States?q=' + self.search;
-        } else {
-            url = self.baseUri();
-        }
-        ajaxHelper(url, 'GET').done(function(data) {
-            var auto = [];
-            if (self.search != '') {
+    
+    
+        var changeuri = 'http://192.168.160.58/NBA/API/States/search?q=' + self.search;
+        self.playerslist = [];
+        ajaxHelper(changeuri, 'GET').done(function(data) {
+            console.log(data);
+            showLoading();
+    
+            if (data.length === 0) {
+                alert("No results found.");
+                return;
+            }
+            if (self.filter != 'null') {
+                p = self.filter;
+                var auto = []
                 for (var a = 0; a < data.length; a++) {
                     var v = data[a];
                     if (v.Nationality == p) {
                         auto.push(v);
                     }
                 }
-            } else {
-                for (var a = 0; a < data.List.length; a++) {
-                    var v = data.List[a];
-                    if (v.Nationality == p) {
-                        auto.push(v);
-                    }
-                }
-            }
-            self.records(auto);
-            self.totalRecords(auto.length);
-            $("#pagination").addClass("d-none");
-            $("#line").addClass("d-none");
-            $('#mapa').addClass("d-none");
-        })
-
-
-        hideLoading();
-    } else {
-        showLoading();
-        var url = '';
-        if (self.search != '') {
-            url = 'http://192.168.160.58/NBA/api/Search/States?q=' + self.search;
-        } else {
-            url = self.baseUri();
-        }
-        ajaxHelper(url, 'GET').done(function(data) {
-            var auto = [];
-            if (self.search != '') {
-                for (var a = 0; a < data.length; a++) {
-                    var v = data[a];
-                    auto.push(v);
+                self.records(auto);
+                self.totalRecords(auto.length);
+                for (var info in auto) {
+                    self.playerslist.push(auto[info]);
                 }
             } else {
-                for (var a = 0; a < data.List.length; a++) {
-                    var v = data.List[a];
-                    auto.push(v);
+                self.records(data);
+                self.totalRecords(data.length);
+                for (var info in data) {
+                    self.playerslist.push(data[info]);
                 }
+    
             }
-            self.records(auto);
-            self.totalRecords(auto.length);
             $("#pagination").addClass("d-none");
             $("#line").addClass("d-none");
-            $('#mapa').addClass("d-none")
-        })
-        hideLoading();
+            hideLoading();
+    
+            
+        });
+    
+        
+    };
+    
+    search2= function() {
+     $("#searchbar").autocomplete({
+        source: function (request, response) {
+          SearcUri =
+            "http://192.168.160.58/NBA/API/States/Search?q=" + request.term;
+          console.log("accessing:" + SearcUri);
+          $.ajax({
+            url: SearcUri,
+            method: "GET",
+            dataType: "json",
+            success: function (data) {
+              let result = [];
+    
+              console.log(data);
+    
+              if (data.length) {
+                data.forEach(function (item) {
+                  if (result.length < 10) {
+                    let obj = {
+                      label: item.Name,
+                      id: item.Id,
+                    };
+                    result.push(obj);
+                  }
+                });
+    
+                console.log(result);
+              } else {
+                console.log("No data received.");
+              }
+              response(result);
+            },
+            error: function () {
+              console.log("Error ");
+            },
+          });
+        },
+        select: function (event, ui) {
+          window.location.href = "./stateDetails.html?id=" + ui.item.id;
+        },
+      });
+    
     }
-});
 
 $(document).keypress(function(key) {
     if (key.which == 13) {
