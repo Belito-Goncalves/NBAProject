@@ -247,7 +247,7 @@
           });
         },
         select: function (event, ui) {
-          window.location.href = "./playerDetails.html?id=" + ui.item.id;
+          window.location.href = "./arenaDetails.html?id=" + ui.item.id;
         },
       });
     

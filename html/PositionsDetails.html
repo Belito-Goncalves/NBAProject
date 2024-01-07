@@ -71,14 +71,28 @@
                                     <h4 class="mb-0">Jogadores</h4>
                                 </div>
                                 <div class="col-md-6 col-lg-4 col-xl-3 mt-md-0 mt-3">
-                                    <div class="input-group">
-                                        <input id="searchbar" class="form-control searchBar" type="search" placeholder="Search" aria-label="Search">
-                                        <button class="btn btn-outline-info" type="submit" onclick="search()">
-                                            <i class="fa fa-search"></i>
-                                        </button>
+                                    
+                                </div>
+                            </div>
+                            
+
+                            <div class="container mt-4">
+                                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3" data-bind="foreach: Players.slice(0, 24)">
+                                    <div class="col mb-4">
+                                        <div class="card" style="width: 150px;">
+                                            <a data-bind="attr: { href: './PlayerDetails.html?id=' + Id}">
+                                                <img class="card-img-top" data-bind="attr: { src: Photo, alt: Name }" style="object-fit: cover; height: 130px; width: 100%;" />
+                                            </a>
+                                            <div class="card-body text-center">
+                                                <h6 class="card-title" data-bind="text: Name"></h6>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                            
+                            
+                            
                             <div class="container mt-4">
                                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3" data-bind="foreach: displayedPlayers">
                                     <div class="col mb-4">
